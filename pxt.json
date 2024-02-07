@@ -1,20 +1,43 @@
 {
-    "name": "WhenDo",
-    "version": "2.0.0",
-    "description": "",
+    "name": "pxt-arcadeshield",
+    "description": "Arcade Shield extension for MakeCode micro:bit",
     "dependencies": {
         "core": "*",
         "radio": "*",
         "microphone": "*"
     },
     "files": [
-        "main.blocks",
-        "main.ts",
-        "README.md",
-        "tutorial-info-cache.json"
+        "config.ts",
+        "config_nrf.h",
+        "screen.cpp",
+        "image.cpp",
+        "image.ts",
+        "screenimage.ts",
+        "text.ts",
+        "frame.ts",
+        "shims.d.ts",
+        "fieldeditors.ts",
+        "targetoverrides.ts",
+        "ns.ts",
+        "image.d.ts",
+        "pxtparts.json",
+        "imagesoverrides.jres",
+        "imagesoverrides.ts",
+        "font12.jres",
+        "arcadegamepad.h",
+        "indexedscreen.h",
+        "arcadesound.h",
+        "jdprotocol.h",
+        "jddisplay.h",
+        "jddisplay.cpp",
+        "pins.cpp",
+        "pinsDigital.cpp",
+        "controllerbuttons.cpp"
     ],
-    "testFiles": [
-        "test.ts"
+    "public": true,
+    "additionalFilePaths": [ "./screen", "./game---light"],
+    "disablesVariants": [
+        "mbdal"
     ],
     "targetVersions": {
         "target": "6.0.22",

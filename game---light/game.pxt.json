@@ -1,0 +1,28 @@
+{
+    "name": "game---light",
+    "description": "Empty game library - beta",
+    "dependencies": {
+        "settings": "file:../settings",
+        "arcadeshield": "file:../arcadeshield"
+    },
+    "files": [
+        "control.cpp",
+        "eventcontext.ts",
+        "compat.ts",
+        "console.ts",
+        "constants.ts",
+        "controlleroverrides.ts",
+        "controllerbutton.ts",
+        "mathUtil.ts",
+        "gameutil.ts",
+        "targetoverrides.cpp",
+        "targetoverrides.ts",
+        "shims.d.ts"
+    ],
+    "public": true,
+    "additionalFilePath": "../game",
+    "hidden": true,
+    "disablesVariants": [
+        "mbdal"
+    ]
+}
