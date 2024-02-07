@@ -3,6 +3,10 @@
 This MakeCode extension allows you to use any of the 
 MakeCode Arcade shields with the MakeCode for BBC micro:bit editor.
 
+# Supported targets
+
+- for PXT/microbit
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
