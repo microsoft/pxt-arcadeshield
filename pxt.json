@@ -4,7 +4,8 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "settings": "*"
     },
     "files": [
         "config.ts",
@@ -34,6 +35,15 @@
         "targetoverrides.ts",
         "font12.jres",
 
+        "control.cpp",
+        "eventcontext.ts",
+        "compat.ts",
+        "console.ts",
+        "constants.ts",
+        "controlleroverrides.ts",
+        "controllerbutton.ts",
+        "mathUtil.ts",
+        "gameutil.ts",
 
         "shims.d.ts"
     ],
