@@ -10,7 +10,6 @@
     "files": [
         "config.ts",
         "config_nrf.h",
-
         "arcadegamepad.h",
         "indexedscreen.h",
         "arcadesound.h",
@@ -22,6 +21,7 @@
         "controllerbuttons.cpp",
         "screen.cpp",
         "targetoverrides.ts",
+        "shims.d.ts",
 
         "./screen/image.cpp",
         "./screen/image.ts",
@@ -43,9 +43,7 @@
         "./gamelight/controlleroverrides.ts",
         "./gamelight/controllerbutton.ts",
         "./gamelight/mathUtil.ts",
-        "./gamelight/gameutil.ts",
-        
-        "shims.d.ts"
+        "./gamelight/gameutil.ts"
     ],
     "public": true,
 
