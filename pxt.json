@@ -10,7 +10,7 @@
     "files": [
         "config.ts",
         "config_nrf.h",
-    
+
         "arcadegamepad.h",
         "indexedscreen.h",
         "arcadesound.h",
@@ -20,38 +20,35 @@
         "pins.cpp",
         "pinsDigital.cpp",
         "controllerbuttons.cpp",
-
         "screen.cpp",
-        "image.cpp",
-        "image.ts",
-        "screenimage.ts",
-        "text.ts",
-        "frame.ts",
-        "ns.ts",
-        "image.d.ts",
-        "pxtparts.json",
-        "imagesoverrides.jres",
-        "imagesoverrides.ts",
         "targetoverrides.ts",
-        "font12.jres",
 
-        "control.cpp",
-        "eventcontext.ts",
-        "compat.ts",
-        "console.ts",
-        "constants.ts",
-        "controlleroverrides.ts",
-        "controllerbutton.ts",
-        "mathUtil.ts",
-        "gameutil.ts",
+        "./screen/image.cpp",
+        "./screen/image.ts",
+        "./screen/screenimage.ts",
+        "./screen/text.ts",
+        "./screen/frame.ts",
+        "./screen/ns.ts",
+        "./screen/image.d.ts",
+        "./screen/pxtparts.json",
+        "./screen/imagesoverrides.jres",
+        "./screen/imagesoverrides.ts",
+        "./screen/font12.jres",
 
+        "./gamelight/control.cpp",
+        "./gamelight/eventcontext.ts",
+        "./gamelight/compat.ts",
+        "./gamelight/console.ts",
+        "./gamelight/constants.ts",
+        "./gamelight/controlleroverrides.ts",
+        "./gamelight/controllerbutton.ts",
+        "./gamelight/mathUtil.ts",
+        "./gamelight/gameutil.ts",
+        
         "shims.d.ts"
     ],
     "public": true,
-    "additionalFilePaths": [ "./screen", "./game---light"],
-    "disablesVariants": [
-        "mbdal"
-    ],
+
     "targetVersions": {
         "target": "6.0.22",
         "targetId": "microbit"
@@ -59,5 +56,8 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "tsprj",
+    "disablesVariants": [
+        "mbdal"
+    ]
 }
