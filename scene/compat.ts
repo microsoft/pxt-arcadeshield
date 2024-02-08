@@ -42,7 +42,7 @@ namespace scene {
     }
 
     export function pushScene() {
-        const ctx = scontrol.pushEventContext()
+        const ctx = context.pushEventContext()
         ctx.registerFrameHandler(scene.RENDER_BACKGROUND_PRIORITY, () => {
             screen.fill(0)
         });
@@ -50,7 +50,7 @@ namespace scene {
     }
 
     export function popScene() {
-        scontrol.popEventContext()
+        context.popEventContext()
     }
 
     export function eventContext() {
@@ -58,7 +58,7 @@ namespace scene {
             inited = true
             pushScene()
         }
-        return scontrol.eventContext()
+        return context.eventContext()
     }
 
     let __waitAnyButton: () => void;
@@ -68,12 +68,12 @@ namespace scene {
 
     export function onPaint(a: () => void): void {
         if (!a) return;
-        scontrol.eventContext().registerFrameHandler(scene.RENDER_SPRITES_PRIORITY - 1, a);
+        context.eventContext().registerFrameHandler(scene.RENDER_SPRITES_PRIORITY - 1, a);
     }
 
     export function onShade(a: () => void): void {
         if (!a) return;
-        scontrol.eventContext().registerFrameHandler(scene.RENDER_SPRITES_PRIORITY, a);
+        context.eventContext().registerFrameHandler(scene.RENDER_SPRITES_PRIORITY, a);
     }
 
 }

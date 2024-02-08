@@ -1,4 +1,4 @@
-namespace scontrol {
+namespace context {
 
     export function onEvent(src: number, value: number, handler: () => void, flags = 16) { // EVENT_LISTENER_DEFAULT_FLAGS
         const ctx = eventContext();

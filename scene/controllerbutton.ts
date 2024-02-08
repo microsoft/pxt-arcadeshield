@@ -252,7 +252,7 @@ namespace controller {
             }
 
             // Register actual handler if this hasn't been used before
-            scontrol.onEvent(event, this.id, () => this.runButtonEvents(event));
+            context.onEvent(event, this.id, () => this.runButtonEvents(event));
 
             const newHandler = new ButtonHandler(event, undefined);
             handlerState.user.push(newHandler);
