@@ -1,4 +1,4 @@
-namespace game.consoleOverlay {
+namespace scene.consoleOverlay {
     let consoleColor = 1;
     let consoleStrings: string[];
     let tabSize = 8;
@@ -45,7 +45,7 @@ namespace game.consoleOverlay {
     export function draw() {
         if (!consoleStrings || scene.systemMenu.isVisible()) return;
         const height = consoleFont.charHeight + marginy;
-        const top = 2 + (game.stats ? height : 0);
+        const top = 2 + (scene.stats ? height : 0);
         for (let i = 0; i < consoleStrings.length; ++i) {
             if (consoleStrings[i].indexOf("\t") >= 0) {
                 const t = consoleStrings[i].split("\t");

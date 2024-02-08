@@ -22,12 +22,6 @@ enum ControllerButton {
     Down = 4
 }
 
-/**
- * Access to game controls
- */
-//% weight=98 color="#D54322" icon="\uf11b"
-//% groups='["Single Player", "Multiplayer"]'
-//% blockGap=8
 namespace controller {
     let _userEventsEnabled = true;
     let defaultRepeatDelay = 500;
@@ -65,7 +59,7 @@ namespace controller {
         private _repeatCount: number;
 
         protected get handlerState(): ButtonEventHandlerState {
-            for (const state of game.currentScene().buttonEventHandlers) {
+            for (const state of scene.currentScene().buttonEventHandlers) {
                 if (state.id === this.id) return state;
             }
             return undefined;
@@ -245,7 +239,7 @@ namespace controller {
 
         protected getOrCreateHandlerForEvent(event: ControllerButtonEvent) {
             if (!this.handlerState) {
-                game.currentScene().buttonEventHandlers.push(new ButtonEventHandlerState(this.id));
+                scene.currentScene().buttonEventHandlers.push(new ButtonEventHandlerState(this.id));
             }
 
             const handlerState = this.handlerState;

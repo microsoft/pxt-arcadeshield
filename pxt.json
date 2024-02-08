@@ -22,7 +22,6 @@
         "screen.cpp",
         "targetoverrides.ts",
         "shims.d.ts",
-
         "./screen/image.cpp",
         "./screen/image.ts",
         "./screen/screenimage.ts",
@@ -34,7 +33,6 @@
         "./screen/imagesoverrides.jres",
         "./screen/imagesoverrides.ts",
         "./screen/font12.jres",
-
         "./gamelight/control.cpp",
         "./gamelight/eventcontext.ts",
         "./gamelight/compat.ts",
@@ -46,7 +44,6 @@
         "./gamelight/gameutil.ts"
     ],
     "public": true,
-
     "targetVersions": {
         "target": "6.0.22",
         "targetId": "microbit"

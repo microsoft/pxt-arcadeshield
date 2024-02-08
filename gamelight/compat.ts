@@ -32,7 +32,7 @@ class Scene {
     buttonEventHandlers: controller.ButtonEventHandlerState[];
 }
 
-namespace game {
+namespace scene {
     export let stats = false;
     let inited = false
 
@@ -66,23 +66,11 @@ namespace game {
         __waitAnyButton = f
     }
 
-    /**
-     * Draw on screen before sprites, after background
-     * @param body code to execute
-     */
-    //% group="Gameplay"
-    //% help=game/paint weight=10 afterOnStart=true
     export function onPaint(a: () => void): void {
         if (!a) return;
         scontrol.eventContext().registerFrameHandler(scene.RENDER_SPRITES_PRIORITY - 1, a);
     }
 
-    /**
-     * Draw on screen after sprites
-     * @param body code to execute
-     */
-    //% group="Gameplay"
-    //% help=game/shade weight=10 afterOnStart=true
     export function onShade(a: () => void): void {
         if (!a) return;
         scontrol.eventContext().registerFrameHandler(scene.RENDER_SPRITES_PRIORITY, a);
