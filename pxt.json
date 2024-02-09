@@ -54,5 +54,10 @@
     "preferredEditor": "tsprj",
     "disablesVariants": [
         "mbdal"
-    ]
+    ],
+    "yotta": {
+        "config": {
+            "DEVICE_BLE": 0
+        }
+    }
 }
