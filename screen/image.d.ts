@@ -5,7 +5,9 @@ interface SImage {
      */
     //% helper=imageFillRect blockNamespace="images" inlineInputMode="inline" group="Drawing"
     //% block="fill rectangle in %picture=variables_get at x %x y %y width %w height %h %c=colorindexpicker"
-    //% help=images/image/fill-rect
+    //% help=github:microsoft/pxt-arcadeshield/images/image/fill-rect
+
+
     fillRect(x: number, y: number, w: number, h: number, c: color): void;
 
     /**
