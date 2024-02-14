@@ -1,4 +1,4 @@
-//% color=190 weight=100  block="Screen"
-namespace simage {
+//% color="#a5b1c2" block="Screen"
+namespace simages {
 
 }
