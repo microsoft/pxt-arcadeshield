@@ -1,4 +1,4 @@
-//% color="#2c3e50" weight=10 icon="\uf108"
+//% weight=70 icon="\uf03e" color="#a5b1c2"
 //% block="Pictures"
 namespace simages {
 

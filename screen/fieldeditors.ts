@@ -1,8 +1,6 @@
 /**
  * Image manipulation blocks
  */
-//% weight=70 icon="\uf03e" color="#a5b1c2"
-//% advanced=true
 namespace simages {
 
     //% blockId=background_image_picker block="%img"
