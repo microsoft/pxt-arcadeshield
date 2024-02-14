@@ -13,26 +13,12 @@ namespace bitmaps {
     //% img.fieldOptions.filter="background"
     //% weight=100 group="Create"
     //% blockHidden=1 duplicateShadowOnDrag
-    export function _screenImage(img: Image) {
-        return img
-    }
-
-    //% blockId=dialog_image_picker block="%img"
-    //% shim=TD_ID
-    //% img.fieldEditor="sprite"
-    //% img.fieldOptions.taggedTemplate="img"
-    //% img.fieldOptions.decompileIndirectFixedInstances="true"
-    //% img.fieldOptions.decompileArgumentAsString="true"
-    //% img.fieldOptions.sizes="15,15;18,18;21,21;24,24;9,9;12,12"
-    //% img.fieldOptions.filter="dialog"
-    //% weight=100 group="Create"
-    //% blockHidden=1 duplicateShadowOnDrag
-    export function _dialogImage(img: Image) {
+    export function _screenImage(img: Bitmap) {
         return img
     }
 
     /**
-     * An image
+     * A bitmap
      * @param image the image
      */
     //% blockId=image_picker block="$image" shim=TD_ID
@@ -42,25 +28,7 @@ namespace bitmaps {
     //% image.fieldOptions.decompileArgumentAsString="true"
     //% weight=0 group="Create"
     //% help=images/image
-    export function _image(image: Image): Image {
+    export function _image(image: Bitmap): Bitmap {
         return image;
-    }
-
-    //% blockId=colorindexpicker block="%index" blockHidden=true shim=TD_ID
-    //% index.fieldEditor="colornumber"
-    //% index.fieldOptions.valueMode="index"
-    //% index.fieldOptions.decompileLiterals="true"
-    export function __colorIndexPicker(index: number) {
-        return index;
-    }
-
-    /**
-     * A position picker
-     */
-    //% blockId=positionPicker block="%index" blockHidden=true shim=TD_ID
-    //% index.fieldEditor="position" color="#ffffff" colorSecondary="#ffffff"
-    //% index.fieldOptions.decompileLiterals="true"
-    export function __positionPicker(index: number) {
-        return index;
     }
 }

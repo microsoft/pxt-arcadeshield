@@ -60,6 +60,7 @@ interface Bitmap {
      * Return a copy of the current image
      */
     //% shim=BitmapMethods::clone blockNamespace="bitmaps" group="Create"
+    //% weight=60
     //% block="clone %picture=variables_get"
     //% help=images/image/clone
     clone(): Bitmap;
@@ -117,7 +118,8 @@ interface Bitmap {
 
 declare namespace bitmap {
     //% blockNamespace="bitmaps"
-    //% block="create image width %width height %height" group="Create"
+    //% block="create bitmap width %width height %height" group="Create"
+    //% weight=50
     //% help=images/create
     function create(width: number, height: number): Bitmap;
 }

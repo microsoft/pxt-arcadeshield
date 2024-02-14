@@ -99,7 +99,7 @@ interface Bitmap {
     blit(xDst: number, yDst: number, wDst: number, hDst: number, src: Bitmap, xSrc: number, ySrc: number, wSrc: number, hSrc: number, transparent: boolean, check: boolean): boolean;
 }
 
-interface ScreenImage extends Bitmap {
+interface ScreenBitmap extends Bitmap {
     /**
      * Sets the screen backlight brightness (10-100)
      */
