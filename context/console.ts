@@ -4,7 +4,7 @@ namespace scene.consoleOverlay {
     let tabSize = 8;
     const marginx = 4;
     const marginy = 2;
-    const consoleFont = simage.font5;
+    const consoleFont = bitmap.font5;
     const consoleLines = Math.floor(screen.height / (consoleFont.charHeight + marginy)) - 1;
     const consoleColumns = Math.floor((screen.width - 2 * marginx) / consoleFont.charWidth);
     console.addListener(listener);

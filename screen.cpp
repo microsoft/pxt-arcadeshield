@@ -15,7 +15,7 @@
 
 #include "config_nrf.h"
 
-typedef RefImage *SImage_;
+typedef RefImage *Bitmap_;
 
 namespace pxt {
 
@@ -30,7 +30,7 @@ class WDisplay {
     bool inUpdate;
 
     uint8_t *screenBuf;
-    SImage_ lastStatus;
+    Bitmap_ lastStatus;
 
     uint16_t width, height;
     uint16_t displayHeight;
@@ -299,7 +299,7 @@ void setupScreenStatusBar(int barHeight) {
 }
 
 //%
-void updateScreenStatusBar(SImage_ img) {
+void updateScreenStatusBar(Bitmap_ img) {
     auto display = getWDisplay();
     if (!display)
         return;
@@ -310,7 +310,7 @@ void updateScreenStatusBar(SImage_ img) {
 }
 
 //%
-void updateScreen(SImage_ img) {
+void updateScreen(Bitmap_ img) {
     auto display = getWDisplay();
     if (!display)
         return;

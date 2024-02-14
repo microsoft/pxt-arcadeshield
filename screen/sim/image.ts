@@ -17,7 +17,7 @@ namespace pxsim {
         }
 
         scan(mark: (path: string, v: any) => void) { }
-        gcKey() { return "SImage" }
+        gcKey() { return "Bitmap" }
         gcSize() { return 4 + (this.data.length + 3 >> 3) }
         gcIsStatic() { return this.isStatic }
 
@@ -60,7 +60,7 @@ namespace pxsim {
     }
 }
 
-namespace pxsim.SImageMethods {
+namespace pxsim.BitmapMethods {
     export function XX(x: number) { return (x << 16) >> 16 }
     export function YY(x: number) { return x >> 16 }
 
@@ -526,13 +526,13 @@ namespace pxsim.SImageMethods {
 
     export function drawIcon(img: RefImage, icon: RefBuffer, x: number, y: number, color: number) {
         const src: Uint8Array = icon.data
-        if (!simage.isValidImage(icon))
+        if (!bitmap.isValidImage(icon))
             return
         if (src[1] != 1)
             return // only mono
-        let width = simage.bufW(src)
-        let height = simage.bufH(src)
-        let byteH = simage.byteHeight(height, 1)
+        let width = bitmap.bufW(src)
+        let height = bitmap.bufH(src)
+        let byteH = bitmap.byteHeight(height, 1)
 
         x |= 0
         y |= 0
@@ -936,7 +936,7 @@ namespace pxsim.SImageMethods {
 }
 
 
-namespace pxsim.simage {
+namespace pxsim.bitmap {
     export function byteHeight(h: number, bpp: number) {
         if (bpp == 1)
             return h * bpp + 7 >> 3
@@ -1100,7 +1100,7 @@ namespace pxsim.simage {
         let img = ofBuffer(buf)
         if (!img)
             return null
-        img = SImageMethods.doubled(img)
+        img = BitmapMethods.doubled(img)
         return toBuffer(img)
     }
 }

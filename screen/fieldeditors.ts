@@ -1,7 +1,7 @@
 /**
  * Image manipulation blocks
  */
-namespace simages {
+namespace bitmaps {
 
     //% blockId=background_image_picker block="%img"
     //% shim=TD_ID

@@ -1,21 +1,21 @@
 type color = number
 
-namespace simage {
-    export function repeatY(count: number, image: SImage) {
+namespace bitmap {
+    export function repeatY(count: number, image: Bitmap) {
         let arr = [image]
         while (--count > 0)
             arr.push(image)
         return concatY(arr)
     }
 
-    export function concatY(images: SImage[]) {
+    export function concatY(images: Bitmap[]) {
         let w = 0
         let h = 0
         for (let img of images) {
             w = Math.max(img.width, w)
             h += img.height
         }
-        let r = simage.create(w, h)
+        let r = bitmap.create(w, h)
         let y = 0
         for (let img of images) {
             let x = (w - img.width) >> 1
@@ -30,7 +30,7 @@ namespace simage {
 //% snippet='img` `'
 //% pySnippet='img(""" """)'
 //% fixedInstances
-interface SImage {
+interface Bitmap {
     /**
      * Draw an icon (monochromatic image) using given color
      */
@@ -83,28 +83,28 @@ interface SImage {
      * Returns an image rotated by -90, 0, 90, 180, 270 deg clockwise
      */
     //% helper=imageRotated
-    rotated(deg: number): SImage;
+    rotated(deg: number): Bitmap;
 
     /**
      * Scale and copy a row of pixels from a texture.
      */
     //% helper=imageBlitRow
-    blitRow(dstX: number, dstY: number, from: SImage, fromX: number, fromH: number): void;
+    blitRow(dstX: number, dstY: number, from: Bitmap, fromX: number, fromH: number): void;
 
     /**
      * Copy an image from a source rectangle to a destination rectangle, stretching or
      * compressing to fit the dimensions of the destination rectangle, if necessary.
      */
     //% helper=imageBlit
-    blit(xDst: number, yDst: number, wDst: number, hDst: number, src: SImage, xSrc: number, ySrc: number, wSrc: number, hSrc: number, transparent: boolean, check: boolean): boolean;
+    blit(xDst: number, yDst: number, wDst: number, hDst: number, src: Bitmap, xSrc: number, ySrc: number, wSrc: number, hSrc: number, transparent: boolean, check: boolean): boolean;
 }
 
-interface ScreenImage extends SImage {
+interface ScreenImage extends Bitmap {
     /**
      * Sets the screen backlight brightness (10-100)
      */
     //% helper=setScreenBrightness
-    setBrightness(deg: number): SImage;
+    setBrightness(deg: number): Bitmap;
 
     /**
      * Gets current screen backlight brightness (0-100)
@@ -119,32 +119,32 @@ namespace _helpers_workaround {
 }
 
 namespace helpers {
-    //% shim=SImageMethods::_drawLine
-    function _drawLine(img: SImage, xy: number, wh: number, c: color): void { }
+    //% shim=BitmapMethods::_drawLine
+    function _drawLine(img: Bitmap, xy: number, wh: number, c: color): void { }
 
-    //% shim=SImageMethods::_fillRect
-    function _fillRect(img: SImage, xy: number, wh: number, c: color): void { }
+    //% shim=BitmapMethods::_fillRect
+    function _fillRect(img: Bitmap, xy: number, wh: number, c: color): void { }
 
-    //% shim=SImageMethods::_mapRect
-    function _mapRect(img: SImage, xy: number, wh: number, m: Buffer): void { }
+    //% shim=BitmapMethods::_mapRect
+    function _mapRect(img: Bitmap, xy: number, wh: number, m: Buffer): void { }
 
-    //% shim=SImageMethods::_drawIcon
-    function _drawIcon(img: SImage, icon: Buffer, xy: number, c: color): void { }
+    //% shim=BitmapMethods::_drawIcon
+    function _drawIcon(img: Bitmap, icon: Buffer, xy: number, c: color): void { }
 
-    //% shim=SImageMethods::_fillCircle
-    declare function _fillCircle(img: SImage, cxy: number, r: number, c: color): void;
+    //% shim=BitmapMethods::_fillCircle
+    declare function _fillCircle(img: Bitmap, cxy: number, r: number, c: color): void;
 
-    //% shim=SImageMethods::_blitRow
-    declare function _blitRow(img: SImage, xy: number, from: SImage, xh: number): void;
+    //% shim=BitmapMethods::_blitRow
+    declare function _blitRow(img: Bitmap, xy: number, from: Bitmap, xh: number): void;
 
-    //% shim=SImageMethods::_blit
-    declare function _blit(img: SImage, src: SImage, args: number[]): boolean;
+    //% shim=BitmapMethods::_blit
+    declare function _blit(img: Bitmap, src: Bitmap, args: number[]): boolean;
 
-    //% shim=SImageMethods::_fillTriangle
-    declare function _fillTriangle(img: SImage, args: number[]): void;
+    //% shim=BitmapMethods::_fillTriangle
+    declare function _fillTriangle(img: Bitmap, args: number[]): void;
 
-    //% shim=SImageMethods::_fillPolygon4
-    declare function _fillPolygon4(img: SImage, args: number[]): void;
+    //% shim=BitmapMethods::_fillPolygon4
+    declare function _fillPolygon4(img: Bitmap, args: number[]): void;
 
     function pack(x: number, y: number) {
         return (Math.clamp(-30000, 30000, x | 0) & 0xffff) | (Math.clamp(-30000, 30000, y | 0) << 16)
@@ -152,7 +152,7 @@ namespace helpers {
 
     let _blitArgs: number[];
 
-    export function imageBlit(img: SImage, xDst: number, yDst: number, wDst: number, hDst: number, src: SImage, xSrc: number, ySrc: number, wSrc: number, hSrc: number, transparent: boolean, check: boolean): boolean {
+    export function imageBlit(img: Bitmap, xDst: number, yDst: number, wDst: number, hDst: number, src: Bitmap, xSrc: number, ySrc: number, wSrc: number, hSrc: number, transparent: boolean, check: boolean): boolean {
         _blitArgs = _blitArgs || [];
         _blitArgs[0] = xDst | 0;
         _blitArgs[1] = yDst | 0;
@@ -167,23 +167,23 @@ namespace helpers {
         return _blit(img, src, _blitArgs);
     }
 
-    export function imageBlitRow(img: SImage, dstX: number, dstY: number, from: SImage, fromX: number, fromH: number): void {
+    export function imageBlitRow(img: Bitmap, dstX: number, dstY: number, from: Bitmap, fromX: number, fromH: number): void {
         _blitRow(img, pack(dstX, dstY), from, pack(fromX, fromH))
     }
 
-    export function imageDrawIcon(img: SImage, icon: Buffer, x: number, y: number, c: color): void {
+    export function imageDrawIcon(img: Bitmap, icon: Buffer, x: number, y: number, c: color): void {
         _drawIcon(img, icon, pack(x, y), c)
     }
-    export function imageFillRect(img: SImage, x: number, y: number, w: number, h: number, c: color): void {
+    export function imageFillRect(img: Bitmap, x: number, y: number, w: number, h: number, c: color): void {
         _fillRect(img, pack(x, y), pack(w, h), c)
     }
-    export function imageMapRect(img: SImage, x: number, y: number, w: number, h: number, m: Buffer): void {
+    export function imageMapRect(img: Bitmap, x: number, y: number, w: number, h: number, m: Buffer): void {
         _mapRect(img, pack(x, y), pack(w, h), m)
     }
-    export function imageDrawLine(img: SImage, x: number, y: number, w: number, h: number, c: color): void {
+    export function imageDrawLine(img: Bitmap, x: number, y: number, w: number, h: number, c: color): void {
         _drawLine(img, pack(x, y), pack(w, h), c)
     }
-    export function imageDrawRect(img: SImage, x: number, y: number, w: number, h: number, c: color): void {
+    export function imageDrawRect(img: Bitmap, x: number, y: number, w: number, h: number, c: color): void {
         if (w == 0 || h == 0) return
         w--
         h--
@@ -193,7 +193,7 @@ namespace helpers {
         imageDrawLine(img, x + w, y + h, x, y + h, c)
     }
 
-    export function imageDrawCircle(img: SImage, cx: number, cy: number, r: number, col: number) {
+    export function imageDrawCircle(img: Bitmap, cx: number, cy: number, r: number, col: number) {
         cx = cx | 0;
         cy = cy | 0;
         r = r | 0;
@@ -225,11 +225,11 @@ namespace helpers {
         }
     }
 
-    export function imageFillCircle(img: SImage, cx: number, cy: number, r: number, col: number) {
+    export function imageFillCircle(img: Bitmap, cx: number, cy: number, r: number, col: number) {
         _fillCircle(img, pack(cx, cy), r, col);
     }
 
-    export function imageFillTriangle(img: SImage, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number, col: number) {
+    export function imageFillTriangle(img: Bitmap, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number, col: number) {
         _blitArgs = _blitArgs || [];
         _blitArgs[0] = x0;
         _blitArgs[1] = y0;
@@ -241,7 +241,7 @@ namespace helpers {
         _fillTriangle(img, _blitArgs);
     }
 
-    export function imageFillPolygon4(img: SImage, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, col: number) {
+    export function imageFillPolygon4(img: Bitmap, x0: number, y0: number, x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, col: number) {
         _blitArgs = _blitArgs || [];
         _blitArgs[0] = x0;
         _blitArgs[1] = y0;
@@ -258,7 +258,7 @@ namespace helpers {
     /**
      * Returns an image rotated by 90, 180, 270 deg clockwise
      */
-    export function imageRotated(img: SImage, deg: number) {
+    export function imageRotated(img: Bitmap, deg: number) {
         if (deg == -90 || deg == 270) {
             let r = img.transposed();
             r.flipY();
@@ -280,13 +280,13 @@ namespace helpers {
     //% shim=pxt::setScreenBrightness
     function _setScreenBrightness(brightness: number) { }
 
-    export function setScreenBrightness(img: SImage, b: number) {
+    export function setScreenBrightness(img: Bitmap, b: number) {
         b = Math.clamp(10, 100, b | 0);
         _helpers_workaround.brightness = b
         _setScreenBrightness(_helpers_workaround.brightness)
     }
 
-    export function screenBrightness(img: SImage) {
+    export function screenBrightness(img: Bitmap) {
         return _helpers_workaround.brightness
     }
 }

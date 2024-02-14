@@ -1,4 +1,4 @@
-namespace simage {
+namespace bitmap {
 
     export interface Font {
         charWidth: number;
@@ -138,9 +138,9 @@ a420a8fcaa828400 a720087e2a1c0800 ab200098a4a6bf02 ac20183c5a5a4200 af20627f2244
         for (let i = 0; i < text.length; ++i) {
             // this is quite approximate
             if (text.charCodeAt(i) > 0x2000)
-                return simage.font12
+                return bitmap.font12
         }
-        return simage.font8
+        return bitmap.font8
     }
 
     //% deprecated=1 hidden=1
@@ -195,27 +195,27 @@ namespace texteffects {
     }
 }
 
-interface SImage {
+interface Bitmap {
     //% helper=imagePrint
-    print(text: string, x: number, y: number, color?: number, font?: simage.Font, offsets?: texteffects.TextEffectState[]): void;
+    print(text: string, x: number, y: number, color?: number, font?: bitmap.Font, offsets?: texteffects.TextEffectState[]): void;
 
     //% helper=imagePrintCenter
-    printCenter(text: string, y: number, color?: number, font?: simage.Font): void;
+    printCenter(text: string, y: number, color?: number, font?: bitmap.Font): void;
 }
 
 namespace helpers {
-    export function imagePrintCenter(img: SImage, text: string, y: number, color?: number, font?: simage.Font) {
-        if (!font) font = simage.getFontForText(text)
+    export function imagePrintCenter(img: Bitmap, text: string, y: number, color?: number, font?: bitmap.Font) {
+        if (!font) font = bitmap.getFontForText(text)
         let w = text.length * font.charWidth
         let x = (img.width - w) / 2
         imagePrint(img, text, x, y, color, font)
     }
 
-    export function imagePrint(img: SImage, text: string, x: number, y: number, color?: number, font?: simage.Font, offsets?: texteffects.TextEffectState[]) {
+    export function imagePrint(img: Bitmap, text: string, x: number, y: number, color?: number, font?: bitmap.Font, offsets?: texteffects.TextEffectState[]) {
         x |= 0
         y |= 0
         if (!font)
-            font = simage.getFontForText(text)
+            font = bitmap.getFontForText(text)
         if (!color) color = 1
         let x0 = x
         let cp = 0

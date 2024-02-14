@@ -1,5 +1,4 @@
 //% weight=70 icon="\uf03e" color="#a5b1c2"
-//% block="Pictures"
-namespace simages {
+namespace bitmaps {
 
 }

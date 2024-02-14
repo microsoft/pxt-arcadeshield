@@ -1,12 +1,12 @@
 
-namespace simage {
+namespace bitmap {
     /**
     * Get the screen image
     */
-    //% blockNamespace="simages" group="Create"
+    //% blockNamespace="bitmaps" group="Create"
     //% blockId=imagescreen block="screen"
     //% help=images/screen-image
-    export function screenImage(): SImage {
+    export function screenImage(): Bitmap {
         return screen;
     }
 }

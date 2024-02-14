@@ -1,152 +1,152 @@
 // Auto-generated. Do not edit.
 
 
-declare interface SImage {
+declare interface Bitmap {
     /**
      * Get the width of the image
      */
-    //% property shim=SImageMethods::width
+    //% property shim=BitmapMethods::width
     width: int32;
 
     /**
      * Get the height of the image
      */
-    //% property shim=SImageMethods::height
+    //% property shim=BitmapMethods::height
     height: int32;
 
     /**
      * True if the image is monochromatic (black and white)
      */
-    //% property shim=SImageMethods::isMono
+    //% property shim=BitmapMethods::isMono
     isMono: boolean;
 
     /**
      * Sets all pixels in the current image from the other image, which has to be of the same size and
      * bpp.
      */
-    //% shim=SImageMethods::copyFrom
-    copyFrom(from: SImage): void;
+    //% shim=BitmapMethods::copyFrom
+    copyFrom(from: Bitmap): void;
 
     /**
      * Set pixel color
      */
-    //% shim=SImageMethods::setPixel
+    //% shim=BitmapMethods::setPixel
     setPixel(x: int32, y: int32, c: int32): void;
 
     /**
      * Get a pixel color
      */
-    //% shim=SImageMethods::getPixel
+    //% shim=BitmapMethods::getPixel
     getPixel(x: int32, y: int32): int32;
 
     /**
      * Fill entire image with a given color
      */
-    //% shim=SImageMethods::fill
+    //% shim=BitmapMethods::fill
     fill(c: int32): void;
 
     /**
      * Copy row(s) of pixel from image to buffer (8 bit per pixel).
      */
-    //% shim=SImageMethods::getRows
+    //% shim=BitmapMethods::getRows
     getRows(x: int32, dst: Buffer): void;
 
     /**
      * Copy row(s) of pixel from buffer to image.
      */
-    //% shim=SImageMethods::setRows
+    //% shim=BitmapMethods::setRows
     setRows(x: int32, src: Buffer): void;
 
     /**
      * Return a copy of the current image
      */
-    //% shim=SImageMethods::clone
-    clone(): SImage;
+    //% shim=BitmapMethods::clone
+    clone(): Bitmap;
 
     /**
      * Flips (mirrors) pixels horizontally in the current image
      */
-    //% shim=SImageMethods::flipX
+    //% shim=BitmapMethods::flipX
     flipX(): void;
 
     /**
      * Flips (mirrors) pixels vertically in the current image
      */
-    //% shim=SImageMethods::flipY
+    //% shim=BitmapMethods::flipY
     flipY(): void;
 
     /**
      * Returns a transposed image (with X/Y swapped)
      */
-    //% shim=SImageMethods::transposed
-    transposed(): SImage;
+    //% shim=BitmapMethods::transposed
+    transposed(): Bitmap;
 
     /**
      * Every pixel in image is moved by (dx,dy)
      */
-    //% shim=SImageMethods::scroll
+    //% shim=BitmapMethods::scroll
     scroll(dx: int32, dy: int32): void;
 
     /**
      * Stretches the image horizontally by 100%
      */
-    //% shim=SImageMethods::doubledX
-    doubledX(): SImage;
+    //% shim=BitmapMethods::doubledX
+    doubledX(): Bitmap;
 
     /**
      * Stretches the image vertically by 100%
      */
-    //% shim=SImageMethods::doubledY
-    doubledY(): SImage;
+    //% shim=BitmapMethods::doubledY
+    doubledY(): Bitmap;
 
     /**
      * Replaces one color in an image with another
      */
-    //% shim=SImageMethods::replace
+    //% shim=BitmapMethods::replace
     replace(from: int32, to: int32): void;
 
     /**
      * Stretches the image in both directions by 100%
      */
-    //% shim=SImageMethods::doubled
-    doubled(): SImage;
+    //% shim=BitmapMethods::doubled
+    doubled(): Bitmap;
 
     /**
      * Draw given image on the current image
      */
-    //% shim=SImageMethods::drawImage
-    drawImage(from: SImage, x: int32, y: int32): void;
+    //% shim=BitmapMethods::drawImage
+    drawImage(from: Bitmap, x: int32, y: int32): void;
 
     /**
      * Draw given image with transparent background on the current image
      */
-    //% shim=SImageMethods::drawTransparentImage
-    drawTransparentImage(from: SImage, x: int32, y: int32): void;
+    //% shim=BitmapMethods::drawTransparentImage
+    drawTransparentImage(from: Bitmap, x: int32, y: int32): void;
 
     /**
      * Check if the current image "collides" with another
      */
-    //% shim=SImageMethods::overlapsWith
-    overlapsWith(other: SImage, x: int32, y: int32): boolean;
+    //% shim=BitmapMethods::overlapsWith
+    overlapsWith(other: Bitmap, x: int32, y: int32): boolean;
 }
-declare namespace simage {
+declare namespace bitmap {
 
     /**
      * Create new empty (transparent) image
      */
-    //% shim=simage::create
-    function create(width: int32, height: int32): SImage;
+    //% shim=bitmap::create
+    function create(width: int32, height: int32): Bitmap;
 
     /**
      * Create new image with given content
      */
-    //% shim=simage::ofBuffer
-    function ofBuffer(buf: Buffer): SImage;
+    //% shim=bitmap::ofBuffer
+    function ofBuffer(buf: Buffer): Bitmap;
 
     /**
      * Double the size of an icon
      */
-    //% shim=simage::doubledIcon
+    //% shim=bitmap::doubledIcon
     function doubledIcon(icon: Buffer): Buffer;
 }
 declare namespace control {
