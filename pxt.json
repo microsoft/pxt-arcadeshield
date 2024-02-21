@@ -24,6 +24,7 @@
         "shims.d.ts",
         "screen/image.cpp",
         "screen/image.ts",
+        "screen/fieldeditors.ts",
         "screen/screenimage.ts",
         "screen/text.ts",
         "screen/frame.ts",
