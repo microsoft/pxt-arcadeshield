@@ -3,6 +3,19 @@
  */
 namespace bitmaps {
 
+    //% blockId=screen_image_picker block="%img"
+    //% shim=TD_ID
+    //% img.fieldEditor="sprite"
+    //% img.fieldOptions.taggedTemplate="img"
+    //% img.fieldOptions.decompileIndirectFixedInstances="true"
+    //% img.fieldOptions.decompileArgumentAsString="true"
+    //% img.fieldOptions.filter="!tile !dialog !background"
+    //% weight=100 group="Create" duplicateShadowOnDrag
+    //% help=images/sprite-image
+    export function _spriteImage(img: Image) {
+        return img
+    }
+
     //% blockId=background_image_picker block="%img"
     //% shim=TD_ID
     //% img.fieldEditor="sprite"
