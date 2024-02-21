@@ -4,7 +4,7 @@ interface Bitmap {
      * Fill a rectangle
      */
     //% helper=imageFillRect blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
-    //% block="fill rectangle in %picture=variables_get at x %x y %y width %w height %h %c=colorNumberPicker"
+    //% block="fill rectangle in %bmap=variables_get at x %x y %y width %w height %h %c=colorNumberPicker"
     //% help=github:microsoft/pxt-arcadeshield/images/image/fill-rect
     fillRect(x: number, y: number, w: number, h: number, c: color): void;
 
@@ -18,7 +18,7 @@ interface Bitmap {
      * Draw a line
      */
     //% helper=imageDrawLine blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
-    //% block="draw line in %picture=variables_get from x %x0 y %y0 to x %x1 y %y1 %c=colorNumberPicker"
+    //% block="draw line in %bmap=variables_get from x %x0 y %y0 to x %x1 y %y1 %c=colorNumberPicker"
     //% help=images/image/draw-line
     drawLine(x0: number, y0: number, x1: number, y1: number, c: color): void;
 
@@ -26,7 +26,7 @@ interface Bitmap {
      * Draw an empty rectangle
      */
     //% helper=imageDrawRect blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
-    //% block="draw rectangle in %picture=variables_get at x %x y %y width %w height %h %c=colorNumberPicker"
+    //% block="draw rectangle in %bmap=variables_get at x %x y %y width %w height %h %c=colorNumberPicker"
     //% help=images/image/draw-rect
     drawRect(x: number, y: number, w: number, h: number, c: color): void;
 
@@ -34,7 +34,7 @@ interface Bitmap {
      * Set pixel color
      */
     //% shim=BitmapMethods::setPixel blockNamespace="bitmaps" group="Drawing"
-    //% block="set %picture=variables_get color at x %x y %y to %c=colorNumberPicker"
+    //% block="set %bmap=variables_get color at x %x y %y to %c=colorNumberPicker"
     //% help=images/image/set-pixel
     setPixel(x: int32, y: int32, c: int32): void;
 
@@ -42,7 +42,7 @@ interface Bitmap {
      * Get a pixel color
      */
     //% shim=BitmapMethods::getPixel blockNamespace="bitmaps" group="Drawing"
-    //% block="%picture=variables_get color at x %x y %y"
+    //% block="%bmap=variables_get color at x %x y %y"
     //% help=images/image/get-pixel
     getPixel(x: int32, y: int32): int32;
 
@@ -50,7 +50,7 @@ interface Bitmap {
      * Fill entire image with a given color
      */
     //% shim=BitmapMethods::fill blockNamespace="bitmaps" group="Drawing"
-    //% block="fill %picture=variables_get with %c=colorNumberPicker"
+    //% block="fill %bmap=variables_get with %c=colorNumberPicker"
     //% help=images/image/fill
     fill(c: int32): void;
 
@@ -59,7 +59,7 @@ interface Bitmap {
      */
     //% shim=BitmapMethods::clone blockNamespace="bitmaps" group="Create"
     //% weight=60
-    //% block="clone %picture=variables_get"
+    //% block="clone %bmap=variables_get"
     //% help=images/image/clone
     clone(): Bitmap;
 
@@ -67,7 +67,7 @@ interface Bitmap {
      * Flips (mirrors) pixels horizontally in the current image
      */
     //% shim=BitmapMethods::flipX blockNamespace="bitmaps" group="Transformations"
-    //% block="flip %picture=variables_get horizontally"
+    //% block="flip %bmap=variables_get horizontally"
     //% help=images/image/flip-x
     flipX(): void;
 
@@ -75,7 +75,7 @@ interface Bitmap {
      * Flips (mirrors) pixels vertically in the current image
      */
     //% shim=BitmapMethods::flipY blockNamespace="bitmaps" group="Transformations"
-    //% block="flip %picture=variables_get vertically"
+    //% block="flip %bmap=variables_get vertically"
     //% help=images/image/flip-y
     flipY(): void;
 
@@ -90,7 +90,7 @@ interface Bitmap {
      * Replaces one color in an image with another
      */
     //% shim=BitmapMethods::replace blockNamespace="bitmaps" group="Transformations"
-    //% block="change color in %picture=variables_get from %from=colorNumberPicker to %to=colorNumberPicker"
+    //% block="change color in %bmap=variables_get from %from=colorNumberPicker to %to=colorNumberPicker"
     //% help=images/image/replace
     replace(from: int32, to: int32): void;
 
