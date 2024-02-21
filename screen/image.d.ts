@@ -102,6 +102,7 @@ interface Bitmap {
     //% blockNamespace="bitmaps" group="Compare"
     //% block="$this is equal to image $other"
     //% this.shadow=variables_get
+    //% other.shadow=variables_get
     //% this.defl="bmap"
     //% help=images/image/equals
     equals(other: Bitmap): boolean;
