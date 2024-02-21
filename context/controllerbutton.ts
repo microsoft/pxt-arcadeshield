@@ -114,7 +114,6 @@ namespace controller {
          */
         //% weight=99 blockGap=8 help=controller/button/on-event
         //% blockId=keyonevent block="on %button **button** %event"
-        //% group="Single Player"
         onEvent(event: ControllerButtonEvent, handler: () => void) {
             const eventHandler = this.getOrCreateHandlerForEvent(event);
             eventHandler.callback = handler;
@@ -166,7 +165,6 @@ namespace controller {
          */
         //% weight=98 blockGap=8 help=controller/button/pause-until
         // blockId=keypauseuntil block="pause until %button **button** is %event"
-        //% group="Single Player"
         pauseUntil(event: ControllerButtonEvent) {
             control.waitForEvent(event, this.id)
         }
@@ -176,7 +174,6 @@ namespace controller {
          */
         //% weight=96 blockGap=8 help=controller/button/is-pressed
         //% blockId=keyispressed block="is %button **button** pressed"
-        //% group="Single Player"
         isPressed() {
             return this._pressed;
         }
