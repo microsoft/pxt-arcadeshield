@@ -29,7 +29,6 @@
         "screen/frame.ts",
         "screen/ns.ts",
         "screen/image.d.ts",
-        "screen/fieldeditors.ts",
         "screen/pxtparts.json",
         "screen/imagesoverrides.jres",
         "screen/imagesoverrides.ts",
