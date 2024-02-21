@@ -1461,6 +1461,16 @@ void _fillPolygon4(Bitmap_ img, pxt::RefCollection *args) {
 
 } // namespace BitmapMethods
 
+namespace image {
+/**
+ * Create new image with given content
+ */
+//%
+Bitmap_ ofBuffer(Buffer buf) {
+    return BitmapMethods::convertAndWrap(buf);
+}
+}
+
 namespace bitmap {
 /**
  * Create new empty (transparent) image
@@ -1473,14 +1483,6 @@ Bitmap_ create(int width, int height) {
     else
         target_panic(PANIC_INVALID_IMAGE);
     return r;
-}
-
-/**
- * Create new image with given content
- */
-//%
-Bitmap_ ofBuffer(Buffer buf) {
-    return BitmapMethods::convertAndWrap(buf);
 }
 
 /**

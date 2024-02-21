@@ -993,6 +993,7 @@ namespace pxsim.bitmap {
         return new RefImage(w, h, getScreenState().bpp())
     }
 
+    // TODO: move to image namespace
     export function ofBuffer(buf: RefBuffer): RefImage {
         const src: Uint8Array = buf.data
 

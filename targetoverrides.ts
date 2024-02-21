@@ -1,7 +1,7 @@
 /**
  * Tagged bitmap literal converter
  */
-//% shim=@f4 helper=bitmap::ofBuffer blockIdentity="bmp"
+//% shim=@f4 helper=image::ofBuffer blockIdentity="bmp"
 //% groups=["0.","1#","2T","3t","4N","5n","6G","7g","8","9","aAR","bBP","cCp","dDO","eEY","fFW"]
 function bmp(lits: any, ...args: any[]): Bitmap { return null }
 
