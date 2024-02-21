@@ -27,8 +27,8 @@ namespace bitmap {
 }
 
 
-//% snippet='img` `'
-//% pySnippet='img(""" """)'
+//% snippet='bmp` `'
+//% pySnippet='bmp(""" """)'
 //% fixedInstances
 interface Bitmap {
     /**
