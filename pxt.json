@@ -42,7 +42,8 @@
         "context/controlleroverrides.ts",
         "context/controllerbutton.ts",
         "context/mathUtil.ts",
-        "context/gameutil.ts"
+        "context/gameutil.ts",
+        "reference/bitmaps/bitmap/fill-rect.md"
     ],
     "public": true,
     "targetVersions": {
