@@ -5,7 +5,6 @@ Respond to game controller buttons.
 ```cards
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {})
 controller.A.isPressed()
-controller.moveSprite(null, 0, 0)
 controller.dx(100)
 controller.dy(100)
 ```
