@@ -19,7 +19,7 @@ namespace bitmap {
         let y = 0
         for (let img of images) {
             let x = (w - img.width) >> 1
-            r.drawImage(img, x, y)
+            r.drawBitmap(img, x, y)
             y += img.height
         }
         return r

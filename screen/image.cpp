@@ -123,7 +123,7 @@ bool isLegacyImage(Buffer buf) {
 namespace BitmapMethods {
 
 /**
- * Get the width of the image
+ * Get the width of the bitmap
  */
 //% property
 int width(Bitmap_ img) {
@@ -131,7 +131,7 @@ int width(Bitmap_ img) {
 }
 
 /**
- * Get the height of the image
+ * Get the height of the bitmap
  */
 //% property
 int height(Bitmap_ img) {
@@ -139,7 +139,7 @@ int height(Bitmap_ img) {
 }
 
 /**
- * True if the image is monochromatic (black and white)
+ * True if the bitmap is monochromatic (black and white)
  */
 //% property
 bool isMono(Bitmap_ img) {
@@ -157,7 +157,7 @@ bool revision(Bitmap_ img) {
 }
 
 /**
- * Sets all pixels in the current image from the other image, which has to be of the same size and
+ * Sets all pixels in the current bitmap from the other bitmap, which has to be of the same size and
  * bpp.
  */
 //%
@@ -223,7 +223,7 @@ int getPixel(Bitmap_ img, int x, int y) {
 void fillRect(Bitmap_ img, int x, int y, int w, int h, int c);
 
 /**
- * Fill entire image with a given color
+ * Fill entire bitmap with a given color
  */
 //%
 void fill(Bitmap_ img, int c) {
@@ -236,7 +236,7 @@ void fill(Bitmap_ img, int c) {
 }
 
 /**
- * Copy row(s) of pixel from image to buffer (8 bit per pixel).
+ * Copy row(s) of pixel from bitmap to buffer (8 bit per pixel).
  */
 //%
 void getRows(Bitmap_ img, int x, Buffer dst) {
@@ -260,7 +260,7 @@ void getRows(Bitmap_ img, int x, Buffer dst) {
 }
 
 /**
- * Copy row(s) of pixel from buffer to image.
+ * Copy row(s) of pixel from buffer to bitmap.
  */
 //%
 void setRows(Bitmap_ img, int x, Buffer src) {
@@ -421,7 +421,7 @@ bool equals(Bitmap_ img, Bitmap_ other) {
 }
 
 /**
- * Return a copy of the current image
+ * Return a copy of the current bitmap
  */
 //%
 Bitmap_ clone(Bitmap_ img) {
@@ -431,7 +431,7 @@ Bitmap_ clone(Bitmap_ img) {
 }
 
 /**
- * Flips (mirrors) pixels horizontally in the current image
+ * Flips (mirrors) pixels horizontally in the current bitmap
  */
 //%
 void flipX(Bitmap_ img) {
@@ -453,14 +453,14 @@ void flipX(Bitmap_ img) {
 }
 
 /**
- * Flips (mirrors) pixels vertically in the current image
+ * Flips (mirrors) pixels vertically in the current bitmap
  */
 //%
 void flipY(Bitmap_ img) {
     img->makeWritable();
 
     // this is quite slow - for small 16x16 sprite it will take in the order of 1ms
-    // something faster requires quite a bit of bit tweaking, especially for mono images
+    // something faster requires quite a bit of bit tweaking, especially for mono bitmaps
     for (int i = 0; i < img->width(); ++i) {
         int a = 0;
         int b = img->height() - 1;
@@ -475,7 +475,7 @@ void flipY(Bitmap_ img) {
 }
 
 /**
- * Returns a transposed image (with X/Y swapped)
+ * Returns a transposed bitmap (with X/Y swapped)
  */
 //%
 Bitmap_ transposed(Bitmap_ img) {
@@ -491,10 +491,10 @@ Bitmap_ transposed(Bitmap_ img) {
     return r;
 }
 
-void drawImage(Bitmap_ img, Bitmap_ from, int x, int y);
+void drawBitmap(Bitmap_ img, Bitmap_ from, int x, int y);
 
 /**
- * Every pixel in image is moved by (dx,dy)
+ * Every pixel in bitmap is moved by (dx,dy)
  */
 //%
 void scroll(Bitmap_ img, int dx, int dy) {
@@ -505,7 +505,7 @@ void scroll(Bitmap_ img, int dx, int dy) {
         // TODO one day we may want a more memory-efficient implementation
         auto img2 = clone(img);
         fill(img, 0);
-        drawImage(img, img2, dx, dy);
+        drawBitmap(img, img2, dx, dy);
     } else if (dx < 0) {
         dx = -dx;
         if (dx < w)
@@ -528,7 +528,7 @@ const uint8_t nibdouble[] = {0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
                              0x88, 0x99, 0xaa, 0xbb, 0xcc, 0xdd, 0xee, 0xff};
 
 /**
- * Stretches the image horizontally by 100%
+ * Stretches the bitmap horizontally by 100%
  */
 //%
 Bitmap_ doubledX(Bitmap_ img) {
@@ -554,7 +554,7 @@ Bitmap_ doubledX(Bitmap_ img) {
 }
 
 /**
- * Stretches the image vertically by 100%
+ * Stretches the bitmap vertically by 100%
  */
 //%
 Bitmap_ doubledY(Bitmap_ img) {
@@ -584,7 +584,7 @@ Bitmap_ doubledY(Bitmap_ img) {
 }
 
 /**
- * Replaces one color in an image with another
+ * Replaces one color in an bitmap with another
  */
 //%
 void replace(Bitmap_ img, int from, int to) {
@@ -618,7 +618,7 @@ void replace(Bitmap_ img, int from, int to) {
 }
 
 /**
- * Stretches the image in both directions by 100%
+ * Stretches the bitmap in both directions by 100%
  */
 //%
 Bitmap_ doubled(Bitmap_ img) {
@@ -629,7 +629,7 @@ Bitmap_ doubled(Bitmap_ img) {
     return r;
 }
 
-bool drawImageCore(Bitmap_ img, Bitmap_ from, int x, int y, int color) {
+bool drawBitmapCore(Bitmap_ img, Bitmap_ from, int x, int y, int color) {
     auto w = from->width();
     auto h = from->height();
     auto sh = img->height();
@@ -835,34 +835,34 @@ bool drawImageCore(Bitmap_ img, Bitmap_ from, int x, int y, int color) {
 }
 
 /**
- * Draw given image on the current image
+ * Draw given bitmap on the current bitmap
  */
 //%
-void drawImage(Bitmap_ img, Bitmap_ from, int x, int y) {
+void drawBitmap(Bitmap_ img, Bitmap_ from, int x, int y) {
     img->makeWritable();
     if (img->bpp() == 4 && from->bpp() == 4) {
-        drawImageCore(img, from, x, y, -2);
+        drawBitmapCore(img, from, x, y, -2);
     } else {
         fillRect(img, x, y, from->width(), from->height(), 0);
-        drawImageCore(img, from, x, y, 0);
+        drawBitmapCore(img, from, x, y, 0);
     }
 }
 
 /**
- * Draw given image with transparent background on the current image
+ * Draw given bitmap with transparent background on the current bitmap
  */
 //%
-void drawTransparentImage(Bitmap_ img, Bitmap_ from, int x, int y) {
+void drawTransparentBitmap(Bitmap_ img, Bitmap_ from, int x, int y) {
     img->makeWritable();
-    drawImageCore(img, from, x, y, 0);
+    drawBitmapCore(img, from, x, y, 0);
 }
 
 /**
- * Check if the current image "collides" with another
+ * Check if the current bitmap "collides" with another
  */
 //%
 bool overlapsWith(Bitmap_ img, Bitmap_ other, int x, int y) {
-    return drawImageCore(img, other, x, y, -1);
+    return drawBitmapCore(img, other, x, y, -1);
 }
 
 // Bitmap_ format (legacy)
@@ -877,7 +877,7 @@ Bitmap_ convertAndWrap(Buffer buf) {
     if (isValidImage(buf))
         return NEW_GC(RefImage, buf);
 
-    // What follows in this function is mostly dead code, except if people construct image buffers
+    // What follows in this function is mostly dead code, except if people construct bitmap buffers
     // by hand. Probably safe to remove in a year (middle of 2020) or so. When removing, also remove
     // from sim.
     if (!isLegacyImage(buf))
@@ -907,7 +907,7 @@ void _drawIcon(Bitmap_ img, Buffer icon, int xy, int c) {
     if (!iconImg || iconImg->bpp() != 1)
         return;
 
-    drawImageCore(img, iconImg, XX(xy), YY(xy), c);
+    drawBitmapCore(img, iconImg, XX(xy), YY(xy), c);
 }
 
 static void drawLineLow(Bitmap_ img, int x0, int y0, int x1, int y1, int c) {
@@ -1463,7 +1463,7 @@ void _fillPolygon4(Bitmap_ img, pxt::RefCollection *args) {
 
 namespace image {
 /**
- * Create new image with given content
+ * Create new bitmap with given content
  */
 //%
 Bitmap_ ofBuffer(Buffer buf) {
@@ -1473,7 +1473,7 @@ Bitmap_ ofBuffer(Buffer buf) {
 
 namespace bitmap {
 /**
- * Create new empty (transparent) image
+ * Create new empty (transparent) bitmap
  */
 //%
 Bitmap_ create(int width, int height) {
@@ -1500,7 +1500,7 @@ Buffer doubledIcon(Buffer icon) {
     return t->buffer;
 }
 
-} // namespace image
+} // namespace bitmap
 
 // This is  6.5x faster than standard on word-aligned copy
 // probably should move to codal
