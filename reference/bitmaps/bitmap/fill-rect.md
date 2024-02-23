@@ -1,12 +1,12 @@
 # fill Rect
 
-Set all the pixels within a rectangular area of an image to one color.
+Set all the pixels within a rectangular area of a bitmap to one color.
 
 ```sig
-image.create(0,0).fillRect(0,0,0,0,0)
+bitmap.create(0,0).fillRect(0,0,0,0,0)
 ```
 
-You can fill all of pixels in a rectanluar area at once with a color. The fill rectangle can be either the entire image area or some smaller part of it.
+You can fill all of pixels in a rectangular area at once with a color. The fill rectangle can be either the entire bitmap or some smaller part of it.
 
 ## Parameters
 
@@ -20,15 +20,14 @@ You can fill all of pixels in a rectanluar area at once with a color. The fill r
 
 ### Center square #ex1
 
-Fill an entire image with all blue pixels. Fill a small rectangle in the center of the image with yellow pixels.
+Fill an entire bitmap with all blue pixels. Fill a small rectangle in the center of the bitmap with yellow pixels.
 
 ```blocks
-let showBlue: Sprite = null
-let blueRect: Image = null
-blueRect = image.create(32, 32)
+let blueRect: Bitmap = null
+blueRect = bitmap.create(32, 32)
 blueRect.fill(3)
 blueRect.fillRect(8, 8, 16, 16, 14)
-showBlue = sprites.create(blueRect)
+screen.drawImage(blueRect, 0, 0)
 ```
 
 ### Chessboard
@@ -36,9 +35,8 @@ showBlue = sprites.create(blueRect)
 Make a chessboard by filling in dark squares over top of a white background.
 
 ```blocks
-let showBoard: Sprite = null
-let chessBoard: Image = null
-chessBoard = image.create(64, 64)
+let chessBoard: Bitmap = null
+chessBoard = bitmap.create(64, 64)
 chessBoard.fill(1)
 for (let row = 0; row <= 7; row++) {
     for (let col = 0; col <= 3; col++) {
@@ -49,10 +47,10 @@ for (let row = 0; row <= 7; row++) {
         }
     }
 }
-showBoard = sprites.create(chessBoard)
+screen.drawImage(chessBoard, 0, 0)
 ```
 
 ## See also #seealso
 
-[fill](/reference/images/image/fill),
-[draw rect](/reference/images/image/draw-rect)
+[fill](/reference/bitmaps/bitmap/fill),
+[draw rect](/reference/bitmaps/bitmap/draw-rect)

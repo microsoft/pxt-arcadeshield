@@ -491,7 +491,7 @@ Bitmap_ transposed(Bitmap_ img) {
     return r;
 }
 
-void drawImage(Bitmap_ img, Bitmap_ from, int x, int y);
+void drawBitmap(Bitmap_ img, Bitmap_ from, int x, int y);
 
 /**
  * Every pixel in image is moved by (dx,dy)
@@ -505,7 +505,7 @@ void scroll(Bitmap_ img, int dx, int dy) {
         // TODO one day we may want a more memory-efficient implementation
         auto img2 = clone(img);
         fill(img, 0);
-        drawImage(img, img2, dx, dy);
+        drawBitmap(img, img2, dx, dy);
     } else if (dx < 0) {
         dx = -dx;
         if (dx < w)
@@ -629,7 +629,7 @@ Bitmap_ doubled(Bitmap_ img) {
     return r;
 }
 
-bool drawImageCore(Bitmap_ img, Bitmap_ from, int x, int y, int color) {
+bool drawBitmapCore(Bitmap_ img, Bitmap_ from, int x, int y, int color) {
     auto w = from->width();
     auto h = from->height();
     auto sh = img->height();
@@ -838,13 +838,13 @@ bool drawImageCore(Bitmap_ img, Bitmap_ from, int x, int y, int color) {
  * Draw given image on the current image
  */
 //%
-void drawImage(Bitmap_ img, Bitmap_ from, int x, int y) {
+void drawBitmap(Bitmap_ img, Bitmap_ from, int x, int y) {
     img->makeWritable();
     if (img->bpp() == 4 && from->bpp() == 4) {
-        drawImageCore(img, from, x, y, -2);
+        drawBitmapCore(img, from, x, y, -2);
     } else {
         fillRect(img, x, y, from->width(), from->height(), 0);
-        drawImageCore(img, from, x, y, 0);
+        drawBitmapCore(img, from, x, y, 0);
     }
 }
 
@@ -852,9 +852,9 @@ void drawImage(Bitmap_ img, Bitmap_ from, int x, int y) {
  * Draw given image with transparent background on the current image
  */
 //%
-void drawTransparentImage(Bitmap_ img, Bitmap_ from, int x, int y) {
+void drawTransparentBitmap(Bitmap_ img, Bitmap_ from, int x, int y) {
     img->makeWritable();
-    drawImageCore(img, from, x, y, 0);
+    drawBitmapCore(img, from, x, y, 0);
 }
 
 /**
@@ -862,7 +862,7 @@ void drawTransparentImage(Bitmap_ img, Bitmap_ from, int x, int y) {
  */
 //%
 bool overlapsWith(Bitmap_ img, Bitmap_ other, int x, int y) {
-    return drawImageCore(img, other, x, y, -1);
+    return drawBitmapCore(img, other, x, y, -1);
 }
 
 // Bitmap_ format (legacy)
@@ -907,7 +907,7 @@ void _drawIcon(Bitmap_ img, Buffer icon, int xy, int c) {
     if (!iconImg || iconImg->bpp() != 1)
         return;
 
-    drawImageCore(img, iconImg, XX(xy), YY(xy), c);
+    drawBitmapCore(img, iconImg, XX(xy), YY(xy), c);
 }
 
 static void drawLineLow(Bitmap_ img, int x0, int y0, int x1, int y1, int c) {

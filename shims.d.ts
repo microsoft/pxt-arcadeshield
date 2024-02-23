@@ -3,25 +3,25 @@
 
 declare interface Bitmap {
     /**
-     * Get the width of the image
+     * Get the width of the bitmap
      */
     //% property shim=BitmapMethods::width
     width: int32;
 
     /**
-     * Get the height of the image
+     * Get the height of the bitmap
      */
     //% property shim=BitmapMethods::height
     height: int32;
 
     /**
-     * True if the image is monochromatic (black and white)
+     * True if the bitmap is monochromatic (black and white)
      */
     //% property shim=BitmapMethods::isMono
     isMono: boolean;
 
     /**
-     * Sets all pixels in the current image from the other image, which has to be of the same size and
+     * Sets all pixels in the current bitmap from the other bitmap, which has to be of the same size and
      * bpp.
      */
     //% shim=BitmapMethods::copyFrom
@@ -40,91 +40,91 @@ declare interface Bitmap {
     getPixel(x: int32, y: int32): int32;
 
     /**
-     * Fill entire image with a given color
+     * Fill entire bitmap with a given color
      */
     //% shim=BitmapMethods::fill
     fill(c: int32): void;
 
     /**
-     * Copy row(s) of pixel from image to buffer (8 bit per pixel).
+     * Copy row(s) of pixel from bitmap to buffer (8 bit per pixel).
      */
     //% shim=BitmapMethods::getRows
     getRows(x: int32, dst: Buffer): void;
 
     /**
-     * Copy row(s) of pixel from buffer to image.
+     * Copy row(s) of pixel from buffer to bitmap.
      */
     //% shim=BitmapMethods::setRows
     setRows(x: int32, src: Buffer): void;
 
     /**
-     * Return a copy of the current image
+     * Return a copy of the current bitmap
      */
     //% shim=BitmapMethods::clone
     clone(): Bitmap;
 
     /**
-     * Flips (mirrors) pixels horizontally in the current image
+     * Flips (mirrors) pixels horizontally in the current bitmap
      */
     //% shim=BitmapMethods::flipX
     flipX(): void;
 
     /**
-     * Flips (mirrors) pixels vertically in the current image
+     * Flips (mirrors) pixels vertically in the current bitmap
      */
     //% shim=BitmapMethods::flipY
     flipY(): void;
 
     /**
-     * Returns a transposed image (with X/Y swapped)
+     * Returns a transposed bitmap (with X/Y swapped)
      */
     //% shim=BitmapMethods::transposed
     transposed(): Bitmap;
 
     /**
-     * Every pixel in image is moved by (dx,dy)
+     * Every pixel in bitmap is moved by (dx,dy)
      */
     //% shim=BitmapMethods::scroll
     scroll(dx: int32, dy: int32): void;
 
     /**
-     * Stretches the image horizontally by 100%
+     * Stretches the bitmap horizontally by 100%
      */
     //% shim=BitmapMethods::doubledX
     doubledX(): Bitmap;
 
     /**
-     * Stretches the image vertically by 100%
+     * Stretches the bitmap vertically by 100%
      */
     //% shim=BitmapMethods::doubledY
     doubledY(): Bitmap;
 
     /**
-     * Replaces one color in an image with another
+     * Replaces one color in an bitmap with another
      */
     //% shim=BitmapMethods::replace
     replace(from: int32, to: int32): void;
 
     /**
-     * Stretches the image in both directions by 100%
+     * Stretches the bitmap in both directions by 100%
      */
     //% shim=BitmapMethods::doubled
     doubled(): Bitmap;
 
     /**
-     * Draw given image on the current image
+     * Draw given bitmap on the current bitmap
      */
-    //% shim=BitmapMethods::drawImage
-    drawImage(from: Bitmap, x: int32, y: int32): void;
+    //% shim=BitmapMethods::drawBitmap
+    drawBitmap(from: Bitmap, x: int32, y: int32): void;
 
     /**
-     * Draw given image with transparent background on the current image
+     * Draw given bitmap with transparent background on the current bitmap
      */
-    //% shim=BitmapMethods::drawTransparentImage
-    drawTransparentImage(from: Bitmap, x: int32, y: int32): void;
+    //% shim=BitmapMethods::drawTransparentBitmap
+    drawTransparentBitmap(from: Bitmap, x: int32, y: int32): void;
 
     /**
-     * Check if the current image "collides" with another
+     * Check if the current bitmap "collides" with another
      */
     //% shim=BitmapMethods::overlapsWith
     overlapsWith(other: Bitmap, x: int32, y: int32): boolean;
@@ -132,7 +132,7 @@ declare interface Bitmap {
 declare namespace image {
 
     /**
-     * Create new image with given content
+     * Create new bitmap with given content
      */
     //% shim=image::ofBuffer
     function ofBuffer(buf: Buffer): Bitmap;
@@ -140,7 +140,7 @@ declare namespace image {
 declare namespace bitmap {
 
     /**
-     * Create new empty (transparent) image
+     * Create new empty (transparent) bitmap
      */
     //% shim=bitmap::create
     function create(width: int32, height: int32): Bitmap;
