@@ -3,10 +3,10 @@
 Draw an ouline around a rectangle with a pixel color.
 
 ```sig
-image.create(0,0).drawRect(0,0,0,0,0)
+bitmap.create(0,0).drawRect(0,0,0,0,0)
 ```
 
-A rectangular outline is drawn in an image. The line width of the outline is one pixel wide drawn with the color you choose.
+A rectangular outline is drawn in an bitmap. The line width of the outline is one pixel wide drawn with the color you choose.
 
 ## Parameters
 
@@ -18,20 +18,19 @@ A rectangular outline is drawn in an image. The line width of the outline is one
 
 ## Example #example
 
-Fill an entire image with all blue pixels. Draw a red outline around the image.
+Fill an entire bitmap with all blue pixels. Draw a red outline around the bitmap.
 
 ```blocks
-let showBlue: Sprite = null
-let blueRect: Image = null
-blueRect = image.create(32, 32)
+let blueRect: Bitmap = null
+blueRect = bitmap.create(32, 32)
 blueRect.fill(3)
 blueRect.drawRect(0, 0, 32, 32, 10)
-showBlue = sprites.create(blueRect)
+screen.drawBitmap(blueRect, 0, 0)
 ```
 
 ## See also #seealso
 
-[fill rect](/reference/images/image/fill-rect),
-[draw line](/reference/images/image/draw-line)
+[fill rect](/reference/bitmaps/bitmap/fill-rect),
+[draw line](/reference/bitmaps/bitmap/draw-line)
 
 

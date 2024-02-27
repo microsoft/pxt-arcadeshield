@@ -1,12 +1,12 @@
 # draw Line
 
-Draw a line from one point in an image to another point.
+Draw a line from one point in an bitmap to another point.
 
 ```sig
-image.create(0,0).drawLine(0,0,0,0,0)
+bitmap.create(0,0).drawLine(0,0,0,0,0)
 ```
 
-The pixels are located at points in the image. The point is a _coordinate_ which is two values that are a horizontal position and a vertical position. A line is drawn by setting the color of the pixels directly between two coordinates. The line has a width of one pixel.
+The pixels are located at points in the bitmap. The point is a _coordinate_ which is two values that are a horizontal position and a vertical position. A line is drawn by setting the color of the pixels directly between two coordinates. The line has a width of one pixel.
 
 ## Parameters
 
@@ -18,19 +18,18 @@ The pixels are located at points in the image. The point is a _coordinate_ which
 
 ## Example #example
 
-Draw a big `X` in image by making two diagonal lines.
+Draw a big `X` in bitmap by making two diagonal lines.
 
 ```blocks
-let showBigX: Sprite = null
-let drawBigX: Image = null
-drawBigX = image.create(32, 32)
+let drawBigX: Bitmap = null
+drawBigX = bitmap.create(32, 32)
 drawBigX.fill(1)
 drawBigX.drawLine(0, 0, 31, 31, 10)
 drawBigX.drawLine(0, 31, 31, 0, 10)
-showBigX = sprites.create(drawBigX)
+screen.drawBitmap(drawBigX,0,0)
 ```
 
 ## See also #seealso
 
-[draw rect](/reference/images/image/draw-rect)
+[draw rect](/reference/bitmaps/bitmap/draw-rect)
 
