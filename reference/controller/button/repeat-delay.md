@@ -33,7 +33,7 @@ Move a stick figure to the left and right while ``||controller:left||`` and ``||
 buttons are held, without any extra delay before the first movement.
 
 ```typescript
-let mySprite = sprites.create(img`
+let mySprite = sprites.create(bmp`
     . 6 6 6 6 6 .
     6 6 . . . 6 6
     6 . . . . . 6

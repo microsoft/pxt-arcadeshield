@@ -17,7 +17,7 @@ Ramdomly move a yellow box around the screen while the ``A`` button is pressed.
 ### Single player
 
 ```blocks
-let yellowBox = sprites.create(img`
+let yellowBox = sprites.create(bmp`
 e e e e e e
 e 1 1 1 1 e
 e 1 6 6 1 e
@@ -36,7 +36,7 @@ game.onUpdate(function () {
 ### Multiplayer
 
 ```blocks
-let yellowBox = sprites.create(img`
+let yellowBox = sprites.create(bmp`
 e e e e e e
 e 1 1 1 1 e
 e 1 6 6 1 e

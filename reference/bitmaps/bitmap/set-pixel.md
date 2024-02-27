@@ -1,12 +1,12 @@
 # set Pixel
 
-Set the color of a pixel location in an image.
+Set the color of a pixel location in a bitmap.
 
 ```sig
-image.create(0,0).setPixel(0,0,0)
+bitmap.create(0,0).setPixel(0,0,0)
 ```
 
-Pixels are an individual point of color in an [image](/reference/image). Pixels are arraged in columns (its ``x`` value) and rows (its ``y`` value). All of the pixels together make the rectangle of the image. Some pixels might have no color (transparent) and other pixels might have a color value set for them.
+Pixels are an individual point of color in an [bitmap](/reference/bitmap). Pixels are arraged in columns (its ``x`` value) and rows (its ``y`` value). All of the pixels together make the rectangle of the bitmap. Some pixels might have no color (transparent) and other pixels might have a color value set for them.
 
 ## Parameters
 
@@ -16,11 +16,11 @@ Pixels are an individual point of color in an [image](/reference/image). Pixels 
 
 ## Example #example
 
-Make a "hatch" pattern in an image by setting the color of every other pixel in each row.
+Make a "hatch" pattern in a bitmap by setting the color of every other pixel in each row.
 
 ```blocks
-let hatch: Image = null
-hatch = image.create(32, 32)
+let hatch: Bitmap = null
+hatch = bitmap.create(32, 32)
 for (let y = 0; y <= 31; y++) {
     for (let x = 0; x <= 15; x++) {
     	if (y % 2 > 0)
@@ -31,9 +31,10 @@ for (let y = 0; y <= 31; y++) {
         }
     }
 }
+screen.drawBitmap(hatch, 0, 0)
 ```
 
 ## See also #seealso
 
-[image](/reference/image),
-[get pixel](/reference/images/image/get-pixel)
+[bitmap](/reference/bitmap),
+[get pixel](/reference/bitmaps/bitmap/get-pixel)

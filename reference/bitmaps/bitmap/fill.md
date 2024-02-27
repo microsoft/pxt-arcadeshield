@@ -1,6 +1,6 @@
 # fill
 
-Set all the pixels of an bitmap to one color.
+Set all the pixels of a bitmap to one color.
 
 ```sig
 bitmap.create(0,0).fill(0)

@@ -25,7 +25,7 @@ If the ``left`` key is pressed, then the movement value is negative. If the ``ri
 Move the ``cosmo`` object on the screen with the direction controller.
 
 ```blocks
-const cosmo = sprites.create(img`
+const cosmo = sprites.create(bmp`
 ....aaaaa
 ...aaaaaaa
 aaaaaaaaaaaaa
@@ -45,7 +45,7 @@ game.onUpdate(function () {
 Move the ``cosmo`` object on the screen with the direction controller.
 
 ```blocks
-const cosmo = sprites.create(img`
+const cosmo = sprites.create(bmp`
 ....aaaaa
 ...aaaaaaa
 aaaaaaaaaaaaa

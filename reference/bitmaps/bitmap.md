@@ -1,28 +1,23 @@
-# image
+# bitmap
 
-The container and editor block for an image.
+The container and editor block for a bitmap.
 
 ```sig
-images._image(null)
+bitmaps._bitmap(null)
 ```
 
-Clicking on the image window in the block will open the image editor and a you can create a new image or edit the current one. The image is used to assign to a sprite or as a frame in an animation.
+Clicking on the bitmap window in the block will open the bitmap editor and a you can create a new bitmap or edit the current one.
 
 ## Parameters
 
-* **image**: The [image](/types/image) to contain in the block.
+* **bitmap**: The [bitmap](/types/bitmap) to contain in the block.
 
 ## Example #example
 
-Create a new `food` sprite with an image of a donut. When the game score reaches `100`, upgrade food sprite to the `cake` image.
 
 ```blocks
-info.onScore(100, function () {
-    mySprite.setImage(cake)
-})
-let cake: Image = null
-let mySprite: Sprite = null
-mySprite = sprites.create(img`
+let cake: Bitmap = null
+cake = bmp`
     . . . . . . b b b b a a . . . . 
     . . . . b b d d d 3 3 3 a a . . 
     . . . b d d d 3 3 3 3 3 3 a a . 
@@ -39,27 +34,9 @@ mySprite = sprites.create(img`
     . . e e b b 4 4 4 4 b e e . . . 
     . . . e e e e e e e e . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Food)
-cake = img`
-    . . . . . . . . . . b b b . . . 
-    . . . . . . . . b e e 3 3 b . . 
-    . . . . . . b b e 3 2 e 3 a . . 
-    . . . . b b 3 3 e 2 2 e 3 3 a . 
-    . . b b 3 3 3 3 3 e e 3 3 3 a . 
-    b b 3 3 3 3 3 3 3 3 3 3 3 3 3 a 
-    b 3 3 3 d d d d 3 3 3 3 3 d d a 
-    b b b b b b b 3 d d d d d d 3 a 
-    b d 5 5 5 5 d b b b a a a a a a 
-    b 3 d d 5 5 5 5 5 5 5 d d d d a 
-    b 3 3 3 3 3 3 d 5 5 5 d d d d a 
-    b 3 d 5 5 5 3 3 3 3 3 3 b b b a 
-    b b b 3 d 5 5 5 5 5 5 5 d d b a 
-    . . . b b b 3 d 5 5 5 5 d d 3 a 
-    . . . . . . b b b b 3 d d d b a 
-    . . . . . . . . . . b b b a a . 
     `
 ```
 
 ## See also
 
-[create](/reference/images/create)
+[create](/reference/bitmaps/create)

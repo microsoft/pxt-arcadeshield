@@ -6,7 +6,7 @@ Draw an ouline around a rectangle with a pixel color.
 bitmap.create(0,0).drawRect(0,0,0,0,0)
 ```
 
-A rectangular outline is drawn in an bitmap. The line width of the outline is one pixel wide drawn with the color you choose.
+A rectangular outline is drawn in a bitmap. The line width of the outline is one pixel wide drawn with the color you choose.
 
 ## Parameters
 

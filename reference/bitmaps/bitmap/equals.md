@@ -18,7 +18,7 @@ Each pixel in the bitmap is compared with another bitmap. If all the pixels in b
 
 ## Example #example
 
-Create a `burger` bitmap. Create a bitmap of the same burger using a second variable. Compare that bitmap with the bitmap in the sprite to see if they are equal.
+Create a `burger` bitmap. Create a bitmap of the same burger using a second variable. Compare that bitmap with the bitmap in the second variable to see if they are equal.
 
 ```blocks
 let firstBitmap = bmp`

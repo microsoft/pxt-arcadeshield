@@ -37,7 +37,7 @@ controller.A.repeatInterval = 1000;
 controller.A.repeatDelay = 0;
 
 controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
-    let myProjectile = sprites.createProjectileFromSide(img`
+    let myProjectile = sprites.createProjectileFromSide(bmp`
         . . . . . . . . . . b 5 b . . .
         . . . . . . . . . b 5 b . . . .
         . . . . . . . . . b c . . . . .

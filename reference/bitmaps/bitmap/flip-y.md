@@ -3,21 +3,20 @@
 Flip the pixels vertically from one side to the other side.
 
 ```sig
-image.create(0, 0).flipY()
+bitmap.create(0, 0).flipY()
 ```
 
-The pixels in each half of the image are moved across to the other half. This happens in the vertical direction. They are "flipped" across an imaginary line that goes across the middle of the image. So, in an image with a size of 10 x 10, a pixel at a location of (3, 2) will move to (3, 8) and the pixel that was originally at (3, 8) will move to (3, 2).
+The pixels in each half of the bitmap are moved across to the other half. This happens in the vertical direction. They are "flipped" across an imaginary line that goes across the middle of the bitmap. So, in a bitmap with a size of 10 x 10, a pixel at a location of (3, 2) will move to (3, 8) and the pixel that was originally at (3, 8) will move to (3, 2).
 
-If an image has on odd number of rows, then the "center line" goes through a row of pixels. When those pixels are "flipped" they keep their same location and don't move.
+If a bitmap has on odd number of rows, then the "center line" goes through a row of pixels. When those pixels are "flipped" they keep their same location and don't move.
 
 ## Example #example
 
-Flip and arrow image `3` times vertically.
+Flip an arrow bitmap `3` times vertically.
 
 ```blocks
-let showArrow: Sprite = null
-let upArrow: Image = null
-upArrow = img`
+let upArrow: Bitmap = null
+upArrow = bmp`
 . . . a . . .
 . . a a a . .
 . a a . a a .
@@ -31,14 +30,14 @@ a a a . a a a
 . . a . a . .
 . . a a a . .
 `
-showArrow = sprites.create(upArrow)
 for (let i = 0; i < 3; i++) {
-    pause(500)
+    screen.drawBitmap(upArrow, 0, 0)
+    basic.pause(500)
     upArrow.flipY()
 }
 ```
 
 ## See also #seealso
 
-[flip x](/reference/images/image/flip-x),
-[scroll](/reference/images/image/scroll)
+[flip x](/reference/bitmaps/bitmap/flip-x),
+[scroll](/reference/bitmaps/bitmap/scroll)

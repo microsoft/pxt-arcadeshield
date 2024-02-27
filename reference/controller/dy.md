@@ -25,7 +25,7 @@ Move the ``cosmo`` object on the screen with the direction controller.
 ### Single player
 
 ```blocks
-const cosmo = sprites.create(img`
+const cosmo = sprites.create(bmp`
 ....aaaaa
 ...aaaaaaa
 aaaaaaaaaaaaa
@@ -43,7 +43,7 @@ game.onUpdate(function () {
 ### Multiplayer
 
 ```blocks
-const cosmo = sprites.create(img`
+const cosmo = sprites.create(bmp`
 ....aaaaa
 ...aaaaaaa
 aaaaaaaaaaaaa

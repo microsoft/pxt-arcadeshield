@@ -1,34 +1,34 @@
-# Images
+# Bitmaps
 
-Create images, fill, draw, and set pixels.
+Create bitmaps, fill, draw, and set pixels.
 
 ```cards
-image.create(0, 0)
-image.create(0, 0).clone()
-image.screenImage()
-image.create(0, 0).drawLine(0, 0, 0, 0, 0)
-image.create(0, 0).drawRect(0, 0, 0, 0, 0)
-image.create(0, 0).setPixel(0, 0, 0)
-image.create(0, 0).getPixel(0, 0)
-image.create(0, 0).fill(0)
-image.create(0, 0).fillRect(0, 0, 0, 0, 0)
-image.create(0, 0).flipX()
-image.create(0, 0).flipY()
-image.create(0, 0).replace(0, 0)
+bitmap.create(0, 0)
+bitmap.create(0, 0).clone()
+bitmap.screenBitmap()
+bitmap.create(0, 0).drawLine(0, 0, 0, 0, 0)
+bitmap.create(0, 0).drawRect(0, 0, 0, 0, 0)
+bitmap.create(0, 0).setPixel(0, 0, 0)
+bitmap.create(0, 0).getPixel(0, 0)
+bitmap.create(0, 0).fill(0)
+bitmap.create(0, 0).fillRect(0, 0, 0, 0, 0)
+bitmap.create(0, 0).flipX()
+bitmap.create(0, 0).flipY()
+bitmap.create(0, 0).replace(0, 0)
 ```
 
 ## See also #seealso
 
-[create](/reference/images/create),
-[clone](/reference/images/image/clone),
-[screen image](/reference/images/screen-image),
-[draw line](/reference/images/image/draw-line),
-[draw rect](/reference/images/image/draw-rect),
-[set pixel](/reference/images/image/set-pixel),
-[get pixel](/reference/images/image/get-pixel),
-[fill](/reference/images/image/fill),
-[fill rect](/reference/images/image/fill-rect),
-[flip x](/reference/images/image/flip-x),
-[flip y](/reference/images/image/flip-y),
-[replace](/reference/images/image/replace)
+[create](/reference/bitmaps/create),
+[clone](/reference/bitmaps/bitmap/clone),
+[screen bitmap](/reference/bitmaps/screen-bitmap),
+[draw line](/reference/bitmaps/bitmap/draw-line),
+[draw rect](/reference/bitmaps/bitmap/draw-rect),
+[set pixel](/reference/bitmaps/bitmap/set-pixel),
+[get pixel](/reference/bitmaps/bitmap/get-pixel),
+[fill](/reference/bitmaps/bitmap/fill),
+[fill rect](/reference/bitmaps/bitmap/fill-rect),
+[flip x](/reference/bitmaps/bitmap/flip-x),
+[flip y](/reference/bitmaps/bitmap/flip-y),
+[replace](/reference/bitmaps/bitmap/replace)
 

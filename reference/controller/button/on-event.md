@@ -21,7 +21,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 Move a yellow box to a random location on the screen when a button is pressed.
 
 ```blocks
-let yellowBox = sprites.create(img`
+let yellowBox = sprites.create(bmp`
 e e e e e e
 e 1 1 1 1 e
 e 1 6 6 1 e

@@ -27,7 +27,7 @@ controller.B.onEvent(ControllerButtonEvent.Repeated, function () {
     mySprite.left += -4
 })
 let mySprite: Sprite = null
-mySprite = sprites.create(img`
+mySprite = sprites.create(bmp`
     . . . . . . . . . . . . . . . .
     . . . . . . . . . . . . . . . .
     . . . . . 7 7 7 7 7 7 . . . . .

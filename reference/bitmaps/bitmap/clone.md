@@ -1,6 +1,6 @@
 # clone
 
-Copy an bitmap to make another just like it.
+Copy a bitmap to make another just like it.
 
 ```sig
 bitmap.create(0, 0).clone()
@@ -32,10 +32,8 @@ a a a a a a a .
 . a a . . a a .
 `
 let stickPerson2 = stickPerson1.clone()
-
-let showPerson1 = sprites.create(stickPerson1)
-let showPerson2 = sprites.create(stickPerson2)
-showPerson2.y = showPerson1.y + 16
+screen.drawBitmap(stickPerson1, 0, 0)
+screen.drawBitmap(stickPerson2, 0, 32)
 ```
 
 ## See also #seealso

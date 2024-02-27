@@ -17,7 +17,7 @@ controller.A.pauseUntil(ControllerButtonEvent.Pressed)
 Wait to move a yellow square to the upper left corner of the screen until the ``B`` button is pressed.
 
 ```blocks
-let square = sprites.create(img`
+let square = sprites.create(bmp`
 e e e e e e 
 e e e e e e 
 e e e e e e 

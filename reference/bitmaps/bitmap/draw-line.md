@@ -1,6 +1,6 @@
 # draw Line
 
-Draw a line from one point in an bitmap to another point.
+Draw a line from one point in a bitmap to another point.
 
 ```sig
 bitmap.create(0,0).drawLine(0,0,0,0,0)

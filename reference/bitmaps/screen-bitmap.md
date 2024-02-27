@@ -1,30 +1,27 @@
-# screen Image
+# screen Bitmap
 
-Get an image of everything displayed on the screen.
+Get a bitmap of everything displayed on the screen.
 
 ```sig
-image.screenImage()
+bitmap.screenBitmap()
 ```
 
 ## Returns
 
-* an [image](/types/image) of everything displayed on the screen.
+* an [bitmap](/types/bitmap) of everything displayed on the screen.
 
 ## Example #example
 
-Place a cake sprite on the screen with a background color. When the **A** button is pressed, get the screen image and then destroy the cake sprite. Flip the image upside down and set it to the background.
+Place a cake bitmap on the screen with a background color. When the **A** button is pressed, get the screen bitmap. Flip the bitmap upside down.
 
 ```blocks
-let mySprite: Sprite = null
-let screenCap: Image = null
+let screenCap: Bitmap = null
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    screenCap = image.screenImage()
+    screenCap = bitmap.screenBitmap()
     screenCap.flipY()
-    mySprite.destroy()
     pause(100)
-    scene.setBackgroundImage(image.screenImage())
 })
-mySprite = sprites.create(img`
+let cake = bmp`
     . . . . . . . . . . . . . . . . . . . . . . b b b . . . . . . .
     . . . . . . . . . . . . . . . . . . . . b b 3 3 3 b . . . . . .
     . . . . . . . . . . . . . . . . . b b b 3 3 3 d 3 3 b . . . . .
@@ -57,9 +54,10 @@ mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . b b b b d d d 5 d 5 5 d 5 b 3 b a
     . . . . . . . . . . . . . . . . . . . b b b b d d d d b 3 b a .
     . . . . . . . . . . . . . . . . . . . . . . . b b b a a a a . .
-`, SpriteKind.Player)
+`
+screen.drawBItmap(cake,0,0)
 ```
 
 ## See also
 
-[set background image](/reference/scene/set-background-image)
+[set background bitmap](/reference/scene/set-background-bitmap)

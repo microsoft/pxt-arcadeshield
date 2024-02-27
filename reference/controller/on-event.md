@@ -18,7 +18,7 @@ controller.player2.onEvent(ControllerEvent.Connected, function () {})
 Make the yellow box sprite give a message when Player 2 connects.
 
 ```blocks
-let yellowBox = sprites.create(img`
+let yellowBox = sprites.create(bmp`
 e e e e e e
 e 1 1 1 1 e
 e 1 6 6 1 e
