@@ -37,3 +37,7 @@ screen.drawBitmap(orangeBox, 0, 0)
 ## See also #seealso
 
 [bitmap](/reference/bitmaps)
+
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

@@ -34,3 +34,7 @@ controller.player2.onEvent(ControllerEvent.Connected, function () {
 ## See also #seealso
 
 [is pressed](/reference/controller/on-button-event)
+
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

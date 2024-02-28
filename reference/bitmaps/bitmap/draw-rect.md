@@ -33,4 +33,6 @@ screen.drawBitmap(blueRect, 0, 0)
 [fill rect](/reference/bitmaps/bitmap/fill-rect),
 [draw line](/reference/bitmaps/bitmap/draw-line)
 
-
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

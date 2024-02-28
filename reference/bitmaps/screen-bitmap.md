@@ -61,3 +61,7 @@ screen.drawBItmap(cake,0,0)
 ## See also
 
 [set background bitmap](/reference/scene/set-background-bitmap)
+
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

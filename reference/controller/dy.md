@@ -62,3 +62,7 @@ game.onUpdate(function () {
 
 [dx](/reference/controller/dx),
 [control sprite](/reference/controller/control-sprite)
+
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

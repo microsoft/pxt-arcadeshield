@@ -36,3 +36,7 @@ for (let i = 0; i < 3; i++) {
 
 [flip y](/reference/bitmaps/bitmap/flip-y),
 [scroll](/reference/bitmaps/bitmap/scroll)
+
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

@@ -38,3 +38,7 @@ screen.drawBitmap(hatch, 0, 0)
 
 [bitmap](/reference/bitmap),
 [get pixel](/reference/bitmaps/bitmap/get-pixel)
+
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

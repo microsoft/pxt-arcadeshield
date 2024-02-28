@@ -40,3 +40,6 @@ screen.drawBitmap(stickPerson2, 0, 32)
 
 [create](/reference/bitmaps/create)
 
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

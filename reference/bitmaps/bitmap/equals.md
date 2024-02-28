@@ -66,3 +66,7 @@ if (secondBitmap.equals(firstBitmap)) {
 
 [clone](/reference/bitmaps/bitmap/clone),
 [get pixel](/reference/bitmaps/bitmap/get-pixel)
+
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

@@ -72,3 +72,7 @@ forever(() => {
 
 [flip x](/reference/bitmaps/bitmap/flip-x),
 [flip y](/reference/bitmaps/bitmap/flip-y)
+
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

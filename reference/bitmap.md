@@ -31,4 +31,10 @@ bitmap.create(0, 0).replace(0, 0)
 [flip x](/reference/bitmaps/bitmap/flip-x),
 [flip y](/reference/bitmaps/bitmap/flip-y),
 [replace](/reference/bitmaps/bitmap/replace)
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```
 
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

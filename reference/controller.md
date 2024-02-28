@@ -38,3 +38,7 @@ controller.setRepeatDefault(0, 0)
 [dx](/reference/controller/dx),
 [dy](/reference/controller/dy),
 [set repeat default](/reference/controller/set-repeat-default)
+
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

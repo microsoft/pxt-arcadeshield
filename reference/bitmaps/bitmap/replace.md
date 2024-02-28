@@ -32,3 +32,7 @@ forever(() => {
 ## See also #seealso
 
 [fill](/reference/bitmaps/bitmap/fill)
+
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```

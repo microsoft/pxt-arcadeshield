@@ -33,3 +33,7 @@ square.y = 3
 ## See also #seealso
 
 [on event](/reference/controller/button/on-event)
+
+```package
+pxt-arcadeshield=github:microsoft/pxt-arcadeshield
+```
