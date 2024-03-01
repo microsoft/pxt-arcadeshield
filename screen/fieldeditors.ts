@@ -39,5 +39,7 @@ namespace bitmaps {
     export function __colorIndexPicker(index: number) {
         return index;
     }
-
 }
+    //% fixedInstance blockIdentity=bitmaps._bitmap
+    export const defaultBitmap = image.ofBuffer(hex`ffffffff`);
+
