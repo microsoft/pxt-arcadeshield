@@ -7,28 +7,28 @@ namespace bitmaps {
      * A bitmap
      * @param bitmap the bitmap
      */
-    //% blockId=image_picker block="$image" shim=TD_ID
+    //% blockId=image_picker block="$bitmap" shim=TD_ID
     //% image.fieldEditor="sprite"
-    //% image.fieldOptions.taggedTemplate="img"
+    //% image.fieldOptions.taggedTemplate="bmp"
     //% image.fieldOptions.decompileIndirectFixedInstances="true"
     //% image.fieldOptions.decompileArgumentAsString="true"
     //% weight=0 group="Create"
     //% help=images/image
-    export function _image(image: Image): Image {
-        return image;
+    export function _image(bitmap: Bitmap): Bitmap {
+        return bitmap;
     }
 
-    //% blockId=screen_image_picker block="%img"
+    //% blockId=screen_image_picker block="%bitmap"
     //% shim=TD_ID
     //% img.fieldEditor="sprite"
-    //% img.fieldOptions.taggedTemplate="img"
+    //% img.fieldOptions.taggedTemplate="bmp"
     //% img.fieldOptions.decompileIndirectFixedInstances="true"
     //% img.fieldOptions.decompileArgumentAsString="true"
     //% img.fieldOptions.filter="!tile !dialog !background"
     //% weight=100 group="Create" duplicateShadowOnDrag
     //% help=images/sprite-image
-    export function _spriteImage(img: Image) {
-        return img
+    export function _spriteImage(bitmap: Bitmap): Bitmap {
+        return bitmap
     }
 
     //% blockId=colorindexpicker block="%index" blockHidden=true shim=TD_ID
