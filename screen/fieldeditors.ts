@@ -41,5 +41,5 @@ namespace bitmaps {
     }
 }
     //% fixedInstance blockIdentity=bitmaps._bitmap
-    export const defaultBitmap = image.ofBuffer(hex`ffffffff`);
+    const defaultBitmap = image.ofBuffer(hex`ffffffff`);
 
