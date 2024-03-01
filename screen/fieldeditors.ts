@@ -1,5 +1,5 @@
 /**
- * Image manipulation blocks
+ * Bitmap manipulation blocks
  */
 namespace bitmaps {
 
@@ -7,27 +7,27 @@ namespace bitmaps {
      * A bitmap
      * @param bitmap the bitmap
      */
-    //% blockId=image_picker block="$bitmap" shim=TD_ID
-    //% image.fieldEditor="sprite"
-    //% image.fieldOptions.taggedTemplate="bmp"
-    //% image.fieldOptions.decompileIndirectFixedInstances="true"
-    //% image.fieldOptions.decompileArgumentAsString="true"
+    //% blockId=bitmap_picker block="$bitmap" shim=TD_ID
+    //% bitmap.fieldEditor="sprite"
+    //% bitmap.fieldOptions.taggedTemplate="bmp"
+    //% bitmap.fieldOptions.decompileIndirectFixedInstances="true"
+    //% bitmap.fieldOptions.decompileArgumentAsString="true"
     //% weight=0 group="Create"
-    //% help=images/image
-    export function _image(bitmap: Bitmap): Bitmap {
+    //% help=bitmaps/bitmap
+    export function _bitmap(bitmap: Bitmap): Bitmap {
         return bitmap;
     }
 
-    //% blockId=screen_image_picker block="%bitmap"
+    //% blockId=screen_bitmap_picker block="%bitmap"
     //% shim=TD_ID
-    //% img.fieldEditor="sprite"
-    //% img.fieldOptions.taggedTemplate="bmp"
-    //% img.fieldOptions.decompileIndirectFixedInstances="true"
-    //% img.fieldOptions.decompileArgumentAsString="true"
-    //% img.fieldOptions.filter="!tile !dialog !background"
+    //% bitmap.fieldEditor="sprite"
+    //% bitmap.fieldOptions.taggedTemplate="bmp"
+    //% bitmap.fieldOptions.decompileIndirectFixedInstances="true"
+    //% bitmap.fieldOptions.decompileArgumentAsString="true"
+    //% bitmap.fieldOptions.filter="!tile !dialog !background"
     //% weight=100 group="Create" duplicateShadowOnDrag
-    //% help=images/sprite-image
-    export function _spriteImage(bitmap: Bitmap): Bitmap {
+    //% help=bitmaps/sprite-bitmap
+    export function _spriteBitmap(bitmap: Bitmap): Bitmap {
         return bitmap
     }
 
