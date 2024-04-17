@@ -60,8 +60,7 @@
     ],
     "yotta": {
         "config": {
-            "DEVICE_BLE": 0,
-            "DMESG_SERIAL_DEBUG": 1
+            "DEVICE_BLE": 0
         }
     },
     "version": "0.0.3"
