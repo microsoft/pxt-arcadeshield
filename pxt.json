@@ -1,5 +1,6 @@
 {
     "name": "pxt-arcadeshield",
+    "version": "0.0.3",
     "description": "Arcade Shield extension for MakeCode micro:bit",
     "dependencies": {
         "core": "*",
@@ -45,7 +46,7 @@
         "context/gameutil.ts",
         "reference/bitmaps/bitmap/fill-rect.md"
     ],
-    "palette": ["#000000","#ffffff","#ff2121","#ff93c4","#ff8135","#fff609","#249ca3","#78dc52","#003fad","#f2f2f2","#f2b233","#e45a33","#a5694f","#7c3f58","#91d2e7","#1e1e1e"],
+    "testFiles": [ "test.ts"], 
     "public": true,
     "targetVersions": {
         "target": "6.1.10",
@@ -55,13 +56,31 @@
         "microbit"
     ],
     "preferredEditor": "tsprj",
+    "palette": [
+        "#000000",
+        "#ffffff",
+        "#ff2121",
+        "#ff93c4",
+        "#ff8135",
+        "#fff609",
+        "#249ca3",
+        "#78dc52",
+        "#003fad",
+        "#f2f2f2",
+        "#f2b233",
+        "#e45a33",
+        "#a5694f",
+        "#7c3f58",
+        "#91d2e7",
+        "#1e1e1e"
+    ],
     "disablesVariants": [
         "mbdal"
     ],
     "yotta": {
         "config": {
-            "DEVICE_BLE": 0
+            "DEVICE_BLE": 0,
+            "DMESG_SERIAL_DEBUG": 1
         }
-    },
-    "version": "0.0.3"
+    }
 }
