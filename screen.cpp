@@ -167,9 +167,6 @@ class WDisplay {
 
         uint32_t configId = (hc & 0xe0) >> 5;
 
-        // for some reason, setting SPI frequency to 32 doesn't
-        // work with ST77735 in pxt-microbit
-        *cfg2 = 16; // Damn the torpedoes! 32MHz
 
         switch (configId) {
         case 1:
@@ -178,7 +175,7 @@ class WDisplay {
         case 2:
             *cfg1 = 0xe14ff; // ILI9163C
             *cfg0 |= 0x08;   // BGR colors
-            return DISPLAY_TYPE_ILI9341;
+            break;
         case 3:
             *cfg1 = 0x0603;     // ST7735
             *cfg0 |= 0x1000000; // inverted colors
@@ -189,6 +186,10 @@ class WDisplay {
         }
 
         DMESG("config type: %d; cfg0=%x cfg1=%x", configId, *cfg0, *cfg1);
+
+        // for some reason, setting SPI frequency to 32 doesn't
+        // work with ST77735 in pxt-microbit
+        *cfg2 = 32; // Damn the torpedoes! 32MHz
 
         return DISPLAY_TYPE_ST7735;
     }
