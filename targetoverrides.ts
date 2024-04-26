@@ -10,6 +10,7 @@ bitmap.setPalette(hex`000000ffffffff2121ff93c4ff8135fff609249ca378dc52003fad87f2
 
 //% whenUsed
 const screen = _screen_internal.createScreen();
+pxt.setupScreenStatusBar(8);
 
 namespace bitmap {
     //% shim=pxt::setPalette
@@ -18,15 +19,17 @@ namespace bitmap {
 
 namespace _screen_internal {
     //% shim=pxt::updateScreen
-    function updateScreen(img: Bitmap): void { }
-    //% shim=pxt::updateStats
-    function updateStats(msg: string): void { }
+    function updateScreen(img: Bitmap): void { }    
+    //% shim=pxt::updateScreenStatusBar
+    function updateScreenStatusBar(img: Image): void { return }
+    //% shim=pxt::setupScreenStatusBar
+    function setupScreenStatusBar(barHeight: number): void { return }
 
     //% parts="screen"
     export function createScreen() {
         const img = bitmap.create(
             160, // control.getConfigValue(DAL.CFG_DISPLAY_WIDTH, 160),
-            120 // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 128))
+            128 // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 128))
         )
         control.__screen.setupUpdate(() => updateScreen(img))
         //control.EventContext.onStats = function (msg: string) {
