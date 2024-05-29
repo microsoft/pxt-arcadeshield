@@ -46,7 +46,9 @@
         "context/gameutil.ts",
         "reference/bitmaps/bitmap/fill-rect.md"
     ],
-    "testFiles": [ "test.ts"], 
+    "testFiles": [
+        "test.ts"
+    ],
     "public": true,
     "targetVersions": {
         "target": "6.1.10",
