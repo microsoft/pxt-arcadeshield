@@ -27,7 +27,7 @@ namespace _screen_internal {
         setupScreenStatusBar(8);
         const img = bitmap.create(
             160, // control.getConfigValue(DAL.CFG_DISPLAY_WIDTH, 160),
-            128 // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 128))
+            120 // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 128))
         )
         control.__screen.setupUpdate(() => updateScreen(img))
         //control.EventContext.onStats = function (msg: string) {
