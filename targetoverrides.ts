@@ -19,15 +19,16 @@ namespace bitmap {
 namespace _screen_internal {
     //% shim=pxt::updateScreen
     function updateScreen(img: Bitmap): void { }    
-    //% shim=pxt::setupScreenStatusBar
-    function setupScreenStatusBar(barHeight: number): void { return }
-
+    //% shim=pxt::displayHeight
+    function displayHeight(): number { return 0 }   
+    //% shim=pxt::displayWidth
+    function displayWidth(): number { return 0 }   
+    
     //% parts="screen"
     export function createScreen() {
-        setupScreenStatusBar(8);
         const img = bitmap.create(
-            160, // control.getConfigValue(DAL.CFG_DISPLAY_WIDTH, 160),
-            120 // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 128))
+            displayWidth(), // control.getConfigValue(DAL.CFG_DISPLAY_WIDTH, 160),
+            displayHeight() // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 128))
         )
         control.__screen.setupUpdate(() => updateScreen(img))
         //control.EventContext.onStats = function (msg: string) {
