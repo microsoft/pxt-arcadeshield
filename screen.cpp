@@ -28,9 +28,7 @@ class WDisplay {
     uint32_t currPalette[16];
     bool newPalette;
     bool inUpdate;
-
     uint8_t *screenBuf;
-    Bitmap_ lastStatus;
 
     uint16_t width, height;
     uint16_t displayHeight;
@@ -62,12 +60,13 @@ class WDisplay {
         io = new SPIScreenIO(*spi);
 
         if (dispTp == DISPLAY_TYPE_ST7735) {
+            width = 160;
+            height = 128;
             lcd = new ST7735(*io, *LOOKUP_PIN(DISPLAY_CS), *LOOKUP_PIN(DISPLAY_DC));
-        } else if (dispTp == DISPLAY_TYPE_ILI9341) {
-            lcd = new ILI9341(*io, *LOOKUP_PIN(DISPLAY_CS), *LOOKUP_PIN(DISPLAY_DC));
-            doubleSize = true;
         } else if (dispTp == DISPLAY_TYPE_SMART) {
             lcd = NULL;
+            width = 160;
+            height = 120;
             smart = new JDDisplay(spi, LOOKUP_PIN(DISPLAY_CS), LOOKUP_PIN(DISPLAY_DC));
         } else
             target_panic(128); // PANIC_SCREEN_ERROR
@@ -107,16 +106,11 @@ class WDisplay {
             lcd->configure(madctl, frmctr1);
         }
 
-        width = MY_DISPLAY_WIDTH;
-        height = MY_DISPLAY_HEIGHT;
         displayHeight = height;
         setAddrMain();
         DMESG("screen: %d x %d, off=%d,%d", width, height, offX, offY);
         int sz = doubleSize ? (width >> 1) * (height >> 1) : width * height;
         screenBuf = (uint8_t *)app_alloc(sz / 2 + 20);
-
-        lastStatus = NULL;
-        registerGC((TValue *)&lastStatus);
         inUpdate = false;
     }
 
@@ -194,12 +188,6 @@ class WDisplay {
         return DISPLAY_TYPE_ST7735;
     }
 
-    void setAddrStatus() {
-        if (lcd)
-            lcd->setAddrWindow(offX, offY + displayHeight, width, height - displayHeight);
-        else
-            smart->setAddrWindow(offX, offY + displayHeight, width, height - displayHeight);
-    }
     void setAddrMain() {
         if (lcd)
             lcd->setAddrWindow(offX, offY, width, displayHeight);
@@ -289,25 +277,19 @@ void setPalette(Buffer buf) {
 }
 
 //%
-void setupScreenStatusBar(int barHeight) {
+int displayHeight() {
     auto display = getWDisplay();
     if (!display)
-        return;
-    if (!display->doubleSize) {
-        display->displayHeight = display->height - barHeight;
-        display->setAddrMain();
-    }
+        return -1;
+    return display->displayHeight;
 }
 
 //%
-void updateScreenStatusBar(Bitmap_ img) {
+int displayWidth() {
     auto display = getWDisplay();
     if (!display)
-        return;
-
-    if (!img)
-        return;
-    display->lastStatus = img;
+        return -1;
+    return display->width;
 }
 
 //%
@@ -345,20 +327,6 @@ void updateScreen(Bitmap_ img) {
 
         // DMESG("send");
         display->sendIndexedImage(display->screenBuf, img->width(), img->height(), palette);
-    }
-
-    if (display->lastStatus && !display->doubleSize) {
-        display->waitForSendDone();
-        img = display->lastStatus;
-        auto barHeight = display->height - display->displayHeight;
-        if (img->bpp() != 4 || barHeight != img->height() || img->width() != display->width)
-            target_panic(132); // PANIC_SCREEN_ERROR
-        memcpy(display->screenBuf, img->pix(), img->pixLength());
-        display->setAddrStatus();
-        display->sendIndexedImage(display->screenBuf, img->width(), img->height(), NULL);
-        display->waitForSendDone();
-        display->setAddrMain();
-        display->lastStatus = NULL;
     }
 
     display->inUpdate = false;

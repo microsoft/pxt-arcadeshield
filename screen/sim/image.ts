@@ -1122,15 +1122,6 @@ namespace pxsim.pxtcore {
         if (state)
             state.setPalette(b)
     }
-    export function setupScreenStatusBar(barHeight: number) {
-        const state = getScreenState();
-        if (state)
-            state.setupScreenStatusBar(barHeight);
-    }
-    export function updateScreenStatusBar(img: RefImage) {
-        const state = getScreenState();
-        if (state)
-            state.updateScreenStatusBar(img);
     }
     export function setScreenBrightness(b: number) {
         // I guess we could at least turn the screen off, when b==0,
