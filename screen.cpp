@@ -183,7 +183,7 @@ class WDisplay {
 
         // for some reason, setting SPI frequency to 32 doesn't
         // work with ST77735 in pxt-microbit
-        *cfg2 = 32; // Damn the torpedoes! 32MHz
+        *cfg2 = 16; // Damn the torpedoes! 32MHz
 
         return DISPLAY_TYPE_ST7735;
     }
