@@ -1,5 +1,7 @@
 // tests go here; this will not be compiled when this package is used as an extension.
 
+basic.showNumber(7)
+
 while (true) {
     let x = 0
     let my = bitmap.screenImage().height -1
