@@ -26,6 +26,7 @@ class WDisplay {
     JDDisplay *smart;
 
     uint32_t currPalette[16];
+    bool present;
     bool newPalette;
     bool inUpdate;
     uint8_t *screenBuf;
@@ -48,10 +49,7 @@ class WDisplay {
         smart = NULL;
 
         auto miso = LOOKUP_PIN(DISPLAY_MISO);
-
-        if (dispTp == DISPLAY_TYPE_SMART) {
-            dispTp = smartConfigure(&cfg0, &frmctr1, &cfg2);
-        }
+        dispTp = smartConfigure(&cfg0, &frmctr1, &cfg2);
 
         if (dispTp != DISPLAY_TYPE_SMART)
             miso = NULL; // only JDDisplay needs MISO, otherwise leave free
@@ -116,6 +114,7 @@ class WDisplay {
 
     uint32_t smartConfigure(uint32_t *cfg0, uint32_t *cfg1, uint32_t *cfg2) {
         uint32_t hc;
+        present = false;
 
         DMESG("74HC: waiting...");
 
@@ -142,6 +141,7 @@ class WDisplay {
                 return DISPLAY_TYPE_ST7735;
             }
         }
+        present = true;
 
         DMESG("74HC: %x", hc);
 
@@ -274,6 +274,14 @@ void setPalette(Buffer buf) {
         display->currPalette[i] ^= display->palXOR;
     }
     display->newPalette = true;
+}
+
+//%
+bool displayPresent() {
+    auto display = getWDisplay();
+    if (!display)
+        return false;
+    return display->present;
 }
 
 //%

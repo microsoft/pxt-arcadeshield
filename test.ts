@@ -1,6 +1,8 @@
 // tests go here; this will not be compiled when this package is used as an extension.
 
-basic.showNumber(7)
+const present = _screen_internal.displayPresent();
+
+basic.showNumber(present ? 1 : 0)
 
 while (true) {
     let x = 0
