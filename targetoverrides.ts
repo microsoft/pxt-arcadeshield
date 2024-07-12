@@ -22,7 +22,9 @@ namespace _screen_internal {
     //% shim=pxt::displayHeight
     function displayHeight(): number { return 0 }   
     //% shim=pxt::displayWidth
-    function displayWidth(): number { return 0 }   
+    function displayWidth(): number { return 0 }
+    //% shim=pxt::displayPresent
+    export function displayPresent(): boolean { return false }
     
     //% parts="screen"
     export function createScreen() {
