@@ -6,7 +6,8 @@
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "settings": "*"
+        "settings": "*",
+        "font": "*"
     },
     "files": [
         "config.ts",
@@ -34,7 +35,6 @@
         "screen/pxtparts.json",
         "screen/imagesoverrides.jres",
         "screen/imagesoverrides.ts",
-        "screen/font12.jres",
         "context/control.cpp",
         "context/eventcontext.ts",
         "context/compat.ts",
