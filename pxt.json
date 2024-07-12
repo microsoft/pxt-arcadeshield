@@ -7,7 +7,7 @@
         "radio": "*",
         "microphone": "*",
         "settings": "*",
-        "font": "*"
+        "fonts": "*"
     },
     "files": [
         "config.ts",
