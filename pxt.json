@@ -32,7 +32,6 @@
         "screen/frame.ts",
         "screen/ns.ts",
         "screen/image.d.ts",
-        "screen/pxtparts.json",
         "screen/imagesoverrides.jres",
         "screen/imagesoverrides.ts",
         "context/control.cpp",
