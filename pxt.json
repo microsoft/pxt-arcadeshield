@@ -32,8 +32,6 @@
         "screen/frame.ts",
         "screen/ns.ts",
         "screen/image.d.ts",
-        "screen/imagesoverrides.jres",
-        "screen/imagesoverrides.ts",
         "context/control.cpp",
         "context/eventcontext.ts",
         "context/compat.ts",
