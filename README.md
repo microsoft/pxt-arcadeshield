@@ -1,7 +1,74 @@
 # Arcade Shield extension for MakeCode for BBC micro:bit (V2)
 
-This MakeCode extension allows you to use any of the 
-MakeCode Arcade shields with the MakeCode for BBC micro:bit editor.
+This MakeCode extension allows you to use any of the  MakeCode Arcade shields with the MakeCode for BBC micro:bit editor. The extension provides access 
+to the screen and buttons on the shield, and has
+a Bitmap abstraction with numerous drawing primitives
+(draw line, circle, square, etc).
+Bitmaps also can be created using the built-in
+image editor in MakeCode.
+
+> **This extension is still in beta and is subject to changes.**
+
+## Simulator support
+
+The extension provides a simulator for the display,
+with keyboard controls mapping to the inputs of
+the display shield (A and B buttons, and the D-pad).
+
+## Arcade Shields for the micro:bit V2
+
+Various Arcade shields for the micro:bit V2 are available on the market today, including:
+
+<table>
+<tr valign="top">
+<td width="33%" >
+<a href="https://www.kittenbot.cc/products/newbit-arcade-shield">
+Kittenbot's newbit Arcade shield
+</a>
+</td><td width="33%" >
+<a href="https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade">
+ELECFREAK's micro:bit Arcade shield
+</a>
+</td>
+<td width="33%" >
+<a href="https://www.icshop.com.tw/products/368112100137?locale=en">
+ICShopping's Game:bit Arcade shield
+</a>
+</td></tr>
+<tr>
+<td>
+<a alt="Kittenbot's newbit Arcade shield" href="https://www.kittenbot.cc/products/newbit-arcade-shield">
+<img src="assets/newbit-shield.png">
+</a>
+</td><td>
+<a alt="ELECFREAK's micro:bit Retro Arcade shield" href="https://shop.elecfreaks.com/products/micro-bit-retro-programming-arcade">
+<img src="assets/elecfreaks-shield.png">
+</a>
+</td><td>
+<a alt="ICShopping's Game:bit" href="https://www.icshop.com.tw/products/368112100137?locale=en">
+<img src="assets/gamebit-shield.png">
+</a>
+</td></tr>
+<tr valign="top">
+<td>
+
+Small screen. No battery or battery pack included. 3.7V JST power jack on back. One <a href="https://aka.ms/jacdac">Jacdac</a> port.
+
+</td>
+
+<td>
+
+Assembly required. Small screen. AAA Battery pack on back. One <a href="https://aka.ms/jacdac">Jacdac</a> port.
+
+</td>
+<td>
+
+No assembly required. Large screen and 3d-printed enclosure with LiPo battery inside. Two <a href="https://aka.ms/jacdac">Jacdac</a> ports.
+
+</td>
+</tr>
+
+</table>
 
 # Supported targets
 
