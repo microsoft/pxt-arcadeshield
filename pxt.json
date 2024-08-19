@@ -10,6 +10,7 @@
         "fonts": "*"
     },
     "files": [
+        "README.md",
         "config.ts",
         "config_nrf.h",
         "arcadegamepad.h",
