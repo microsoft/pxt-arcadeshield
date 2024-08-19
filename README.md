@@ -1,12 +1,17 @@
 # Arcade Shield extension for MakeCode for BBC micro:bit (V2)
 
-This MakeCode extension allows you to use any of the  MakeCode Arcade shields with the MakeCode for BBC micro:bit editor.
-
-The extension provides access to the screen
-and buttons on the shield, as well as a
-Bitmap abstraction for drawing on the screen.
-Bitmaps can be created using the built-in
+This MakeCode extension allows you to use any of the  MakeCode Arcade shields with the MakeCode for BBC micro:bit editor. The extension provides access 
+to the screen and buttons on the shield, and has
+a Bitmap abstraction with numerous drawing primitives
+(draw line, circle, square, etc).
+Bitmaps also can be created using the built-in
 image editor in MakeCode.
+
+## Simulator support
+
+The extension provides a simulator for the display,
+with keyboard controls mapping to the inputs of
+the display shield (A and B buttons, and the D-pad).
 
 ## Arcade Shields for the micro:bit V2
 
