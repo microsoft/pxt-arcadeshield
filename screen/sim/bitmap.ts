@@ -1108,24 +1108,24 @@ namespace pxsim.bitmap {
 
 namespace pxsim.pxtcore {
     export function updateScreen(img: RefImage) {
-        const state = getScreenState();
+        const state = pxsim.arcadeshield.getScreenState();
         if (state)
             state.showImage(img)
     }
     export function updateStats(s: string) {
-        const state = getScreenState();
+        const state = pxsim.arcadeshield.getScreenState();
         if (state)
             state.updateStats(s);
     }
     export function setPalette(b: RefBuffer) {
-        const state = getScreenState();
+        const state = pxsim.arcadeshield.getScreenState();
         if (state)
             state.setPalette(b)
     }
     export function setScreenBrightness(b: number) {
         // I guess we could at least turn the screen off, when b==0,
         // otherwise, it probably doesn't make much sense to do anything.
-        const state = getScreenState();
+        const state = pxsim.arcadeshield.getScreenState();
         if (state)
             state.setScreenBrightness(b);
     }
