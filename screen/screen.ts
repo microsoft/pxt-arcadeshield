@@ -6,31 +6,30 @@
 function bmp(lits: any, ...args: any[]): Bitmap { return null }
 
 // set palette before creating screen, which initializes the display
-bitmap.setPalette(hex`000000ffffffff2121ff93c4ff8135fff609249ca378dc52003fad87f2ff8e2ec4a4839f5c406ce5cdc491463d000000`)
+//pxsim.pxtcore.setPalette(hex`000000ffffffff2121ff93c4ff8135fff609249ca378dc52003fad87f2ff8e2ec4a4839f5c406ce5cdc491463d000000`)
 
 //% whenUsed
 const screen = _screen_internal.createScreen();
-
-namespace bitmap {
-    //% shim=pxt::setPalette
-    export function setPalette(buf: Buffer) { }
-}
 
 namespace _screen_internal {
     //% shim=pxt::updateScreen
     function updateScreen(img: Bitmap): void { }    
     //% shim=pxt::displayHeight
-    function displayHeight(): number { return 0 }   
+    function displayHeight(): number {
+        return 160 // control.getConfigValue(DAL.CFG_DISPLAY_WIDTH, 160)
+    }   
     //% shim=pxt::displayWidth
-    function displayWidth(): number { return 0 }
+    function displayWidth(): number {
+        return 120  // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 128)
+    }
     //% shim=pxt::displayPresent
     export function displayPresent(): boolean { return false }
     
     //% parts="screen"
     export function createScreen() {
         const img = bitmap.create(
-            displayWidth(), // control.getConfigValue(DAL.CFG_DISPLAY_WIDTH, 160),
-            displayHeight() // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 128))
+            displayWidth(),
+            displayHeight()
         )
         control.__screen.setupUpdate(() => updateScreen(img))
         //control.EventContext.onStats = function (msg: string) {
