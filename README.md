@@ -7,6 +7,8 @@ a Bitmap abstraction with numerous drawing primitives
 Bitmaps also can be created using the built-in
 image editor in MakeCode.
 
+> **This extension is still in beta and is subject to changes.**
+
 ## Simulator support
 
 The extension provides a simulator for the display,
