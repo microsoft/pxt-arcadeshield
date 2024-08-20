@@ -67,7 +67,7 @@ declare namespace pxsim {
         print(): void;
         toDebugString(): string;
         static toAny(o: any): any;
-        static toDebugString(o: any): string;
+        //static toDebugString(o: any): string;
     }
     class FnWrapper {
         func: LabelFn;
@@ -133,7 +133,7 @@ declare namespace pxsim {
         findIdx(key: string): number;
         destroy(): void;
         print(): void;
-        toAny(): any;
+        //toAny(): any;
     }
     function dumpLivePointers(): void;
     namespace numops {
@@ -248,7 +248,7 @@ declare namespace pxsim {
         gcKey(): string;
         gcSize(): number;
         toArray(): any[];
-        toAny(): any[];
+        //toAny(): any[];
         toDebugString(): string;
         destroy(): void;
         isValidIndex(x: number): boolean;

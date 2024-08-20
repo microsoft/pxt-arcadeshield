@@ -24,6 +24,7 @@
         "controllerbuttons.cpp",
         "screen.cpp",
         "shims.d.ts",
+        "lib.d.ts",
         "pxtsim.d.ts",
         "screen/bitmap.cpp",
         "screen/bitmap.ts",
