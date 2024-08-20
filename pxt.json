@@ -37,6 +37,7 @@
         "screen/sim/bitmap.ts",
         "screen/sim/screen.ts",
         "screen/sim/state.ts",
+        "screen/sim/controlmessage.ts",
         "screen/ns.ts",
         "context/control.cpp",
         "context/eventcontext.ts",
