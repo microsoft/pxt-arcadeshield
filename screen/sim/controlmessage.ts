@@ -1,5 +1,17 @@
-namespace pxsim.pxtcore {
-    
+interface SimulatorMessage {
+    type: string;
+    // who created this message
+    source?: string;
+}
+
+declare namespace pxsim {
+    class Runtime {
+        static postMessage(data: SimulatorMessage): void;   
+    }
+}
+
+namespace control {
+
     interface SimulatorControlMessage  {
         type: "messagepacket";
         broadcast: boolean;
@@ -8,10 +20,10 @@ namespace pxsim.pxtcore {
     }
 
     // general purpose message sending mechanism
-    export function sendMessage(channel: string, message: RefBuffer, parentOnly?: boolean) {
+    export function sendMessage(channel: string, message: pxsim.RefBuffer, parentOnly?: boolean) {
         if (!channel) return;
 
-        Runtime.postMessage({
+        pxsim.Runtime.postMessage({
             type: "messagepacket",
             broadcast: !parentOnly,
             channel: channel,
