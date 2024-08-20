@@ -134,10 +134,8 @@ declare namespace bitmap {
     /**
      * Create new bitmap with given content
      */
-    //% shim=image::ofBuffer
+    //% shim=bitmap::ofBuffer
     function ofBuffer(buf: Buffer): Bitmap;
-}
-declare namespace bitmap {
 
     /**
      * Create new empty (transparent) bitmap
