@@ -1,9 +1,20 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "es5",
         "noImplicitAny": true,
         "outDir": "built",
-        "rootDir": "."
+        "rootDir": ".",
+        "noImplicitReturns": true,
+        "lib": [
+            "DOM",
+            "DOM.Iterable",
+            "ES2015"
+        ],
+        "newLine": "LF",
+        "sourceMap": false
     },
-    "exclude": ["pxt_modules/**/*test.ts"]
+    "exclude": [
+        "built/**/*",
+        "pxt_modules/**/*test.ts"
+    ]
 }
