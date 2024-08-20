@@ -45,7 +45,7 @@ declare namespace pxsim {
     }
     function getConfigData(): ConfigData;
     function setTitle(t: string): void;
-    export class RefBuffer extends RefObject {
+    class RefBuffer extends RefObject {
         data: Uint8Array;
         isStatic: boolean;
         constructor(data: Uint8Array);
