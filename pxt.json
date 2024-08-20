@@ -28,7 +28,7 @@
         "pxtsim.d.ts",
         "screen/bitmap.cpp",
         "screen/bitmap.ts",
-        "screen/bitmap.d.ts",
+        "screen/bitmapshims.ts",
         "screen/screen.ts",
         "screen/screenmethods.ts",
         "screen/fieldeditors.ts",
