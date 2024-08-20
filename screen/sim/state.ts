@@ -18,6 +18,11 @@ namespace screensim {
         }
     }
 
+    //% shim=TD_NOOP
+    function sendit(msg: Buffer) {
+        control.simmessages.send("arcadeshield", msg, false)
+    }
+
     //% fixedInstance
     class ScreenState {
         runId: string;
@@ -50,7 +55,7 @@ namespace screensim {
                 runId: this.runId,
                 value: b
             }
-            control.simmessages.send("arcadeshield", Buffer.fromUTF8(JSON.stringify(msg)), false)
+            sendit(Buffer.fromUTF8(JSON.stringify(msg)));
         }
 
         setPalette(buf: pxsim.RefBuffer) {
@@ -60,7 +65,7 @@ namespace screensim {
                 runId: this.runId,
                 data: buf.data.toString()
             }
-            control.simmessages.send("arcadeshield", Buffer.fromUTF8(JSON.stringify(msg)), false)
+            sendit(Buffer.fromUTF8(JSON.stringify(msg)));
         }
 
         updateStats(s: string) {
@@ -74,7 +79,7 @@ namespace screensim {
                 runId: this.runId,
                 data: img.data.toString()
             }
-            control.simmessages.send("arcadeshield", Buffer.fromUTF8(JSON.stringify(msg)), false)
+            sendit(Buffer.fromUTF8(JSON.stringify(msg)));
         }
     }
 
