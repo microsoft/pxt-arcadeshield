@@ -8,7 +8,7 @@ while (true) {
     let x = 0
     let my = bitmap.screenImage().height -1
     bitmap.screenImage().fill(0)
-    bitmap.screenImage().print(my.toString(), 60, 60)
+    bitmap.screenImage().print((my+1).toString(), 60, 60)
     while (x < 160) {
         bitmap.screenImage().setPixel(x, 0, 9)
         bitmap.screenImage().setPixel(x, 2, 10)
