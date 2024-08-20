@@ -1,5 +1,5 @@
-namespace pxsim_pxtcore {
-    export function updateScreen(img: pxsim.RefImage) {
+namespace pxsim.pxtcore {
+    export function updateScreen(img: RefImage) {
         const state = pxsim.getScreenState();
         if (state)
             state.showImage(img);
@@ -9,7 +9,7 @@ namespace pxsim_pxtcore {
         if (state)
             state.updateStats(s);
     }
-    export function setPalette(b: pxsim.RefBuffer) {
+    export function setPalette(b: RefBuffer) {
         const state = pxsim.getScreenState();
         if (state)
             state.setPalette(b);
