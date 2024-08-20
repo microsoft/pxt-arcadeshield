@@ -278,7 +278,7 @@ namespace helpers {
         }
     }
 
-    //% shim=pxt::setScreenBrightness
+    //% shim=screen::setScreenBrightness
     function _setScreenBrightness(brightness: number) { }
 
     export function setScreenBrightness(img: Bitmap, b: number) {

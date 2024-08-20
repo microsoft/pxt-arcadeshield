@@ -1,4 +1,4 @@
-namespace pxsim {
+namespace screensim {
     namespace _protocol {
         export interface ArcadeShieldMessage {
             type: "show-image" | "set-brightness" | "set-palette"
@@ -16,6 +16,11 @@ namespace pxsim {
             type: "set-palette"
             data: string
         }
+    }
+
+    //% shim=TD_NOOP
+    function sendit(msg: Buffer) {
+        control.simmessages.send("arcadeshield", msg, false)
     }
 
     //% fixedInstance
@@ -50,31 +55,31 @@ namespace pxsim {
                 runId: this.runId,
                 value: b
             }
-            control.simmessages.send("arcadeshield", Buffer.fromUTF8(JSON.stringify(msg)), false)
+            sendit(Buffer.fromUTF8(JSON.stringify(msg)));
         }
 
-        setPalette(buf: RefBuffer) {
+        setPalette(buf: pxsim.RefBuffer) {
             // NOTE: May need to cache locally for querying
             const msg: _protocol.SetPaletteMessage = {
                 type: "set-palette",
                 runId: this.runId,
                 data: buf.data.toString()
             }
-            control.simmessages.send("arcadeshield", Buffer.fromUTF8(JSON.stringify(msg)), false)
+            sendit(Buffer.fromUTF8(JSON.stringify(msg)));
         }
 
         updateStats(s: string) {
             // Ignore
         }
 
-        showImage(img: RefImage) {
+        showImage(img: pxsim.RefImage) {
             // NOTE: May need to cache locally for querying
             const msg: _protocol.ShowImageMessage = {
                 type: "show-image",
                 runId: this.runId,
                 data: img.data.toString()
             }
-            control.simmessages.send("arcadeshield", Buffer.fromUTF8(JSON.stringify(msg)), false)
+            sendit(Buffer.fromUTF8(JSON.stringify(msg)));
         }
     }
 

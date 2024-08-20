@@ -1,16 +1,16 @@
 declare namespace ScreenMethods {
-    //% shim=pxt::updateScreen
+    //% shim=screen::updateScreen
     export function updateScreen(img: Bitmap): void;
-    //% shim=pxt::updateStats
+    //% shim=screen::updateStats
     export function updateStats(s: string): void;
-        //% shim=pxt::displayHeight
+    //% shim=screen::displayHeight
     export function displayHeight(): number;
-    //% shim=pxt::displayWidth
+    //% shim=screen::displayWidth
     export function displayWidth(): number;
-    //% shim=pxt::displayPresent
+    //% shim=screen::displayPresent
     export function displayPresent(): boolean;
-    //% shim=pxt::setPalette
+    //% shim=screen::setPalette
     export function setPalette(buf: Buffer): void;
-    //% shim=pxt::setScreenBrightness
+    //% shim=screen::setScreenBrightness
     export function setScreenBrightness(b: number): void;
 }
