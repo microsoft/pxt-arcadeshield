@@ -20,16 +20,14 @@ namespace control {
     }
 
     // general purpose message sending mechanism
-    export function sendMessage(channel: string, message: string, parentOnly?: boolean) {
+    export function sendMessage(channel: string, message: pxsim.RefBuffer, parentOnly?: boolean) {
         if (!channel) return;
-
-        const buf = Uint8Array.from(message.split("").map(x => x.charCodeAt(0)))
 
         pxsim.Runtime.postMessage({
             type: "messagepacket",
             broadcast: !parentOnly,
             channel: channel,
-            data: buf
+            data: message && message.data
         } as SimulatorControlMessage)
     }
 }

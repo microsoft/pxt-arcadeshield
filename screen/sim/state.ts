@@ -50,7 +50,7 @@ namespace pxsim {
                 runId: this.runId,
                 value: b
             }
-            control.sendMessage("arcadeshield", JSON.stringify(msg), false)
+            control.simmessages.send("arcadeshield", Buffer.fromUTF8(JSON.stringify(msg)), false)
         }
 
         setPalette(buf: RefBuffer) {
@@ -60,7 +60,7 @@ namespace pxsim {
                 runId: this.runId,
                 data: buf.data.toString()
             }
-            control.sendMessage("arcadeshield", JSON.stringify(msg), false)
+            control.simmessages.send("arcadeshield", Buffer.fromUTF8(JSON.stringify(msg)), false)
         }
 
         updateStats(s: string) {
@@ -74,7 +74,7 @@ namespace pxsim {
                 runId: this.runId,
                 data: img.data.toString()
             }
-            control.sendMessage("arcadeshield", JSON.stringify(msg), false)
+            control.simmessages.send("arcadeshield", Buffer.fromUTF8(JSON.stringify(msg)), false)
         }
     }
 
