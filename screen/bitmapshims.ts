@@ -150,7 +150,18 @@ namespace bitmap {
     //% block="create bitmap width %width height %height" group="Create"
     //% weight=50
     //% help=images/create
+    //% shim=bitmap::create
     function create(width: number, height: number): Bitmap {
         return null;
+    }
+
+    //% shim=bitmap::ofBuffer
+    function ofBuffer(buf: Buffer): Bitmap {
+        return null;
+    }
+
+    //% shim=bitmap::doubledIcon
+    function doubledIcon(icon: Buffer): Buffer {
+        return null;      
     }
 }
