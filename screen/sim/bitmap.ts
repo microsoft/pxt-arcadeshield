@@ -990,7 +990,7 @@ namespace pxsim.bitmap {
         // truncate decimal sizes
         w |= 0
         h |= 0
-        return new RefImage(w, h, getScreenState().bpp())
+        return new RefImage(w, h, screen.getScreenState().bpp())
     }
 
     // TODO: move to image namespace

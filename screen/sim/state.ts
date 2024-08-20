@@ -1,4 +1,4 @@
-namespace pxsim {
+namespace screen {
     namespace _protocol {
         export interface ArcadeShieldMessage {
             type: "show-image" | "set-brightness" | "set-palette"
@@ -53,7 +53,7 @@ namespace pxsim {
             control.simmessages.send("arcadeshield", Buffer.fromUTF8(JSON.stringify(msg)), false)
         }
 
-        setPalette(buf: RefBuffer) {
+        setPalette(buf: pxsim.RefBuffer) {
             // NOTE: May need to cache locally for querying
             const msg: _protocol.SetPaletteMessage = {
                 type: "set-palette",
@@ -67,7 +67,7 @@ namespace pxsim {
             // Ignore
         }
 
-        showImage(img: RefImage) {
+        showImage(img: pxsim.RefImage) {
             // NOTE: May need to cache locally for querying
             const msg: _protocol.ShowImageMessage = {
                 type: "show-image",
