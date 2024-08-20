@@ -23,13 +23,13 @@ namespace pxsim.pxtcore {
         const state = pxsim.getScreenState();
         if (state)
             return state.displayHeight();
-        return 0;
+        return -1;
     }
     export function displayWidth(): number {
         const state = pxsim.getScreenState();
         if (state)
             return state.displayWidth();
-        return 0;
+        return -1;
     }
     export function displayPresent(): boolean {
         const state = pxsim.getScreenState();
