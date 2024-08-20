@@ -37,8 +37,5 @@ namespace pxsim.screen {
             return state.displayPresent();
         return false;
     }
-
-    export const myfuns = [ updateScreen, updateStats, setPalette, setScreenBrightness, displayHeight, displayWidth, displayPresent ];
 }
 
-pxsim.screen.myfuns.length;

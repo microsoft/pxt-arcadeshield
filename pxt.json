@@ -30,7 +30,7 @@
         "screen/bitmap.ts",
         "screen/bitmap.d.ts",
         "screen/screen.ts",
-        "screen/screen.d.ts",
+        "screen/screenmethods.ts",
         "screen/fieldeditors.ts",
         "screen/text.ts",
         "screen/frame.ts",

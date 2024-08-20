@@ -1,4 +1,4 @@
-/// <reference path="./screen.d.ts"/>
+
 /**
  * Tagged bitmap literal converter
  */
