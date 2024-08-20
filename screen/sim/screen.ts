@@ -1,4 +1,4 @@
-namespace pxsim.pxtcore {
+namespace pxsim {
     export function updateScreen(img: RefImage) {
         const state = pxsim.getScreenState();
         if (state)
