@@ -37,4 +37,6 @@ namespace pxsim.pxtcore {
             return state.displayPresent();
         return false;
     }
+
+    export const funList = [updateScreen, updateStats, setPalette, setScreenBrightness, displayHeight, displayWidth, displayPresent]; 
 }
