@@ -1,4 +1,4 @@
-namespace pxsim.ScreenMethods {
+namespace pxsim.pxtcore {
     export function updateScreen(img: RefImage) {
         const state = getScreenState();
         if (state)
