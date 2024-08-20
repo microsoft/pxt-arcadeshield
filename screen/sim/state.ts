@@ -1,4 +1,4 @@
-namespace screen {
+namespace screensim {
     namespace _protocol {
         export interface ArcadeShieldMessage {
             type: "show-image" | "set-brightness" | "set-palette"
