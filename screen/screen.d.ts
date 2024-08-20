@@ -3,7 +3,7 @@ declare namespace ScreenMethods {
     export function updateScreen(img: Bitmap): void;
     //% shim=screen::updateStats
     export function updateStats(s: string): void;
-        //% screen=pxt::displayHeight
+    //% shim=screen::displayHeight
     export function displayHeight(): number;
     //% shim=screen::displayWidth
     export function displayWidth(): number;
