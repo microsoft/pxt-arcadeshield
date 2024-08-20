@@ -1,6 +1,6 @@
 // tests go here; this will not be compiled when this package is used as an extension.
 
-const present = _screen_internal.displayPresent();
+const present = ScreenMethods.displayPresent();
 
 basic.showNumber(present ? 1 : 0)
 

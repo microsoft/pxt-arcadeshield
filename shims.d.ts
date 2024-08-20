@@ -129,7 +129,7 @@ declare interface Bitmap {
     //% shim=BitmapMethods::overlapsWith
     overlapsWith(other: Bitmap, x: int32, y: int32): boolean;
 }
-declare namespace image {
+declare namespace bitmap {
 
     /**
      * Create new bitmap with given content

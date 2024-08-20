@@ -990,7 +990,7 @@ namespace pxsim.bitmap {
         // truncate decimal sizes
         w |= 0
         h |= 0
-        return new RefImage(w, h, getScreenState().bpp())
+        return new RefImage(w, h, screen.state.getScreenState().bpp())
     }
 
     // TODO: move to image namespace
@@ -1103,30 +1103,5 @@ namespace pxsim.bitmap {
             return null
         img = BitmapMethods.doubled(img)
         return toBuffer(img)
-    }
-}
-
-namespace pxsim.pxtcore {
-    export function updateScreen(img: RefImage) {
-        const state = pxsim.arcadeshield.getScreenState();
-        if (state)
-            state.showImage(img)
-    }
-    export function updateStats(s: string) {
-        const state = pxsim.arcadeshield.getScreenState();
-        if (state)
-            state.updateStats(s);
-    }
-    export function setPalette(b: RefBuffer) {
-        const state = pxsim.arcadeshield.getScreenState();
-        if (state)
-            state.setPalette(b)
-    }
-    export function setScreenBrightness(b: number) {
-        // I guess we could at least turn the screen off, when b==0,
-        // otherwise, it probably doesn't make much sense to do anything.
-        const state = pxsim.arcadeshield.getScreenState();
-        if (state)
-            state.setScreenBrightness(b);
     }
 }

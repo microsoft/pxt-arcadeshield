@@ -1461,7 +1461,7 @@ void _fillPolygon4(Bitmap_ img, pxt::RefCollection *args) {
 
 } // namespace BitmapMethods
 
-namespace image {
+namespace bitmap {
 /**
  * Create new bitmap with given content
  */
