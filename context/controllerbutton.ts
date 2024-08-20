@@ -28,11 +28,13 @@ namespace controller {
     let defaultRepeatInterval = 30;
 
     //% shim=pxt::pressureLevelByButtonId
-    declare function pressureLevelByButtonId(btnId: number, codalId: number): number;
+    function pressureLevelByButtonId(btnId: number, codalId: number): number {
+        return 0;
+    }
 
     //% shim=pxt::setupButton
     function setupButton(buttonId: number, key: number) {
-        return // missing in sim
+        basic.pause(0)
      }
 
     export class ButtonHandler {
