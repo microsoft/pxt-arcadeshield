@@ -35,5 +35,5 @@ jobs:
               if: ${{ github.ref == 'refs/heads/master' }}
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
-                  publish_dir: ./sim/build
+                  publish_dir: ./sim/dist
                   force_orphan: true
