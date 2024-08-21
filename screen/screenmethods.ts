@@ -1,4 +1,4 @@
-namespace ScreenMethods {
+namespace screen {
     //% shim=screen::updateScreen
     export function updateScreen(img: Bitmap) {
         basic.pause(0)
