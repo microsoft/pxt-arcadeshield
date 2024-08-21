@@ -32,8 +32,8 @@ jobs:
               working-directory: sim
             - name: github pages
               uses: peaceiris/actions-gh-pages@v3
-              if: ${{ github.ref == 'refs/heads/main' }}
+              if: ${{ github.ref == 'refs/heads/master' }}
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
-                  publish_dir: ./sim/build
+                  publish_dir: ./sim/dist
                   force_orphan: true
