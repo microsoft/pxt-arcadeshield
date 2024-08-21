@@ -2,11 +2,11 @@
 // Keep this in sync with that file.
 
 export interface ArcadeShieldMessage {
-    type: "set-screen-buffer" | "set-brightness" | "set-palette"
+    type: "show-image" | "set-brightness" | "set-palette" | "update-stats"
     runId: string
 }
-export interface SetScreenBufferMessage extends ArcadeShieldMessage {
-    type: "set-screen-buffer"
+export interface ShowImageMessage extends ArcadeShieldMessage {
+    type: "show-image"
     data: string
 }     
 export interface SetBrightnessMessage extends ArcadeShieldMessage {
@@ -15,5 +15,9 @@ export interface SetBrightnessMessage extends ArcadeShieldMessage {
 }
 export interface SetPaletteMessage extends ArcadeShieldMessage {
     type: "set-palette"
+    data: string
+}
+export interface UpdateStatsMessage extends ArcadeShieldMessage {
+    type: "update-stats"
     data: string
 }

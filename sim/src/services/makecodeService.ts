@@ -46,8 +46,8 @@ function handleShieldMessage(buf: any, srcFrameIndex: number) {
     }
 
     switch (msg.type) {
-        case "set-screen-buffer":
-            return handleScreenMessage(msg as protocol.SetScreenBufferMessage)
+        case "show-image":
+            return handleShowImageMessage(msg as protocol.ShowImageMessage)
         case "set-brightness":
             return
         case "set-palette":
@@ -59,7 +59,7 @@ function handleShieldMessage(buf: any, srcFrameIndex: number) {
     }
 }
 
-function handleScreenMessage(msg: protocol.ScreenBufferMessage) {}
+function handleShowImageMessage(msg: protocol.ShowImageMessage) {}
 
 export function init() {
     window.addEventListener("message", (ev) => {
