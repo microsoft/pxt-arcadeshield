@@ -121,31 +121,49 @@ namespace _helpers_workaround {
 
 namespace helpers {
     //% shim=BitmapMethods::_drawLine
-    function _drawLine(img: Bitmap, xy: number, wh: number, c: color): void { }
+    function _drawLine(img: Bitmap, xy: number, wh: number, c: color): void { 
+        basic.pause(0)
+    }
 
     //% shim=BitmapMethods::_fillRect
-    function _fillRect(img: Bitmap, xy: number, wh: number, c: color): void { }
+    function _fillRect(img: Bitmap, xy: number, wh: number, c: color): void { 
+        basic.pause(0)
+    }
 
     //% shim=BitmapMethods::_mapRect
-    function _mapRect(img: Bitmap, xy: number, wh: number, m: Buffer): void { }
+    function _mapRect(img: Bitmap, xy: number, wh: number, m: Buffer): void { 
+        basic.pause(0)
+    }
 
     //% shim=BitmapMethods::_drawIcon
-    function _drawIcon(img: Bitmap, icon: Buffer, xy: number, c: color): void { }
+    function _drawIcon(img: Bitmap, icon: Buffer, xy: number, c: color): void { 
+        basic.pause(0)
+    }
 
     //% shim=BitmapMethods::_fillCircle
-    declare function _fillCircle(img: Bitmap, cxy: number, r: number, c: color): void;
+    function _fillCircle(img: Bitmap, cxy: number, r: number, c: color) {
+        basic.pause(0)
+    }
 
     //% shim=BitmapMethods::_blitRow
-    declare function _blitRow(img: Bitmap, xy: number, from: Bitmap, xh: number): void;
+    function _blitRow(img: Bitmap, xy: number, from: Bitmap, xh: number) {
+        basic.pause(0)
+    }
 
     //% shim=BitmapMethods::_blit
-    declare function _blit(img: Bitmap, src: Bitmap, args: number[]): boolean;
+    function _blit(img: Bitmap, src: Bitmap, args: number[]): boolean {
+        return false;
+    }
 
     //% shim=BitmapMethods::_fillTriangle
-    declare function _fillTriangle(img: Bitmap, args: number[]): void;
+    function _fillTriangle(img: Bitmap, args: number[]) {
+        basic.pause(0)
+    }
 
     //% shim=BitmapMethods::_fillPolygon4
-    declare function _fillPolygon4(img: Bitmap, args: number[]): void;
+    function _fillPolygon4(img: Bitmap, args: number[]) {
+        basic.pause(0)
+    }
 
     function pack(x: number, y: number) {
         return (Math.clamp(-30000, 30000, x | 0) & 0xffff) | (Math.clamp(-30000, 30000, y | 0) << 16)
@@ -278,8 +296,10 @@ namespace helpers {
         }
     }
 
-    //% shim=pxt::setScreenBrightness
-    function _setScreenBrightness(brightness: number) { }
+    //% shim=screen::setScreenBrightness
+    function _setScreenBrightness(brightness: number) { 
+        basic.pause(0)
+    }
 
     export function setScreenBrightness(img: Bitmap, b: number) {
         b = Math.clamp(10, 100, b | 0);

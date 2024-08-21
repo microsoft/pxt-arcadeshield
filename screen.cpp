@@ -17,7 +17,7 @@
 
 typedef RefImage *Bitmap_;
 
-namespace pxt {
+namespace screen {
 
 class WDisplay {
   public:
@@ -345,4 +345,4 @@ void updateStats(String msg) {
     // ignore...
 }
 
-} // namespace pxt
+} // namespace screen
