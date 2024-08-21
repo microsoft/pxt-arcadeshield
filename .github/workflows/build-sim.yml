@@ -1,4 +1,4 @@
-name: Botsim build
+name: sim build
 on:
     push:
         paths:
