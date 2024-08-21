@@ -26,8 +26,6 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - run: npm ci
               working-directory: sim
-            - run: npm run assets
-              working-directory: sim
             - run: npm run build
               working-directory: sim
             - name: github pages
