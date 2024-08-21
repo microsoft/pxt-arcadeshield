@@ -6,5 +6,5 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 /** @type {import('vite').UserConfig} */
 export default defineConfig({
   plugins: [react(), tsconfigPaths()],
-  base: ""
+  base: "./"
 })
