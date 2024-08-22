@@ -12,7 +12,6 @@
         "README.md",
         "eventcontext.ts",
         "scene.ts",
-        "frame.ts",
         "controlleroverrides.ts",
         "controllerbutton.ts",
         "console.ts",
