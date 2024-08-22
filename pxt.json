@@ -6,7 +6,6 @@
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "settings": "*",
         "arcadeshield": "*"
     },
     "files": [
