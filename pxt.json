@@ -10,6 +10,7 @@
     },
     "files": [
         "README.md",
+        "arcadeiframe.ts",
         "bitmap.d.ts",
         "bitmap.ts",
         "config.ts",
