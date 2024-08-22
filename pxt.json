@@ -17,7 +17,26 @@
         "controlleroverrides.ts",
         "controllerbutton.ts",
         "console.ts",
-        "text.ts"
+        "text.ts",
+        "init.ts"
+    ],
+    "palette": [
+        "#000000",
+        "#ffffff",
+        "#ff2121",
+        "#ff93c4",
+        "#ff8135",
+        "#fff609",
+        "#249ca3",
+        "#78dc52",
+        "#003fad",
+        "#f2f2f2",
+        "#f2b233",
+        "#e45a33",
+        "#a5694f",
+        "#7c3f58",
+        "#91d2e7",
+        "#1e1e1e"
     ],
     "testFiles": [
         "test.ts"
