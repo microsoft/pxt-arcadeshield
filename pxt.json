@@ -10,19 +10,20 @@
     },
     "files": [
         "README.md",
-        "bitmap.ts",
         "bitmap.d.ts",
-        "fieldeditors.ts",
-        "eventcontext.ts",
-        "scene.ts",
-        "controlleroverrides.ts",
-        "controllerbutton.ts",
+        "bitmap.ts",
+        "config.ts",
         "console.ts",
-        "text.ts",
-        "ns.ts",
-        "screenhelpers.ts",
+        "controllerbutton.ts",
+        "controlleroverrides.ts",
+        "eventcontext.ts",
+        "fieldeditors.ts",
         "frame.ts",
-        "fieldeditors.ts"
+        "init.ts",
+        "ns.ts",
+        "scene.ts",
+        "screenhelpers.ts",
+        "text.ts"
     ],
     "tests" : [
         "test.ts"
