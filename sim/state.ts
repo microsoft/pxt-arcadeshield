@@ -66,7 +66,7 @@ namespace pxsim {
             this.sendMessage(JSON.stringify(msg))
         }
 
-        setPalette(buf: RefBuffer) {
+        setPalette(buf: Buffer) {
             // NOTE: May need to cache locally for querying
             const msg: _protocol.SetPaletteMessage = {
                 type: "set-palette",
@@ -80,7 +80,7 @@ namespace pxsim {
             // Ignore
         }
 
-        showImage(img: RefImage) {
+        showImage(img: Bitmap) {
             // NOTE: May need to cache locally for querying
             const msg: _protocol.ShowImageMessage = {
                 type: "show-image",
@@ -95,46 +95,5 @@ namespace pxsim {
 
     export function getScreenState(): ScreenState {
         return _screenState;
-    }
-}
-
-namespace pxsim.pxtcore {
-    export function updateScreen(img: RefImage) {
-        const state = getScreenState();
-        if (state)
-            state.showImage(img);
-    }
-    export function updateStats(s: string) {
-        const state = getScreenState();
-        if (state)
-            state.updateStats(s);
-    }
-    export function setPalette(b: RefBuffer) {
-        const state = getScreenState();
-        if (state)
-            state.setPalette(b);
-    }
-    export function setScreenBrightness(b: number) {
-        const state = getScreenState();
-        if (state)
-            state.setScreenBrightness(b);
-    }
-    export function displayHeight(): number {
-        const state = getScreenState();
-        if (state)
-            return state.displayHeight();
-        return -1;
-    }
-    export function displayWidth(): number {
-        const state = getScreenState();
-        if (state)
-            return state.displayWidth();
-        return -1;
-    }
-    export function displayPresent(): boolean {
-        const state = getScreenState();
-        if (state)
-            return state.displayPresent();
-        return false;
     }
 }
