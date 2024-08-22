@@ -5,8 +5,6 @@ namespace scene.consoleOverlay {
     const marginx = 4;
     const marginy = 2;
     const consoleFont = bitmap.font5;
-    const consoleLines = Math.floor(screen.height / (consoleFont.charHeight + marginy)) - 1;
-    const consoleColumns = Math.floor((screen.width - 2 * marginx) / consoleFont.charWidth);
     console.addListener(listener);
 
     export function isVisible() {
@@ -25,8 +23,11 @@ namespace scene.consoleOverlay {
     }
 
     function listener(priority: ConsolePriority, text: string) {
-        if (!consoleStrings || !text)
+        if (!screen || !consoleStrings || !text)
             return;
+
+        const consoleColumns = Math.floor((screen.width - 2 * marginx) / consoleFont.charWidth);
+        const consoleLines = Math.floor(screen.height / (consoleFont.charHeight + marginy)) - 1;
 
         // split text into lines
         text.split("\n")
