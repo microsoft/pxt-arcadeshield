@@ -1,3 +1,4 @@
+type color = number
 
 namespace bitmap {
     /**
