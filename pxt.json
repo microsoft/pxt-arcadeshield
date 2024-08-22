@@ -10,7 +10,14 @@
         "arcadeshield": "*"
     },
     "files": [
-        "README.md"
+        "README.md",
+        "eventcontext.ts",
+        "scene.ts",
+        "frame.ts",
+        "controlleroverrides.ts",
+        "controllerbutton.ts",
+        "console.ts",
+        "text.ts"
     ],
     "testFiles": [
         "test.ts"
