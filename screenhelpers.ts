@@ -116,8 +116,9 @@ namespace screenhelpers {
 
     // getters
 
-    //% shim=TD_NOOP 
     let __height = 0
+    
+    //% shim=TD_NOOP
     function __displayHeight() {
         __height = -1
         const state = getScreenState();
@@ -132,7 +133,8 @@ namespace screenhelpers {
     }
 
     let __width = 0
-    //% shim=TD_NOOP 
+    
+    //% shim=TD_NOOP
     function __displayWidth() {
         __width = -1
         const state = getScreenState();
@@ -147,7 +149,8 @@ namespace screenhelpers {
     }
 
     let __present = true
-    //% shim=TD_NOOP 
+    
+    //% shim=TD_NOOP
     function __displayPresent() {
         __present = true
         const state = getScreenState();
