@@ -90,7 +90,7 @@ namespace screenhelpers {
     }
 
     export function updateScreen(img: Bitmap) {
-        __screen_helpers.updateScreen(img)
+        __screenhelpers.updateScreen(img)
         __updateScreen(img)
     }
 
@@ -102,7 +102,7 @@ namespace screenhelpers {
     }
 
     export function updateStats(s: string) {
-        __screen_helpers.updateStats(s)
+        __screenhelpers.updateStats(s)
         __updateStats(s)
     }
 
@@ -114,7 +114,7 @@ namespace screenhelpers {
     }
 
     export function setPalette(b: Buffer) {
-        __screen_helpers.setPalette(b)
+        __screenhelpers.setPalette(b)
         __setPalette(b)
     }
 
@@ -126,7 +126,7 @@ namespace screenhelpers {
     }
 
     export function setScreenBrightness(n: number) {
-        __screen_helpers.setScreenBrightness(n)
+        __screenhelpers.setScreenBrightness(n)
         __setScreenBrightness(n)
     }
 
@@ -142,7 +142,7 @@ namespace screenhelpers {
     }
     
     export function displayHeight(): number {
-        __height = __screen_helpers.displayHeight()
+        __height = __screenhelpers.displayHeight()
         __displayHeight()
         return __height
     }
@@ -156,8 +156,8 @@ namespace screenhelpers {
             __width = state.displayWidth();
     }
 
-    export function displaWidth(): number {
-        __width = __screen_helpers.displayWidth()
+    export function displayWidth(): number {
+        __width = __screenhelpers.displayWidth()
         __displayWidth()
         return __width
     }
@@ -173,7 +173,7 @@ namespace screenhelpers {
     }
 
     export function displayPresent(): boolean {
-        __present = __screen_helpers.displayPresent()
+        __present = __screenhelpers.displayPresent()
         __displayPresent()
         return __present
     }
