@@ -70,7 +70,7 @@ namespace screenhelpers {
             const msg: _protocol.ShowImageMessage = {
                 type: "show-image",
                 runId: this.runId,
-                data: "foo"  // need a function to convert Bitmap to string...
+                data: img.__buffer.toBase64()
             }
             this.sendMessage(JSON.stringify(msg))
         }
