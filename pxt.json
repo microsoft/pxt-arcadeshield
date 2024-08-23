@@ -22,7 +22,8 @@
         "ns.ts",
         "scene.ts",
         "screenhelpers.ts",
-        "text.ts"
+        "text.ts",
+        "reference/bitmaps/bitmap/fill-rect.md"
     ],
     "tests" : [
         "test.ts"
