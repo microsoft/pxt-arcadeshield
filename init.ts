@@ -9,7 +9,7 @@ function bmp(lits: any, ...args: any[]): Bitmap { return null; }
 screenhelpers.setPalette(hex`000000ffffffff2121ff93c4ff8135fff609249ca378dc52003fad87f2ff8e2ec4a4839f5c406ce5cdc491463d000000`)
 
 //% whenUsed
-const screen: ScreenBitmap = __screen_internal.createScreen();
+const screen: Bitmap = __screen_internal.createScreen();
 
 namespace __screen_internal {
 
@@ -19,6 +19,6 @@ namespace __screen_internal {
             screenhelpers.displayHeight() // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 128)
         )
         control.__screen.setupUpdate(() => screenhelpers.updateScreen(img))
-        return img as ScreenBitmap;
+        return img as Bitmap;
     }
 }

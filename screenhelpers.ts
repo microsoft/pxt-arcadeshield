@@ -1,21 +1,19 @@
-namespace pxsim {
-    namespace _protocol {
-        export interface ArcadeShieldMessage {
-            type: "show-image" | "set-brightness" | "set-palette"
-            runId: string
-        }
-        export interface ShowImageMessage extends ArcadeShieldMessage {
-            type: "show-image"
-            data: string
-        }     
-        export interface SetBrightnessMessage extends ArcadeShieldMessage {
-            type: "set-brightness"
-            value: number
-        }
-        export interface SetPaletteMessage extends ArcadeShieldMessage {
-            type: "set-palette"
-            data: string
-        }
+namespace screenhelpers {
+    interface ArcadeShieldMessage {
+        type: "show-image" | "set-brightness" | "set-palette"
+        runId: string
+    }
+    interface ShowImageMessage extends ArcadeShieldMessage {
+        type: "show-image"
+        data: string
+    }     
+    interface SetBrightnessMessage extends ArcadeShieldMessage {
+        type: "set-brightness"
+        value: number
+    }
+    interface SetPaletteMessage extends ArcadeShieldMessage {
+        type: "set-palette"
+        data: string
     }
 
     //% fixedInstance
@@ -92,12 +90,10 @@ namespace pxsim {
 
     const _screenState: ScreenState = new ScreenState();
 
-    export function getScreenState(): ScreenState {
+    function getScreenState(): ScreenState {
         return _screenState;
     }
-}
 
-namespace pxsim {
     export function updateScreen(img: Bitmap) {
         const state = getScreenState();
         if (state)
