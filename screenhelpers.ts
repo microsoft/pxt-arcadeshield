@@ -61,10 +61,6 @@ namespace screenhelpers {
             this.sendMessage(JSON.stringify(msg))
         }
 
-        updateStats(s: string) {
-            // Ignore
-        }
-
         showImage(img: Bitmap) {
             // NOTE: May need to cache locally for querying
             const msg: ShowImageMessage = {
@@ -92,18 +88,6 @@ namespace screenhelpers {
     export function updateScreen(img: Bitmap) {
         __screenhelpers.updateScreen(img)
         __updateScreen(img)
-    }
-
-    //% shim=TD_NOOP
-    function __updateStats(s: string) {
-        const state = getScreenState();
-        if (state)
-            state.updateStats(s);
-    }
-
-    export function updateStats(s: string) {
-        __screenhelpers.updateStats(s)
-        __updateStats(s)
     }
 
     //% shim=TD_NOOP    
