@@ -25,10 +25,6 @@ namespace screenhelpers {
             this.runId = Math.random() + "";
         }
 
-        bpp(): number {
-            return 4; // TODO: Do we need to support legacy 2bpp mode?
-        }
-
         displayHeight(): number {
             return 128;
         }
@@ -42,15 +38,7 @@ namespace screenhelpers {
         }
 
         private sendMessage(msg: string) {
-            let encoder = new TextEncoder();
-            let buf = encoder.encode(msg)
-            let fullmsg = {
-                type: "messagepacket",
-                broadcast: false,
-                channel: "arcadeshield",
-                data: buf
-            }
-            //control.simmessages.send("jacdac", JSON.stringify(fullmsg) payload, false)
+            control.simmessages.send("arcadeshield", Buffer.fromUTF8(msg) , false)
         }
 
         setScreenBrightness(b: number) {
@@ -68,7 +56,7 @@ namespace screenhelpers {
             const msg: _protocol.SetPaletteMessage = {
                 type: "set-palette",
                 runId: this.runId,
-                data: null //buf.data.toString()
+                data: buf.toBase64()
             }
             this.sendMessage(JSON.stringify(msg))
         }
@@ -82,7 +70,7 @@ namespace screenhelpers {
             const msg: _protocol.ShowImageMessage = {
                 type: "show-image",
                 runId: this.runId,
-                data: img.data.toString()
+                data: "foo"  // need a function to convert Bitmap to string...
             }
             this.sendMessage(JSON.stringify(msg))
         }
@@ -94,42 +82,99 @@ namespace screenhelpers {
         return _screenState;
     }
 
-    export function updateScreen(img: Bitmap) {
+    //% shim=TD_NOOP
+    function __updateScreen(img: Bitmap) {
         const state = getScreenState();
         if (state)
-            state.showImage(img);
+            state.showImage(img);        
     }
-    export function updateStats(s: string) {
+
+    export function updateScreen(img: Bitmap) {
+        __screen_helpers.updateScreen(img)
+        __updateScreen(img)
+    }
+
+    //% shim=TD_NOOP
+    function __updateStats(s: string) {
         const state = getScreenState();
         if (state)
             state.updateStats(s);
     }
-    export function setPalette(b: Buffer) {
+
+    export function updateStats(s: string) {
+        __screen_helpers.updateStats(s)
+        __updateStats(s)
+    }
+
+    //% shim=TD_NOOP    
+    function __setPalette(b: Buffer) {
         const state = getScreenState();
         if (state)
             state.setPalette(b);
     }
-    export function setScreenBrightness(b: number) {
+
+    export function setPalette(b: Buffer) {
+        __screen_helpers.setPalette(b)
+        __setPalette(b)
+    }
+
+    //% shim=TD_NOOP   
+    function __setScreenBrightness(n: number) {
         const state = getScreenState();
         if (state)
-            state.setScreenBrightness(b);
+            state.setScreenBrightness(n);
     }
+
+    export function setScreenBrightness(n: number) {
+        __screen_helpers.setScreenBrightness(n)
+        __setScreenBrightness(n)
+    }
+
+    // getters
+
+    //% shim=TD_NOOP 
+    let __height = 0
+    function __displayHeight() {
+        __height = -1
+        const state = getScreenState();
+        if (state)
+            __height = state.displayHeight();
+    }
+    
     export function displayHeight(): number {
+        __height = __screen_helpers.displayHeight()
+        __displayHeight()
+        return __height
+    }
+
+    let __width = 0
+    //% shim=TD_NOOP 
+    function __displayWidth() {
+        __width = -1
         const state = getScreenState();
         if (state)
-            return state.displayHeight();
-        return -1;
+            __width = state.displayWidth();
     }
-    export function displayWidth(): number {
+
+    export function displaWidth(): number {
+        __width = __screen_helpers.displayWidth()
+        __displayWidth()
+        return __width
+    }
+
+    let __present = true
+    //% shim=TD_NOOP 
+    function __displayPresent() {
+        __present = true
         const state = getScreenState();
         if (state)
-            return state.displayWidth();
-        return -1;
+            __present = state.displayPresent();
+        return __present
     }
+
     export function displayPresent(): boolean {
-        const state = getScreenState();
-        if (state)
-            return state.displayPresent();
-        return false;
+        __present = __screen_helpers.displayPresent()
+        __displayPresent()
+        return __present
     }
 }
