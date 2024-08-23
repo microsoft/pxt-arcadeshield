@@ -43,7 +43,7 @@ namespace screenhelpers {
 
         setScreenBrightness(b: number) {
             // NOTE: May need to cache locally for querying
-            const msg: _protocol.SetBrightnessMessage = {
+            const msg: SetBrightnessMessage = {
                 type: "set-brightness",
                 runId: this.runId,
                 value: b
@@ -53,7 +53,7 @@ namespace screenhelpers {
 
         setPalette(buf: Buffer) {
             // NOTE: May need to cache locally for querying
-            const msg: _protocol.SetPaletteMessage = {
+            const msg: SetPaletteMessage = {
                 type: "set-palette",
                 runId: this.runId,
                 data: buf.toBase64()
@@ -67,7 +67,7 @@ namespace screenhelpers {
 
         showImage(img: Bitmap) {
             // NOTE: May need to cache locally for querying
-            const msg: _protocol.ShowImageMessage = {
+            const msg: ShowImageMessage = {
                 type: "show-image",
                 runId: this.runId,
                 data: img.__buffer.toBase64()
