@@ -52,8 +52,6 @@ function handleShieldMessage(buf: any, srcFrameIndex: number) {
             return
         case "set-palette":
             return
-        case "update-stats":
-            return;
         default:
             console.log(`unknown arcadeshield message: ${JSON.stringify(msg)}`)
     }
