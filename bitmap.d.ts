@@ -6,6 +6,7 @@ interface Bitmap {
     //% helper=imageFillRect blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
     //% block="fill rectangle in %bmap=variables_get at x %x y %y width %w height %h %c=colorindexpicker"
     //% help=github:microsoft/pxt-arcadeshield/reference/bitmaps/bitmap/fill-rect
+    //% bmap.defl=screen
     fillRect(x: number, y: number, w: number, h: number, c: color): void;
 
     /**
