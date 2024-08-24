@@ -5,7 +5,7 @@ interface Bitmap {
      */
     //% helper=imageFillRect blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
     //% block="fill rectangle in %bmap=variables_get at x %x y %y width %w height %h %c=colorindexpicker"
-    //% help=github:microsoft/pxt-arcadeshield/reference/bitmaps/bitmap/fill-rect
+    //% help=github:microsoft/pxt-arcadeshield/reference/bitmaps/bitmap/fill-rect.md
     fillRect(x: number, y: number, w: number, h: number, c: color): void;
 
     /**
@@ -18,7 +18,7 @@ interface Bitmap {
      * Draw a line
      */
     //% helper=imageDrawLine blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
-    //% block="draw line in %bmap=variables_get from x %x0 y %y0 to x %x1 y %y1 %c=colorindexpicker"
+    //% block="draw line in %bmap=screen from x %x0 y %y0 to x %x1 y %y1 %c=colorindexpicker"
     //% help=bitmaps/bitmap/draw-line
     drawLine(x0: number, y0: number, x1: number, y1: number, c: color): void;
 
