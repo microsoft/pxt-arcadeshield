@@ -18,18 +18,6 @@ namespace bitmaps {
         return bitmap;
     }
 
-    //% blockId=screen_bitmap_picker block="%bitmap"
-    //% shim=TD_ID
-    //% bitmap.fieldEditor="sprite"
-    //% bitmap.fieldOptions.taggedTemplate="bmp"
-    //% bitmap.fieldOptions.decompileIndirectFixedInstances="true"
-    //% bitmap.fieldOptions.decompileArgumentAsString="true"
-    //% bitmap.fieldOptions.filter="!tile !dialog !background"
-    //% weight=100 group="Create" duplicateShadowOnDrag
-    //% help=bitmaps/sprite-bitmap
-    export function _spriteBitmap(bitmap: Bitmap): Bitmap {
-        return bitmap
-    }
 
     //% blockId=colorindexpicker block="%index" blockHidden=true shim=TD_ID
     //% index.fieldEditor="colornumber"

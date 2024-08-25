@@ -52,6 +52,14 @@ interface Bitmap {
     getPixel(x: int32, y: int32): int32;
 
     /**
+     * Draw given bitmap on the current bitmap
+     */
+    //% shim=BitmapMethods::drawBitmap blockNamespace="bitmaps" group="Drawing"
+    //% block="%bmap=variables_get draw bitmap at x %x y %y"
+    //% help=bitmaps/bitmap/draw-bitmap
+    drawBitmap(from: Bitmap, x: int32, y: int32): void;
+
+    /**
      * Fill entire image with a given color
      */
     //% shim=BitmapMethods::fill blockNamespace="bitmaps" group="Drawing"

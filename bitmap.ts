@@ -1,4 +1,3 @@
-
 /**
 * Get the screen bitmap
 */
