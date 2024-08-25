@@ -1,9 +1,17 @@
 import React from "react"
-import "./App.css"
+import css from "@/styling/Shield.module.scss"
+import { classList } from "@/util"
 
 export const Shield: React.FC = () => {
     return (
-        <div className={"shield-board"}>
+        <div className={classList(css["shield-board"], css["shield-a"])}>
+            
+        </div>
+    )
+}
+
+
+/*
             <div className={"shield-screen-container"}>
                 <canvas className={"shield-screen-canvas"} />
             </div>
@@ -17,6 +25,4 @@ export const Shield: React.FC = () => {
                 <button className={"shield-button-a"}>A</button>
                 <button className={"shield-button-b"}>B</button>
             </div>
-        </div>
-    )
-}
+*/
