@@ -1,7 +1,6 @@
 import "./App.css"
+import { Shield } from "./Shield"
 
-function App() {
-    return <>{"Hello Simulator!"}</>
+export const App: React.FC = () => {
+    return <Shield />
 }
-
-export default App
