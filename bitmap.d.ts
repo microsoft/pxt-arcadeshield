@@ -55,8 +55,9 @@ interface Bitmap {
      * Draw given bitmap on the current bitmap
      */
     //% shim=BitmapMethods::drawBitmap blockNamespace="bitmaps" group="Drawing"
-    //% block="%bmap=variables_get draw bitmap at x %x y %y"
+    //% block="draw bitmap %from=variables_get in %bmap=variables_get at x %x y %y"
     //% help=bitmaps/bitmap/draw-bitmap
+    //% bmap.shadow="theScreen"
     drawBitmap(from: Bitmap, x: int32, y: int32): void;
 
     /**
