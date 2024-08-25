@@ -44,7 +44,7 @@ namespace scene {
     export function pushScene() {
         const ctx = context.pushEventContext()
         ctx.registerFrameHandler(scene.RENDER_BACKGROUND_PRIORITY, () => {
-            screen.fill(0)
+            theScreen.fill(0)
         });
         ctx.registerFrameHandler(scene.UPDATE_SCREEN_PRIORITY, control.__screen.update);
     }

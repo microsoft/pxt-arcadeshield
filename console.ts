@@ -23,11 +23,11 @@ namespace scene.consoleOverlay {
     }
 
     function listener(priority: ConsolePriority, text: string) {
-        if (!screen || !consoleStrings || !text)
+        if (!theScreen || !consoleStrings || !text)
             return;
 
-        const consoleColumns = Math.floor((screen.width - 2 * marginx) / consoleFont.charWidth);
-        const consoleLines = Math.floor(screen.height / (consoleFont.charHeight + marginy)) - 1;
+        const consoleColumns = Math.floor((theScreen.width - 2 * marginx) / consoleFont.charWidth);
+        const consoleLines = Math.floor(theScreen.height / (consoleFont.charHeight + marginy)) - 1;
 
         // split text into lines
         text.split("\n")
@@ -53,12 +53,12 @@ namespace scene.consoleOverlay {
                 let tOff = 0;
                 for (let tab of t) {
                     let padding = tabSize - ((tOff + tab.length) % tabSize)
-                    screen.print(tab, marginx + (tOff * consoleFont.charWidth), top + i * height, consoleColor, consoleFont);
+                    theScreen.print(tab, marginx + (tOff * consoleFont.charWidth), top + i * height, consoleColor, consoleFont);
                     tOff += tab.length + padding;
                 }
             }
             else
-                screen.print(consoleStrings[i], marginx, top + i * height, consoleColor, consoleFont);
+                theScreen.print(consoleStrings[i], marginx, top + i * height, consoleColor, consoleFont);
         }
     }
 }
