@@ -1,5 +1,4 @@
 
-namespace bitmap {
     /**
     * Get the screen bitmap
     */
@@ -9,4 +8,3 @@ namespace bitmap {
     export function screen(): Bitmap {
         return theScreen;
     }
-}
