@@ -34,6 +34,15 @@ interface Bitmap {
     drawRect(x: number, y: number, w: number, h: number, c: color): void;
 
     /**
+     * Draw given bitmap on the current bitmap
+     */
+    //% shim=BitmapMethods::drawBitmap blockNamespace="bitmaps" group="Drawing"
+    //% block="draw bitmap %from=variables_get in %bmap=variables_get at x %x y %y"
+    //% help=bitmaps/bitmap/draw-bitmap
+    //% bmap.shadow="theScreen"
+    drawBitmap(from: Bitmap, x: int32, y: int32): void;
+
+    /**
      * Set pixel color
      */
     //% shim=BitmapMethods::setPixel blockNamespace="bitmaps" group="Drawing"
@@ -51,14 +60,6 @@ interface Bitmap {
     //% bmap.shadow="theScreen"
     getPixel(x: int32, y: int32): int32;
 
-    /**
-     * Draw given bitmap on the current bitmap
-     */
-    //% shim=BitmapMethods::drawBitmap blockNamespace="bitmaps" group="Drawing"
-    //% block="draw bitmap %from=variables_get in %bmap=variables_get at x %x y %y"
-    //% help=bitmaps/bitmap/draw-bitmap
-    //% bmap.shadow="theScreen"
-    drawBitmap(from: Bitmap, x: int32, y: int32): void;
 
     /**
      * Fill entire image with a given color
