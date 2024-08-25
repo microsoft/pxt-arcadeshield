@@ -13,13 +13,4 @@ namespace controller {
     export const down = new Button(ControllerButton.Down, DAL.CFG_PIN_BTN_DOWN);
     //% fixedInstance whenUsed block="menu"
     export const menu = new Button(7, DAL.CFG_PIN_BTN_MENU);
-
-    //% fixedInstance whenUsed block="player 2"
-    export const player2 = new Controller(2, undefined);
-    //% fixedInstance whenUsed block="player 3"
-    export const player3 = new Controller(3, undefined);
-    //% fixedInstance whenUsed block="player 4"
-    export const player4 = new Controller(4, undefined);
-    //% fixedInstance whenUsed block="player 1"
-    export const player1 = controller._player1();
 }

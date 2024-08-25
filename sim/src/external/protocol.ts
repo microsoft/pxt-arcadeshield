@@ -10,7 +10,7 @@ export interface ArcadeShieldMessage {
 export interface ShowImageMessage extends ArcadeShieldMessage {
     type: "show-image"
     data: string
-}     
+}
 export interface SetBrightnessMessage extends ArcadeShieldMessage {
     type: "set-brightness"
     value: number

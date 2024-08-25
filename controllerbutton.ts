@@ -1,10 +1,21 @@
+enum ControllerKeys {
+    KEY_UP = 2048,
+    KEY_DOWN = 2049,
+    INTERNAL_KEY_UP = 2050,
+    INTERNAL_KEY_DOWN = 2051,
+    SYSTEM_KEY_UP = 2052,
+    SYSTEM_KEY_DOWN = 2053,
+    KEY_REPEAT = 2054,
+    SYSTEM_KEY_REPEAT = 2055
+}
+
 enum ControllerButtonEvent {
     //% block="pressed"
-    Pressed = KEY_DOWN,
+    Pressed = ControllerKeys.KEY_DOWN,
     //% block="released"
-    Released = KEY_UP,
+    Released = ControllerKeys.KEY_UP,
     //% block="repeat"
-    Repeated = KEY_REPEAT
+    Repeated = ControllerKeys.KEY_REPEAT
 }
 
 enum ControllerButton {
@@ -28,13 +39,11 @@ namespace controller {
     let defaultRepeatInterval = 30;
 
     //% shim=pxt::pressureLevelByButtonId
-    function pressureLevelByButtonId(btnId: number, codalId: number): number {
-        return 0;
-    }
+    declare function pressureLevelByButtonId(btnId: number, codalId: number): number;
 
     //% shim=pxt::setupButton
     function setupButton(buttonId: number, key: number) {
-        basic.pause(0)
+        return // missing in sim
      }
 
     export class ButtonHandler {
@@ -52,9 +61,7 @@ namespace controller {
     export class Button {
         _owner: Controller;
         public id: number;
-        //% help=controller/button/repeat-delay
         public repeatDelay: number;
-        //% help=controller/button/repeat-interval
         public repeatInterval: number;
         private _pressed: boolean;
         private _pressedElasped: number;
@@ -82,8 +89,8 @@ namespace controller {
                 // this is to deal with the "anyButton" hack, which creates a button that is not visible
                 // in the UI, but used in event-handler to simulate the wildcard ANY for matching. As
                 // this button can't actually be pressed, we don't want it to propagate events
-                control.myOnEvent(INTERNAL_KEY_UP, this.id, () => this.setPressed(false), 16)
-                control.myOnEvent(INTERNAL_KEY_DOWN, this.id, () => this.setPressed(true), 16)
+                control.onEvent(ControllerKeys.INTERNAL_KEY_UP, this.id, () => this.setPressed(false), 16)
+                control.onEvent(ControllerKeys.INTERNAL_KEY_DOWN, this.id, () => this.setPressed(true), 16)
 
                 if (configKey > 0)
                     setupButton(id, configKey)
@@ -92,23 +99,23 @@ namespace controller {
 
         private raiseButtonUp() {
             if (_userEventsEnabled)
-                control.raiseEvent(KEY_UP, this.id)
+                control.raiseEvent(ControllerKeys.KEY_UP, this.id)
             else
-                control.raiseEvent(SYSTEM_KEY_UP, this.id);
+                control.raiseEvent(ControllerKeys.SYSTEM_KEY_UP, this.id);
         }
 
         private raiseButtonDown() {
             if (_userEventsEnabled)
-                control.raiseEvent(KEY_DOWN, this.id)
+                control.raiseEvent(ControllerKeys.KEY_DOWN, this.id)
             else
-                control.raiseEvent(SYSTEM_KEY_DOWN, this.id)
+                control.raiseEvent(ControllerKeys.SYSTEM_KEY_DOWN, this.id)
         }
 
         private raiseButtonRepeat() {
             if (_userEventsEnabled)
-                control.raiseEvent(KEY_REPEAT, this.id)
+                control.raiseEvent(ControllerKeys.KEY_REPEAT, this.id)
             else
-                control.raiseEvent(SYSTEM_KEY_REPEAT, this.id)
+                control.raiseEvent(ControllerKeys.SYSTEM_KEY_REPEAT, this.id)
         }
 
         /**
@@ -274,7 +281,7 @@ namespace controller {
      */
     //% weight=10
     export function pauseUntilAnyButtonIsPressed() {
-        control.waitForEvent(KEY_DOWN, 0)
+        control.waitForEvent(ControllerKeys.KEY_DOWN, 0)
     }
 
     export function _setUserEventsEnabled(enabled: boolean) {

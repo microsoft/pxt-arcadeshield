@@ -6,26 +6,29 @@
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "settings": "*",
-        "fonts": "*",
-        "screen---st7735": "*"
+        "arcadeshield": "*"
     },
     "files": [
-        "main.ts",
-        "README.md"
+        "README.md",
+        "bitmap.ts",
+        "bitmap.d.ts",
+        "config.ts",
+        "console.ts",
+        "controllerbutton.ts",
+        "controlleroverrides.ts",
+        "eventcontext.ts",
+        "fieldeditors.ts",
+        "frame.ts",
+        "init.ts",
+        "ns.ts",
+        "scene.ts",
+        "screenhelpers.ts",
+        "text.ts",
+        "reference/bitmaps/bitmap/fill-rect.md"
     ],
-    "testFiles": [
+    "tests" : [
         "test.ts"
     ],
-    "public": true,
-    "targetVersions": {
-        "target": "7.0.18",
-        "targetId": "microbit"
-    },
-    "supportedTargets": [
-        "microbit"
-    ],
-    "preferredEditor": "tsprj",
     "palette": [
         "#000000",
         "#ffffff",
@@ -44,13 +47,19 @@
         "#91d2e7",
         "#1e1e1e"
     ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true,
+    "targetVersions": {
+        "target": "7.0.18",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj",
     "disablesVariants": [
         "mbdal"
-    ],
-    "yotta": {
-        "config": {
-            "DEVICE_BLE": 0,
-            "DMESG_SERIAL_DEBUG": 1
-        }
-    }
+    ]
 }

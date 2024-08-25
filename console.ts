@@ -5,8 +5,6 @@ namespace scene.consoleOverlay {
     const marginx = 4;
     const marginy = 2;
     const consoleFont = bitmap.font5;
-    const consoleLines = Math.floor(theScreen.height / (consoleFont.charHeight + marginy)) - 1;
-    const consoleColumns = Math.floor((theScreen.width - 2 * marginx) / consoleFont.charWidth);
     console.addListener(listener);
 
     export function isVisible() {
@@ -25,8 +23,11 @@ namespace scene.consoleOverlay {
     }
 
     function listener(priority: ConsolePriority, text: string) {
-        if (!consoleStrings || !text)
+        if (!theScreen || !consoleStrings || !text)
             return;
+
+        const consoleColumns = Math.floor((theScreen.width - 2 * marginx) / consoleFont.charWidth);
+        const consoleLines = Math.floor(theScreen.height / (consoleFont.charHeight + marginy)) - 1;
 
         // split text into lines
         text.split("\n")
@@ -57,7 +58,7 @@ namespace scene.consoleOverlay {
                 }
             }
             else
-            theScreen.print(consoleStrings[i], marginx, top + i * height, consoleColor, consoleFont);
+                theScreen.print(consoleStrings[i], marginx, top + i * height, consoleColor, consoleFont);
         }
     }
 }
