@@ -1,5 +1,7 @@
-// CONTENT BELOW COPIED FROM <root>/screen/sim/state.ts.
+// CONTENT BELOW COPIED FROM <root>/protocol/protocol.ts.
 // Keep this in sync with that file.
+
+export const CHANNEL_ID = "arcadeshield"
 
 export interface ArcadeShieldMessage {
     type: "show-image" | "set-brightness" | "set-palette" | "update-stats"
