@@ -1,0 +1,37 @@
+name: sim build
+on:
+    push:
+        paths:
+            - "sim/**"
+            - "assets/**"
+        tags:
+            - v**
+    
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [18.x]
+        permissions:
+            actions: read
+            contents: write                
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: npm ci
+              working-directory: sim
+            - run: npm run build
+              working-directory: sim
+            - name: github pages
+              uses: peaceiris/actions-gh-pages@v3
+              if: ${{ github.ref == 'refs/heads/master' }}
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./sim/dist
+                  force_orphan: true

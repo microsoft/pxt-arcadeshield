@@ -1,0 +1,61 @@
+#root {
+    margin: 0;
+    padding: 0;
+}
+.app {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.sim-container {
+    border-top-left-radius: 6% 7%;
+    border-top-right-radius: 6% 7%;
+    border-bottom-left-radius: 7% 6%;
+    border-bottom-right-radius: 7% 6%;
+    overflow: hidden;
+}
+
+.shield-board {
+
+}
+
+.shield-screen-container {
+
+}
+
+.shield-screen-canvas {
+
+}
+
+.shield-dpad-buttons-container {
+
+}
+
+.shield-button-up {
+
+}
+
+.shield-button-down {
+
+}
+
+.shield-button-left {
+
+}
+
+.shield-button-right {
+
+}
+
+.shield-ab-buttons-container {
+
+}
+
+.shield-button-a {
+
+}
+
+.shield-button-b {
+
+}
