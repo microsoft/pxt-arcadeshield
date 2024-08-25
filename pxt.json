@@ -24,7 +24,7 @@
         "scene.ts",
         "screenhelpers.ts",
         "text.ts",
-        "reference/bitmaps/bitmap/fill-rect.md"
+        "docs/reference/bitmaps/bitmap/fill-rect.md"
     ],
     "tests" : [
         "test.ts"
