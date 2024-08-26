@@ -7,9 +7,19 @@ export type SetRunning_Action = ActionBase & {
     running: boolean
 }
 
-export type Action = SetRunning_Action
+export type SetSkin_Action = ActionBase & {
+    type: "SET_SKIN"
+    skin: string
+}
+
+export type Action = SetRunning_Action | SetSkin_Action
 
 export const setRunningAction = (running: boolean): SetRunning_Action => ({
     type: "SET_RUNNING",
     running,
+})
+
+export const setSkinAction = (skin: string): SetSkin_Action => ({
+    type: "SET_SKIN",
+    skin,
 })

@@ -1,51 +1,93 @@
-
 $margin: 3%;
 
 .shield-board {
-    background-image: url('/assets/shield-a.svg');
-    background-repeat: no-repeat;
+    position: relative;
     width: calc(100% - 2 * $margin);
     height: calc(100% - 2 * $margin);
     margin: $margin;
+
+    .screen-container {
+        position: absolute;
+
+        .screen-canvas {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .gamepad-button {
+        position: absolute;
+    }
 }
 
-.shield-screen-container {
-
+// skin: shield-a
+$skin-shield-a-hover: #fff;
+$skin-shield-a-focus: #00f;
+$skin-shield-a-border-size: 4px;
+.skin-shield-a {
+    &.shield-board {
+        background-image: url("/assets/shield-a.svg");
+        background-repeat: no-repeat;
+    }
+    .screen-container {
+        left: 15%;
+        top: 3.6%;
+        width: 69.2%;
+        height: 54.1%;
+    }
+    .gamepad-button {
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        &:focus {
+            outline-style: solid;
+            outline-width: $skin-shield-a-border-size;
+            outline-color: rgba($skin-shield-a-focus, 0.5);
+        }
+        &:active {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+    }
+   .button-dpad-up {
+        left: 17%;
+        top: 62.5%;
+        width: 6.3%;
+        height: 10.4%;
+        border-radius: 25%;
+    }
+    .button-dpad-down {
+        left: 17.1%;
+        top: 79.9%;
+        width: 6.3%;
+        height: 10.4%;
+        border-radius: 25%;
+    }
+    .button-dpad-left {
+        left: 7.1%;
+        top: 73.2%;
+        width: 10.1%;
+        height: 6.3%;
+        border-radius: 25%;
+    }
+    .button-dpad-right {
+        left: 23.1%;
+        top: 73.1%;
+        width: 10.1%;
+        height: 6.3%;
+        border-radius: 25%;
+    }
+    .button-a {
+        left: 78.8%;
+        top: 65.2%;
+        width: 13%;
+        height: 13.4%;
+        border-radius: 100%;
+    }
+    .button-b {
+        left: 66.5%;
+        top: 78.0%;
+        width: 13%;
+        height: 13.4%;
+        border-radius: 100%;
+    }
 }
-
-.shield-screen-canvas {
-
-}
-
-.shield-dpad-buttons-container {
-
-}
-
-.shield-button-up {
-
-}
-
-.shield-button-down {
-
-}
-
-.shield-button-left {
-
-}
-
-.shield-button-right {
-
-}
-
-.shield-ab-buttons-container {
-
-}
-
-.shield-button-a {
-
-}
-
-.shield-button-b {
-
-}
-

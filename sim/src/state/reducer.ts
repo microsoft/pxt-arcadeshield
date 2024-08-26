@@ -8,5 +8,10 @@ export const reducer = (state: AppState, action: Action): AppState => {
                 ...state,
                 running: action.running,
             }
+        case "SET_SKIN":
+            return {
+                ...state,
+                skin: action.skin,
+            }
     }
 }
