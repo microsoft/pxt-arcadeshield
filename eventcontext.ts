@@ -3,7 +3,7 @@ namespace context {
     export function onEvent(src: number, value: number, handler: () => void, flags = 16) { // EVENT_LISTENER_DEFAULT_FLAGS
         const ctx = eventContext();
         if (!ctx)
-            control.myOnEvent(src, value, handler, flags);
+            control.onEvent(src, value, handler, flags);
         else
             ctx.registerHandler(src, value, handler, flags);
     }
@@ -22,13 +22,13 @@ namespace context {
         ) { }
 
         register() {
-            control.myOnEvent(this.src, this.value, () => {
+            control.onEvent(this.src, this.value, () => {
                 if (this.handler) this.handler();
             }, this.flags)
         }
 
         unregister() {
-            control.myOnEvent(this.src, this.value, doNothing, this.flags);
+            control.onEvent(this.src, this.value, doNothing, this.flags);
         }
     }
 

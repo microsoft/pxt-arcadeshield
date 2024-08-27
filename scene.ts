@@ -79,9 +79,6 @@ namespace scene {
 }
 
 namespace controller {
-    export function _player1() {
-        return new Controller(1, undefined)
-    }
     export class Controller {
         constructor(no: number, v: any) { }
         connected: boolean

@@ -17,7 +17,3 @@ export interface SetPaletteMessage extends ArcadeShieldMessage {
     type: "set-palette"
     data: string
 }
-export interface UpdateStatsMessage extends ArcadeShieldMessage {
-    type: "update-stats"
-    data: string
-}

@@ -6,61 +6,28 @@
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "settings": "*",
-        "fonts": "*"
+        "arcadeshield": "*"
     },
     "files": [
         "README.md",
+        "bitmap.ts",
         "config.ts",
-        "config_nrf.h",
-        "arcadegamepad.h",
-        "indexedscreen.h",
-        "arcadesound.h",
-        "jdprotocol.h",
-        "jddisplay.h",
-        "jddisplay.cpp",
-        "pins.cpp",
-        "pinsDigital.cpp",
-        "controllerbuttons.cpp",
-        "screen.cpp",
-        "shims.d.ts",
-        "lib.d.ts",
-        "pxtsim.d.ts",
-        "screen/bitmap.cpp",
-        "screen/bitmap.ts",
-        "screen/bitmap.d.ts",
-        "screen/screen.ts",
-        "screen/screenmethods.ts",
-        "screen/fieldeditors.ts",
-        "screen/text.ts",
-        "screen/frame.ts",
-        "screen/sim/bitmap.ts",
-        "screen/sim/screen.ts",
-        "screen/sim/state.ts",
-        "screen/ns.ts",
-        "context/control.cpp",
-        "context/eventcontext.ts",
-        "context/compat.ts",
-        "context/console.ts",
-        "context/constants.ts",
-        "context/controlleroverrides.ts",
-        "context/controllerbutton.ts",
-        "context/mathUtil.ts",
-        "context/gameutil.ts",
-        "reference/bitmaps/bitmap/fill-rect.md"
+        "console.ts",
+        "controllerbutton.ts",
+        "controlleroverrides.ts",
+        "eventcontext.ts",
+        "fieldeditors.ts",
+        "frame.ts",
+        "init.ts",
+        "ns.ts",
+        "scene.ts",
+        "screenhelpers.ts",
+        "text.ts",
+        "docs/reference/bitmaps/bitmap/fill-rect.md"
     ],
-    "testFiles": [
+    "tests" : [
         "test.ts"
     ],
-    "public": true,
-    "targetVersions": {
-        "target": "7.0.18",
-        "targetId": "microbit"
-    },
-    "supportedTargets": [
-        "microbit"
-    ],
-    "preferredEditor": "tsprj",
     "palette": [
         "#000000",
         "#ffffff",
@@ -79,13 +46,19 @@
         "#91d2e7",
         "#1e1e1e"
     ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true,
+    "targetVersions": {
+        "target": "7.0.18",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj",
     "disablesVariants": [
         "mbdal"
-    ],
-    "yotta": {
-        "config": {
-            "DEVICE_BLE": 0,
-            "DMESG_SERIAL_DEBUG": 1
-        }
-    }
+    ]
 }

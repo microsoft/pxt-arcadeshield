@@ -27,7 +27,7 @@ let blueRect: Bitmap = null
 blueRect = bitmap.create(32, 32)
 blueRect.fill(3)
 blueRect.fillRect(8, 8, 16, 16, 14)
-screen.drawBitmap(blueRect, 0, 0)
+screen().drawBitmap(blueRect, 0, 0)
 ```
 
 ### Chessboard
@@ -47,7 +47,7 @@ for (let row = 0; row <= 7; row++) {
         }
     }
 }
-screen.drawBitmap(chessBoard, 0, 0)
+screen().drawBitmap(chessBoard, 0, 0)
 ```
 
 ## See also #seealso
