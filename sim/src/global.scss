@@ -1,8 +1,11 @@
+$aspect-ratio: 1.22; // configured in pxtarget.json
 $background-color-base: #3454d1; // microbit blue
 $background-color: darken($background-color-base, 8%);
 
 body {
     overflow: hidden;
+    height: 100vh;
+    display: flex;
     margin: 0;
     padding: 0;
 
@@ -16,6 +19,10 @@ body {
 
 #root {
     box-sizing: border-box;
+    display: flex;
+    aspect-ratio: $aspect-ratio;
+    max-height: -webkit-fill-available;
+    max-width: -webkit-fill-available;
 }
 
 code {

@@ -23,6 +23,32 @@ export const Shield: React.FC = () => {
     const { state } = stateAndDispatch();
     const { skin } = state;
 
+    const [canvasRef, setCanvasRef] = React.useState<HTMLCanvasElement | null>(null);
+
+    // TEMP: Set the canvas size to 160x128
+    useEffect(() => {
+        if (canvasRef) {
+            canvasRef.width = 160;
+            canvasRef.height = 128;
+        }
+    }, [canvasRef]);
+
+    // TESt: Draw registration marks on the canvas
+
+    useEffect(() => {
+        if (canvasRef) {
+            const ctx = canvasRef.getContext("2d");
+            if (ctx) {
+                ctx.fillStyle = "red";
+                ctx.fillRect(0, 0, 12, 12);
+                ctx.fillRect(160 - 12, 0, 12, 12);
+                ctx.fillRect(160 - 12, 128 - 12, 12, 12);
+                ctx.fillRect(0, 128 - 12, 12, 12);
+            }
+        }
+    }, [canvasRef]);
+
+
     // Mount a window event listener to handle keyboard events
     useEffect(() => {
         const handleKeyDown = (ev: KeyboardEvent) => {
@@ -44,9 +70,9 @@ export const Shield: React.FC = () => {
     // Mount a window event listener to handle message events from parent window
     useEffect(() => {
         function handleStopMessage(msg: any) {
-            transforms.setRunning(false)
+            //transforms.setRunning(false)
         }
-        
+
         function handleMessagePacket(msg: any) {
             const srcFrameIndex = (msg.srcFrameIndex as number) ?? -1
             switch (msg.channel) {
@@ -56,23 +82,23 @@ export const Shield: React.FC = () => {
                     console.log(`unknown messagepacket: ${JSON.stringify(msg)}`)
             }
         }
-        
+
         function handleShieldMessage(buf: any, srcFrameIndex: number) {
             // Is this message from the primary sim frame? This frame will reliably exist at index zero.
             // Secondary frame index cannot be relied upon to exist at a knowable index. The check for <= 0
             // is for backwards compatibility with older versions of the editor before the frame index
             // was added to the message.
             const isPrimarySim = srcFrameIndex <= 0
-        
+
             const data = new TextDecoder().decode(new Uint8Array(buf))
             const msg = JSON.parse(data) as protocol.ArcadeShieldMessage
-        
+
             // If the runId has changed, the simulator has been restarted.
             if (isPrimarySim && msg.runId !== currRunId) {
                 currRunId = msg.runId
-                transforms.setRunning(true)
+                //transforms.setRunning(true)
             }
-        
+
             switch (msg.type) {
                 case "show-image":
                     return handleShowImageMessage(msg as protocol.ShowImageMessage)
@@ -84,16 +110,16 @@ export const Shield: React.FC = () => {
                     console.log(`unknown arcadeshield message: ${JSON.stringify(msg)}`)
             }
         }
-        
+
         function handleShowImageMessage(msg: protocol.ShowImageMessage) {
             console.log("show-image");
         }
-        
+
         function handleSetPaletteMessage(msg: protocol.SetPaletteMessage) {
             console.log("set-palette");
         }
-        
-        
+
+
         function handleMessage(ev: MessageEvent) {
             const { data } = ev;
 
@@ -119,7 +145,7 @@ export const Shield: React.FC = () => {
             } catch (e) {
                 console.error(e)
             }
-    
+
             // TODO handle it
         }
 
@@ -130,7 +156,7 @@ export const Shield: React.FC = () => {
     return (
         <div className={classList(css["shield-board"], css[`skin-${skin}`])}>
             <div className={classList(css["placeable"], css["screen-container"])}>
-                <canvas className={css["screen-canvas"]} />
+                <canvas className={css["screen-canvas"]} ref={setCanvasRef} />
             </div>
             <div className={classList(css["placeable"], css["gamepad-button"], css["dpad-button"], css["button-dpad-left"])} tabIndex={1} />
             <div className={classList(css["placeable"], css["gamepad-button"], css["dpad-button"], css["button-dpad-up"])} tabIndex={1} />

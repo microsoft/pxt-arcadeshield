@@ -19,11 +19,14 @@ $margin: 3%;
         .screen-canvas {
             width: 100%;
             height: 100%;
+            image-rendering: pixelated;
         }
     }
 }
 
-// skin: shield-a
+/******************************/
+/**** SKIN: shield-a **********/
+/******************************/
 $skin-shield-a-hover: #fff;
 $skin-shield-a-focus: #00f;
 $skin-shield-a-border-size: 4px;
@@ -33,10 +36,10 @@ $skin-shield-a-border-size: 4px;
         background-repeat: no-repeat;
     }
     .screen-container {
-        left: 19.7%;
-        top: 3.6%;
-        width: 59.6%;
-        height: 54%;
+        left: 19.95%;
+        top: 3.75%;
+        width: 59.5%;
+        height: 54.1%;
     }
     .gamepad-button {
         &:hover {
