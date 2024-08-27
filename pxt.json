@@ -5,8 +5,7 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*",
-        "arcadeshield": "*"
+        "microphone": "*"
     },
     "files": [
         "README.md",
@@ -24,6 +23,18 @@
         "screenhelpers.ts",
         "text.ts"
     ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true,
+    "targetVersions": {
+        "target": "7.0.18",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj",
     "tests": [
         "test.ts"
     ],
@@ -45,18 +56,6 @@
         "#91d2e7",
         "#1e1e1e"
     ],
-    "testFiles": [
-        "test.ts"
-    ],
-    "public": true,
-    "targetVersions": {
-        "target": "7.0.18",
-        "targetId": "microbit"
-    },
-    "supportedTargets": [
-        "microbit"
-    ],
-    "preferredEditor": "tsprj",
     "disablesVariants": [
         "mbdal"
     ]
