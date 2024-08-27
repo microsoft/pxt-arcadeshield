@@ -49,7 +49,6 @@ palette[0x0d] = 0x7c3f58ff
 palette[0x0e] = 0x91d2e7ff
 palette[0x0f] = 0x1e1e1eff
 
-
 function postMessagePacket(msg: protocol.ArcadeShieldMessage) {
     const payload = new TextEncoder().encode(JSON.stringify(msg))
     window.parent.postMessage(
@@ -114,7 +113,7 @@ export const Shield: React.FC = () => {
 
     // Mount a window event listener to handle message events from parent window
     useEffect(() => {
-        function handleStopMessage(msg: any) { }
+        function handleStopMessage(msg: any) {}
 
         function handleMessagePacket(msg: any) {
             const srcFrameIndex = (msg.srcFrameIndex as number) ?? -1
@@ -233,7 +232,7 @@ export const Shield: React.FC = () => {
 
         window.addEventListener("message", handleMessage)
         return () => window.removeEventListener("message", handleMessage)
-    }, [])
+    }, [canvasRef])
 
     return (
         <div className={classList(css["shield-board"], css[`skin-${skin}`])}>

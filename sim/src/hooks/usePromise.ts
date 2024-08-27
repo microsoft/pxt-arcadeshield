@@ -5,7 +5,7 @@ export function usePromise<T>(promise: Promise<T>, defaultValue: T): T {
 
     useEffect(() => {
         promise.then(setValue)
-    }, [])
+    }, [promise])
 
     return value
 }
