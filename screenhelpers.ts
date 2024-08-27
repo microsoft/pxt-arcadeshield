@@ -120,7 +120,7 @@ namespace screenhelpers {
     
     //% shim=TD_NOOP
     function __displayHeight() {
-        __height = -1
+        __height = 128
         const state = getScreenState();
         if (state)
             __height = state.displayHeight();
@@ -136,7 +136,7 @@ namespace screenhelpers {
     
     //% shim=TD_NOOP
     function __displayWidth() {
-        __width = -1
+        __width = 160
         const state = getScreenState();
         if (state)
             __width = state.displayWidth();
