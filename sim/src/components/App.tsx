@@ -6,19 +6,15 @@ import { usePromise } from "@/hooks/usePromise"
 import { AppStateReady } from "@/state/Context"
 
 export const App: React.FC = () => {
-    const [inited, setInited] = useState(false);
+    const [inited, setInited] = useState(false)
 
-    const ready = usePromise(AppStateReady, false);
+    const ready = usePromise(AppStateReady, false)
 
     useEffect(() => {
         if (ready && !inited) {
-            setInited(true);
+            setInited(true)
         }
-    }, [ready, inited]);
+    }, [ready, inited])
 
-    return (
-        <div className={css["app"]}>
-            {inited ? <Shield /> : <Loading />}
-        </div>
-    )
+    return <div className={css["app"]}>{inited ? <Shield /> : <Loading />}</div>
 }

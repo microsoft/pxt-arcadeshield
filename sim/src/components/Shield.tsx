@@ -20,21 +20,23 @@ function postMessagePacket(msg: protocol.ArcadeShieldMessage) {
 }
 
 export const Shield: React.FC = () => {
-    const { state } = stateAndDispatch();
-    const { skin } = state;
+    const { state } = stateAndDispatch()
+    const { skin } = state
 
-    const [canvasRef, setCanvasRef] = React.useState<HTMLCanvasElement | null>(null);
+    const [canvasRef, setCanvasRef] = React.useState<HTMLCanvasElement | null>(
+        null
+    )
 
-    // TEMP: Set the canvas size to 160x128
+    // TEMP: Configure the canvas size to 160x128. Later, this will be passed in by the main simulator
     useEffect(() => {
         if (canvasRef) {
-            canvasRef.width = 160;
-            canvasRef.height = 128;
+            canvasRef.width = 160
+            canvasRef.height = 128
         }
-    }, [canvasRef]);
+    }, [canvasRef])
 
     // TESt: Draw registration marks on the canvas
-
+    /*
     useEffect(() => {
         if (canvasRef) {
             const ctx = canvasRef.getContext("2d");
@@ -47,31 +49,29 @@ export const Shield: React.FC = () => {
             }
         }
     }, [canvasRef]);
-
+    */
 
     // Mount a window event listener to handle keyboard events
     useEffect(() => {
         const handleKeyDown = (ev: KeyboardEvent) => {
-            const { key } = ev;
+            const { key } = ev
             // TODO handle it
         }
         const handleKeyUp = (ev: KeyboardEvent) => {
-            const { key } = ev;
+            const { key } = ev
             // TODO handle it
         }
-        window.addEventListener("keydown", handleKeyDown);
-        window.addEventListener("keyup", handleKeyUp);
+        window.addEventListener("keydown", handleKeyDown)
+        window.addEventListener("keyup", handleKeyUp)
         return () => {
-            window.removeEventListener("keydown", handleKeyDown);
-            window.removeEventListener("keyup", handleKeyUp);
+            window.removeEventListener("keydown", handleKeyDown)
+            window.removeEventListener("keyup", handleKeyUp)
         }
-    }, []);
+    }, [])
 
     // Mount a window event listener to handle message events from parent window
     useEffect(() => {
-        function handleStopMessage(msg: any) {
-            //transforms.setRunning(false)
-        }
+        function handleStopMessage(msg: any) {}
 
         function handleMessagePacket(msg: any) {
             const srcFrameIndex = (msg.srcFrameIndex as number) ?? -1
@@ -101,27 +101,32 @@ export const Shield: React.FC = () => {
 
             switch (msg.type) {
                 case "show-image":
-                    return handleShowImageMessage(msg as protocol.ShowImageMessage)
+                    return handleShowImageMessage(
+                        msg as protocol.ShowImageMessage
+                    )
                 case "set-brightness":
                     return
                 case "set-palette":
-                    return handleSetPaletteMessage(msg as protocol.SetPaletteMessage)
+                    return handleSetPaletteMessage(
+                        msg as protocol.SetPaletteMessage
+                    )
                 default:
-                    console.log(`unknown arcadeshield message: ${JSON.stringify(msg)}`)
+                    console.log(
+                        `unknown arcadeshield message: ${JSON.stringify(msg)}`
+                    )
             }
         }
 
         function handleShowImageMessage(msg: protocol.ShowImageMessage) {
-            console.log("show-image");
+            console.log("show-image")
         }
 
         function handleSetPaletteMessage(msg: protocol.SetPaletteMessage) {
-            console.log("set-palette");
+            console.log("set-palette")
         }
 
-
         function handleMessage(ev: MessageEvent) {
-            const { data } = ev;
+            const { data } = ev
 
             try {
                 switch (ev.data?.type) {
@@ -149,21 +154,69 @@ export const Shield: React.FC = () => {
             // TODO handle it
         }
 
-        window.addEventListener("message", handleMessage);
-        return () => window.removeEventListener("message", handleMessage);
-    }, []);
+        window.addEventListener("message", handleMessage)
+        return () => window.removeEventListener("message", handleMessage)
+    }, [])
 
     return (
         <div className={classList(css["shield-board"], css[`skin-${skin}`])}>
-            <div className={classList(css["placeable"], css["screen-container"])}>
+            <div
+                className={classList(css["placeable"], css["screen-container"])}
+            >
                 <canvas className={css["screen-canvas"]} ref={setCanvasRef} />
             </div>
-            <div className={classList(css["placeable"], css["gamepad-button"], css["dpad-button"], css["button-dpad-left"])} tabIndex={1} />
-            <div className={classList(css["placeable"], css["gamepad-button"], css["dpad-button"], css["button-dpad-up"])} tabIndex={1} />
-            <div className={classList(css["placeable"], css["gamepad-button"], css["dpad-button"], css["button-dpad-right"])} tabIndex={1} />
-            <div className={classList(css["placeable"], css["gamepad-button"], css["dpad-button"], css["button-dpad-down"])} tabIndex={1} />
-            <div className={classList(css["placeable"], css["gamepad-button"], css["button-a"])} tabIndex={1} />
-            <div className={classList(css["placeable"], css["gamepad-button"], css["button-b"])} tabIndex={1} />
+            <div
+                className={classList(
+                    css["placeable"],
+                    css["gamepad-button"],
+                    css["dpad-button"],
+                    css["button-dpad-left"]
+                )}
+                tabIndex={1}
+            />
+            <div
+                className={classList(
+                    css["placeable"],
+                    css["gamepad-button"],
+                    css["dpad-button"],
+                    css["button-dpad-up"]
+                )}
+                tabIndex={1}
+            />
+            <div
+                className={classList(
+                    css["placeable"],
+                    css["gamepad-button"],
+                    css["dpad-button"],
+                    css["button-dpad-right"]
+                )}
+                tabIndex={1}
+            />
+            <div
+                className={classList(
+                    css["placeable"],
+                    css["gamepad-button"],
+                    css["dpad-button"],
+                    css["button-dpad-down"]
+                )}
+                tabIndex={1}
+            />
+            <div
+                className={classList(
+                    css["placeable"],
+                    css["gamepad-button"],
+                    css["button-a"]
+                )}
+                tabIndex={1}
+            />
+            <div
+                className={classList(
+                    css["placeable"],
+                    css["gamepad-button"],
+                    css["button-b"]
+                )}
+                tabIndex={1}
+            />
         </div>
     )
 }
