@@ -3,7 +3,6 @@ import css from "@/styling/Shield.module.scss"
 import { classList } from "@/util"
 import { stateAndDispatch } from "@/state/Context"
 import * as protocol from "@/external/protocol"
-import * as transforms from "@/state/transforms"
 
 let currRunId = ""
 
@@ -12,42 +11,43 @@ const DEFAULT_HEIGHT = 128
 
 const palette = new Uint32Array(256)
 
-/*
-"#000000", // 0x00000000
-"#ffffff", // 0xffffffff
-"#ff2121", // 0xff2121ff
-"#ff93c4", // 0xff93c4ff
-"#ff8135", // 0xff8135ff
-"#fff609", // 0xfff609ff
-"#249ca3", // 0x249ca3ff
-"#78dc52", // 0x78dc52ff
-"#003fad", // 0x003fadff
-"#f2f2f2", // 0xf2f2f2ff
-"#f2b233", // 0xf2b233ff
-"#e45a33", // 0xe45a33ff
-"#a5694f", // 0xa5694fff
-"#7c3f58", // 0x7c3f58ff
-"#91d2e7", // 0x91d2e7ff
-"#1e1e1e"  // 0x1e1e1eff 
-*/
+// Palette from pxt.json
+palette[0x00] = 0x000000
+palette[0x01] = 0xffffff
+palette[0x02] = 0x2121ff
+palette[0x03] = 0x93c4ff
+palette[0x04] = 0x8135ff
+palette[0x05] = 0xf609ff
+palette[0x06] = 0x249ca3
+palette[0x07] = 0x78dc52
+palette[0x08] = 0x003fad
+palette[0x09] = 0xf2f2f2
+palette[0x0a] = 0xf2b233
+palette[0x0b] = 0xe45a33
+palette[0x0c] = 0xa5694f
+palette[0x0d] = 0x7c3f58
+palette[0x0e] = 0x91d2e7
+palette[0x0f] = 0x1e1e1e
 
-// Set the palette colors
-palette[0x00] = 0xff000000
-palette[0x01] = 0xffffffff
-palette[0x02] = 0xff2121ff
-palette[0x03] = 0xff93c4ff
-palette[0x04] = 0xff8135ff
-palette[0x05] = 0xfff609ff
-palette[0x06] = 0x249ca3ff
-palette[0x07] = 0x78dc52ff
-palette[0x08] = 0x003fadff
-palette[0x09] = 0xf2f2f2ff
-palette[0x0a] = 0xf2b233ff
-palette[0x0b] = 0xe45a33ff
-palette[0x0c] = 0xa5694fff
-palette[0x0d] = 0x7c3f58ff
-palette[0x0e] = 0x91d2e7ff
-palette[0x0f] = 0x1e1e1eff
+// Arcade palette
+/*
+palette[0x00] = 0x000000
+palette[0x01] = 0xffffff
+palette[0x02] = 0xff2121
+palette[0x03] = 0xff93c4
+palette[0x04] = 0xff8135
+palette[0x05] = 0xfff609
+palette[0x06] = 0x249ca3
+palette[0x07] = 0x78dc52
+palette[0x08] = 0x003fad
+palette[0x09] = 0x87f2ff
+palette[0x0a] = 0x8e2ec4
+palette[0x0b] = 0xa4839f
+palette[0x0c] = 0x5c406c
+palette[0x0d] = 0xe5cdc4
+palette[0x0e] = 0x91463d
+palette[0x0f] = 0x000000
+*/
 
 function postMessagePacket(msg: protocol.ArcadeShieldMessage) {
     const payload = new TextEncoder().encode(JSON.stringify(msg))
