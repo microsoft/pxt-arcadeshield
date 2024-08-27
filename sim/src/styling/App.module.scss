@@ -1,12 +1,11 @@
 @import '../global';
 
-$aspect-ratio: 1.05; // configured in pxtarget.json
-$border-size-base: 6%;
+$aspect-ratio: 1.22; // configured in pxtarget.json
+$border-size-base: 7%;
 $border-horz: $border-size-base;
 $border-vert: calc($border-size-base / $aspect-ratio);
 
 .app {
-    height: 100%;
     aspect-ratio: $aspect-ratio;
     overflow: hidden;
     border-top-left-radius: $border-vert $border-horz;
