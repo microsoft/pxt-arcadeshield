@@ -30,6 +30,7 @@ $margin: 3%;
 $skin-shield-a-hover: #fff;
 $skin-shield-a-focus: #00f;
 $skin-shield-a-border-size: 4px;
+
 .skin-shield-a {
     &.shield-board {
         background-image: url("/assets/shield-a.svg");
@@ -58,7 +59,7 @@ $skin-shield-a-border-size: 4px;
         border-radius: 25%;
     }
     .button-dpad-up {
-        left: 21.6%;
+        left: 21.7%;
         top: 62.5%;
         width: 5.4%;
         height: 10.4%;
@@ -70,7 +71,7 @@ $skin-shield-a-border-size: 4px;
         height: 10.4%;
     }
     .button-dpad-left {
-        left: 13%;
+        left: 13.1%;
         top: 73.1%;
         width: 8.3%;
         height: 6.4%;
