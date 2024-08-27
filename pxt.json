@@ -1,6 +1,6 @@
 {
     "name": "pxt-arcadeshield",
-    "version": "0.0.27",
+    "version": "0.0.28",
     "description": "Arcade Shield extension for MakeCode micro:bit",
     "dependencies": {
         "core": "*",
@@ -24,7 +24,7 @@
         "screenhelpers.ts",
         "text.ts"
     ],
-    "tests" : [
+    "tests": [
         "test.ts"
     ],
     "palette": [
