@@ -7,6 +7,49 @@ import * as transforms from "@/state/transforms"
 
 let currRunId = ""
 
+const DEFAULT_WIDTH = 160
+const DEFAULT_HEIGHT = 128
+
+const palette = new Uint32Array(256)
+
+/*
+"#000000", // 0x00000000
+"#ffffff", // 0xffffffff
+"#ff2121", // 0xff2121ff
+"#ff93c4", // 0xff93c4ff
+"#ff8135", // 0xff8135ff
+"#fff609", // 0xfff609ff
+"#249ca3", // 0x249ca3ff
+"#78dc52", // 0x78dc52ff
+"#003fad", // 0x003fadff
+"#f2f2f2", // 0xf2f2f2ff
+"#f2b233", // 0xf2b233ff
+"#e45a33", // 0xe45a33ff
+"#a5694f", // 0xa5694fff
+"#7c3f58", // 0x7c3f58ff
+"#91d2e7", // 0x91d2e7ff
+"#1e1e1e"  // 0x1e1e1eff 
+*/
+
+// Set the palette colors
+palette[0x00] = 0xff000000
+palette[0x01] = 0xffffffff
+palette[0x02] = 0xff2121ff
+palette[0x03] = 0xff93c4ff
+palette[0x04] = 0xff8135ff
+palette[0x05] = 0xfff609ff
+palette[0x06] = 0x249ca3ff
+palette[0x07] = 0x78dc52ff
+palette[0x08] = 0x003fadff
+palette[0x09] = 0xf2f2f2ff
+palette[0x0a] = 0xf2b233ff
+palette[0x0b] = 0xe45a33ff
+palette[0x0c] = 0xa5694fff
+palette[0x0d] = 0x7c3f58ff
+palette[0x0e] = 0x91d2e7ff
+palette[0x0f] = 0x1e1e1eff
+
+
 function postMessagePacket(msg: protocol.ArcadeShieldMessage) {
     const payload = new TextEncoder().encode(JSON.stringify(msg))
     window.parent.postMessage(
@@ -30,8 +73,8 @@ export const Shield: React.FC = () => {
     // TEMP: Configure the canvas size to 160x128. Later, this will be passed in by the main simulator
     useEffect(() => {
         if (canvasRef) {
-            canvasRef.width = 160
-            canvasRef.height = 128
+            canvasRef.width = DEFAULT_WIDTH
+            canvasRef.height = DEFAULT_HEIGHT
         }
     }, [canvasRef])
 
@@ -71,7 +114,7 @@ export const Shield: React.FC = () => {
 
     // Mount a window event listener to handle message events from parent window
     useEffect(() => {
-        function handleStopMessage(msg: any) {}
+        function handleStopMessage(msg: any) { }
 
         function handleMessagePacket(msg: any) {
             const srcFrameIndex = (msg.srcFrameIndex as number) ?? -1
@@ -96,7 +139,6 @@ export const Shield: React.FC = () => {
             // If the runId has changed, the simulator has been restarted.
             if (isPrimarySim && msg.runId !== currRunId) {
                 currRunId = msg.runId
-                //transforms.setRunning(true)
             }
 
             switch (msg.type) {
@@ -118,7 +160,42 @@ export const Shield: React.FC = () => {
         }
 
         function handleShowImageMessage(msg: protocol.ShowImageMessage) {
-            console.log("show-image")
+            if (!canvasRef) {
+                return
+            }
+            const ctx = canvasRef.getContext("2d")
+            if (!ctx) {
+                return
+            }
+
+            const { data } = msg
+            // convert image data from base 64 to buffer
+            const buf = Uint8Array.from(atob(data), (c) => c.charCodeAt(0))
+            // Ensure buffer size is correct
+            const expectedSize = canvasRef.width * canvasRef.height
+            if (buf.length !== expectedSize) {
+                console.error(
+                    `expected image buffer size ${expectedSize}, got ${buf.length}`
+                )
+                return
+            }
+            // Create an image data object from the buffer. the buffer is a 1d array of color indices.
+            const imgData = new ImageData(canvasRef.width, canvasRef.height)
+            // Set the pixel data of the image data object
+            for (let i = 0; i < buf.length; i++) {
+                const index = buf[i]
+                if (index >= palette.length) {
+                    console.error(`invalid color index ${index}`)
+                    return
+                }
+                const color = palette[index]
+                imgData.data[i * 4 + 0] = (color >> 16) & 0xff
+                imgData.data[i * 4 + 1] = (color >> 8) & 0xff
+                imgData.data[i * 4 + 2] = color & 0xff
+                imgData.data[i * 4 + 3] = 0xff
+            }
+            // Draw the image data to the canvas
+            ctx.putImageData(imgData, 0, 0)
         }
 
         function handleSetPaletteMessage(msg: protocol.SetPaletteMessage) {
@@ -129,7 +206,7 @@ export const Shield: React.FC = () => {
             const { data } = ev
 
             try {
-                switch (ev.data?.type) {
+                switch (data?.type) {
                     case "messagepacket":
                         return handleMessagePacket(ev.data)
                     case "stop":
@@ -146,7 +223,7 @@ export const Shield: React.FC = () => {
                     case "stopsound":
                         return
                 }
-                console.log(`unknown message: ${JSON.stringify(ev.data)}`)
+                console.log(`unknown message: ${JSON.stringify(data)}`)
             } catch (e) {
                 console.error(e)
             }
