@@ -51,33 +51,32 @@ $skin-shield-a-border-size: 4px;
             background-color: rgba(255, 255, 255, 0.6);
         }
     }
+    .dpad-button {
+        border-radius: 20%;
+    }
    .button-dpad-up {
         left: 21.5%;
         top: 62.5%;
         width: 5.4%;
         height: 10.4%;
-        border-radius: 25%;
     }
     .button-dpad-down {
         left: 21.5%;
         top: 79.9%;
         width: 5.4%;
         height: 10.4%;
-        border-radius: 25%;
     }
     .button-dpad-left {
         left: 13%;
         top: 73.1%;
         width: 8.3%;
         height: 6.4%;
-        border-radius: 25%;
     }
     .button-dpad-right {
         left: 27.1%;
         top: 73.1%;
         width: 8.3%;
         height: 6.4%;
-        border-radius: 25%;
     }
     .button-a {
         left: 74.8%;

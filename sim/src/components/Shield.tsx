@@ -132,10 +132,10 @@ export const Shield: React.FC = () => {
             <div className={classList(css["placeable"], css["screen-container"])}>
                 <canvas className={css["screen-canvas"]} />
             </div>
-            <div className={classList(css["placeable"], css["gamepad-button"], css["button-dpad-left"])} tabIndex={1} />
-            <div className={classList(css["placeable"], css["gamepad-button"], css["button-dpad-up"])} tabIndex={1} />
-            <div className={classList(css["placeable"], css["gamepad-button"], css["button-dpad-right"])} tabIndex={1} />
-            <div className={classList(css["placeable"], css["gamepad-button"], css["button-dpad-down"])} tabIndex={1} />
+            <div className={classList(css["placeable"], css["gamepad-button"], css["dpad-button"], css["button-dpad-left"])} tabIndex={1} />
+            <div className={classList(css["placeable"], css["gamepad-button"], css["dpad-button"], css["button-dpad-up"])} tabIndex={1} />
+            <div className={classList(css["placeable"], css["gamepad-button"], css["dpad-button"], css["button-dpad-right"])} tabIndex={1} />
+            <div className={classList(css["placeable"], css["gamepad-button"], css["dpad-button"], css["button-dpad-down"])} tabIndex={1} />
             <div className={classList(css["placeable"], css["gamepad-button"], css["button-a"])} tabIndex={1} />
             <div className={classList(css["placeable"], css["gamepad-button"], css["button-b"])} tabIndex={1} />
         </div>
