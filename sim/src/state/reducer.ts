@@ -3,10 +3,10 @@ import { Action } from "./actions"
 
 export const reducer = (state: AppState, action: Action): AppState => {
     switch (action.type) {
-        case "SET_RUNNING":
+        case "SET_SKIN":
             return {
                 ...state,
-                running: action.running,
+                skin: action.skin,
             }
     }
 }

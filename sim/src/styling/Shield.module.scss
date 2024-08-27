@@ -1,0 +1,99 @@
+$margin: 3%;
+
+.shield-board {
+    position: relative;
+    width: calc(100% - 2 * $margin);
+    height: calc(100% - 2 * $margin);
+    margin: $margin;
+    background-position-x: center;
+    background-position-y: center;
+
+    .placeable {
+        position: absolute;
+        //border: solid 1px yellow;
+    }
+
+    .screen-container {
+        position: absolute;
+
+        .screen-canvas {
+            width: 100%;
+            height: 100%;
+            image-rendering: pixelated;
+        }
+    }
+}
+
+/******************************/
+/**** SKIN: shield-a **********/
+/******************************/
+$skin-shield-a-hover: #fff;
+$skin-shield-a-focus: #00f;
+$skin-shield-a-border-size: 4px;
+
+.skin-shield-a {
+    &.shield-board {
+        background-image: url("/assets/shield-a.svg");
+        background-repeat: no-repeat;
+    }
+    .screen-container {
+        left: 19.93%;
+        top: 3.75%;
+        width: 59.6%;
+        height: 54.1%;
+    }
+    .gamepad-button {
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+        &:focus {
+            outline-style: solid;
+            outline-width: $skin-shield-a-border-size;
+            outline-color: rgba($skin-shield-a-focus, 0.5);
+        }
+        &:active {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+    }
+    .dpad-button {
+        border-radius: 25%;
+    }
+    .button-dpad-up {
+        left: 21.7%;
+        top: 62.6%;
+        width: 5.4%;
+        height: 10.4%;
+    }
+    .button-dpad-down {
+        left: 21.8%;
+        top: 80%;
+        width: 5.4%;
+        height: 10.4%;
+    }
+    .button-dpad-left {
+        left: 13.1%;
+        top: 73.1%;
+        width: 8.3%;
+        height: 6.4%;
+    }
+    .button-dpad-right {
+        left: 27.2%;
+        top: 73.1%;
+        width: 8.3%;
+        height: 6.4%;
+    }
+    .button-a {
+        left: 74.8%;
+        top: 65%;
+        width: 11.4%;
+        height: 13.5%;
+        border-radius: 100%;
+    }
+    .button-b {
+        left: 64.2%;
+        top: 77.65%;
+        width: 11.4%;
+        height: 13.5%;
+        border-radius: 100%;
+    }
+}

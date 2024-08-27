@@ -1,7 +1,9 @@
+$aspect-ratio: 1.22; // configured in pxtarget.json
+
 body {
-    height: 100%;
-    width: 100%;
     overflow: hidden;
+    height: 100vh;
+    display: flex;
     margin: 0;
     padding: 0;
 
@@ -14,11 +16,11 @@ body {
 }
 
 #root {
+    box-sizing: border-box;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
+    aspect-ratio: $aspect-ratio;
+    max-height: -webkit-fill-available;
+    max-width: -webkit-fill-available;
 }
 
 code {
