@@ -1,7 +1,7 @@
 namespace screenhelpers {
     interface ArcadeShieldMessage {
         type: "show-image" | "set-brightness" | "set-palette"
-        runId: string
+        runId: any
     }
     interface ShowImageMessage extends ArcadeShieldMessage {
         type: "show-image"

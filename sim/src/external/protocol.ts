@@ -1,11 +1,9 @@
-// CONTENT BELOW COPIED FROM <root>/protocol/protocol.ts.
+// CONTENT BELOW COPIED FROM <root>/screenhelpers.ts
 // Keep this in sync with that file.
 
-export const CHANNEL_ID = "arcadeshield"
-
 export interface ArcadeShieldMessage {
-    type: "show-image" | "set-brightness" | "set-palette" | "update-stats"
-    runId: string
+    type: "show-image" | "set-brightness" | "set-palette"
+    runId: any
 }
 export interface ShowImageMessage extends ArcadeShieldMessage {
     type: "show-image"
