@@ -54,6 +54,9 @@ $skin-shield-a-border-size: 4px;
         &:active {
             background-color: rgba(255, 255, 255, 0.6);
         }
+        &.active {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
     }
     .dpad-button {
         border-radius: 25%;
