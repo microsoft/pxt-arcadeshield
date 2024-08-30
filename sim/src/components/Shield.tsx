@@ -23,32 +23,32 @@ function hookShieldButton(
     if (!svg) {
         return undefined
     }
-    const buttonActiveEffect = svg.querySelector(`#button-${buttonId}-active`) as SVGElement
-    if (buttonActiveEffect) {
-        buttonActiveEffect.style.display = "none"
+    const activeEffect = svg.querySelector(`#button-${buttonId}-active`) as SVGElement
+    if (activeEffect) {
+        activeEffect.style.display = "none"
     }
-    const buttonHoverEffect = svg.querySelector(`#button-${buttonId}-focus`) as SVGElement
-    if (buttonHoverEffect) {
-        buttonHoverEffect.style.display = "none"
+    const hoverEffect = svg.querySelector(`#button-${buttonId}-focus`) as SVGElement
+    if (hoverEffect) {
+        hoverEffect.style.display = "none"
     }
     const showActiveEffect = () => {
-        if (buttonActiveEffect) {
-            buttonActiveEffect.style.display = "block"
+        if (activeEffect) {
+            activeEffect.style.display = "block"
         }
     }
     const hideActiveEffect = () => {
-        if (buttonActiveEffect) {
-            buttonActiveEffect.style.display = "none"
+        if (activeEffect) {
+            activeEffect.style.display = "none"
         }
     }
     const showHoverEffect = () => {
-        if (buttonHoverEffect) {
-            buttonHoverEffect.style.display = "block"
+        if (hoverEffect) {
+            hoverEffect.style.display = "block"
         }
     }
     const hideHoverEffect = () => {
-        if (buttonHoverEffect) {
-            buttonHoverEffect.style.display = "none"
+        if (hoverEffect) {
+            hoverEffect.style.display = "none"
         }
     }
     const mouseEnter = () => {
@@ -78,9 +78,9 @@ function hookShieldButton(
     }
 
     return {
-        activeEffect: buttonActiveEffect,
-        hoverEffect: buttonHoverEffect,
-        button: button as SVGElement,
+        activeEffect,
+        hoverEffect,
+        button,
     }
 }
 
