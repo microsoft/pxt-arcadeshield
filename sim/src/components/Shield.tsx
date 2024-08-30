@@ -171,7 +171,7 @@ export const Shield: React.FC = () => {
     return (
         <div className={classList(css["shield-board"], css[`skin-${DEFAULT_SKIN}`])}>
             <ReactSVG
-                src={`/assets/${DEFAULT_SKIN}.svg`}
+                src={`assets/${DEFAULT_SKIN}.svg`}
                 className={classList(css["shield-svg"], focused ? css[""] : css["unfocused"])}
                 afterInjection={afterSkinInjection}
             />
