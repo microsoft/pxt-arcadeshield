@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
 export function useWindowFocus(): boolean {
     const [focused, setFocused] = useState(document.hasFocus())
@@ -14,5 +14,5 @@ export function useWindowFocus(): boolean {
         }
     }, [])
 
-    return focused;
+    return focused
 }

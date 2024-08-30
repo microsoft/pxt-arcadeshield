@@ -108,7 +108,7 @@ $skin-shield-a-border-size: 4px;
         max-width: 100%;
 
         &.unfocused {
-            filter: opacity(.8) grayscale(.65)
+            filter: opacity(0.8) grayscale(0.65);
         }
     }
     .screen-container {

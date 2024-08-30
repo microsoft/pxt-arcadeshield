@@ -116,9 +116,13 @@ export const Shield: React.FC = () => {
         }
     }, [canvasRef])
 
-    const onButtonDown = (buttonId: ButtonId) => {}
-    const onButtonUp = (buttonId: ButtonId) => {}
-    const onKeyDown = (key: string) => {
+    const onButtonDown = (buttonId: ButtonId): boolean => {
+        return true
+    }
+    const onButtonUp = (buttonId: ButtonId): boolean => {
+        return true
+    }
+    const onKeyDown = (key: string): boolean => {
         //console.log(`key down: ${key}`)
         for (const buttonId of Object.keys(keymap) as ButtonId[]) {
             const assignments = keymap[buttonId]
@@ -127,12 +131,12 @@ export const Shield: React.FC = () => {
                 if (elems?.activeEffect) {
                     elems.activeEffect.style.display = "block"
                 }
-                onButtonDown(buttonId)
-                break
+                return onButtonDown(buttonId)
             }
         }
+        return false
     }
-    const onKeyUp = (key: string) => {
+    const onKeyUp = (key: string): boolean => {
         //console.log(`key up: ${key}`)
         for (const buttonId of Object.keys(keymap) as ButtonId[]) {
             const assignments = keymap[buttonId]
@@ -141,10 +145,10 @@ export const Shield: React.FC = () => {
                 if (elems?.activeEffect) {
                     elems.activeEffect.style.display = "none"
                 }
-                onButtonUp(buttonId)
-                break
+                return onButtonUp(buttonId)
             }
         }
+        return false
     }
 
     useShieldService(canvasRef)
