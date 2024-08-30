@@ -5,7 +5,9 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "microphone": "*"
+        "microphone": "*",
+        "arcadeshield": "*",
+        "fonts": "*"
     },
     "files": [
         "README.md",
