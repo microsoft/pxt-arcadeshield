@@ -68,12 +68,13 @@ function hookShieldButton(
         onButtonUp(buttonId)
     }
 
-    const button = svg.querySelector(`#button-${buttonId}`)
+    const button = svg.querySelector(`#button-${buttonId}`) as SVGElement
     if (button) {
         button.addEventListener("mouseenter", mouseEnter)
         button.addEventListener("mouseleave", mouseLeave)
         button.addEventListener("mousedown", mouseDown)
         button.addEventListener("mouseup", mouseUp)
+        button.style.cursor = "pointer"
     }
 
     return {
