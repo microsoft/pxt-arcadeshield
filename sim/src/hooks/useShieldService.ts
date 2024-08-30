@@ -145,7 +145,7 @@ export function useShieldService(canvasRef: HTMLCanvasElement | null) {
         }
 
         function handleSetPaletteMessage(msg: protocol.SetPaletteMessage) {
-            console.log("set-palette")
+            console.log("received set-palette")
         }
 
         function handleMessage(ev: MessageEvent) {
@@ -173,8 +173,6 @@ export function useShieldService(canvasRef: HTMLCanvasElement | null) {
             } catch (e) {
                 console.error(e)
             }
-
-            // TODO handle it
         }
 
         window.addEventListener("message", handleMessage)
