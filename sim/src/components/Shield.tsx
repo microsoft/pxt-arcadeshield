@@ -151,7 +151,7 @@ export const Shield: React.FC = () => {
     useKeyboard(onKeyDown, onKeyUp)
 
     const afterSkinInjection = (svg: SVGElement) => {
-        console.log("Skin injected")
+        // TODO: unregister previous skin's event listeners
         skinRef.current = svg
         buttonElements.current["left"] = hookShieldButton(skinRef.current, "left", onButtonDown, onButtonUp)
         buttonElements.current["right"] = hookShieldButton(skinRef.current, "right", onButtonDown, onButtonUp)
