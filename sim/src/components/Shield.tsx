@@ -83,14 +83,13 @@ function hookShieldButton(
     }
 }
 
-// Matches Arcade's default keyboard mapping
 const keymap: { [key in ButtonId]: string[] } = {
-    left: ["arrowleft", "a"],
-    right: ["arrowright", "d"],
-    up: ["arrowup", "w"],
-    down: ["arrowdown", "s"],
-    a: ["enter", "q"],
-    b: [" ", "e"],
+    left: ["arrowleft"],
+    right: ["arrowright"],
+    up: ["arrowup"],
+    down: ["arrowdown"],
+    a: ["a"],
+    b: ["b"],
     menu: ["`"],
     restart: ["backspace"],
 }
