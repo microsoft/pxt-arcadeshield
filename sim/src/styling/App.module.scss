@@ -10,8 +10,4 @@ $border-radius-vert: calc($border-size-base / $aspect-ratio);
     width: 100%;
     height: min-content;
     aspect-ratio: $aspect-ratio;
-    border-top-left-radius: $border-radius-vert $border-radius-horz;
-    border-top-right-radius: $border-radius-vert $border-radius-horz;
-    border-bottom-left-radius: $border-radius-vert $border-radius-horz;
-    border-bottom-right-radius: $border-radius-vert $border-radius-horz;
 }
