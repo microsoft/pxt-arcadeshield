@@ -69,8 +69,6 @@ function hookShieldButton(
 
     const button = svg.querySelector(`#button-${buttonId}`)
     if (button) {
-        // set button tab index to 0 so it can be focused
-        button.setAttribute("tabindex", "0")
         button.addEventListener("mouseenter", mouseEnter)
         button.addEventListener("mouseleave", mouseLeave)
         button.addEventListener("mousedown", mouseDown)
