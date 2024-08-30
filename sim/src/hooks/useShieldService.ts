@@ -76,6 +76,8 @@ export function useShieldService(canvasRef: HTMLCanvasElement | null) {
             switch (msg.channel) {
                 case "arcadeshield":
                     return handleShieldMessage(msg.data, srcFrameIndex)
+                case "jacdac":
+                    return
                 default:
                     console.log(`unknown messagepacket: ${JSON.stringify(msg)}`)
             }
