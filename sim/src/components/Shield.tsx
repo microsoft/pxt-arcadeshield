@@ -4,6 +4,7 @@ import { classList } from "@/util"
 import { DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_SKIN } from "@/constants"
 import { useShieldService } from "@/hooks/useShieldService"
 import { useKeyboard } from "@/hooks/useKeyboard"
+import { useWindowFocus } from "@/hooks/useWindowFocus"
 import { ButtonId } from "@/types"
 import { ReactSVG } from "react-svg"
 
@@ -149,6 +150,7 @@ export const Shield: React.FC = () => {
 
     useShieldService(canvasRef)
     useKeyboard(onKeyDown, onKeyUp)
+    const focused = useWindowFocus()
 
     const afterSkinInjection = (svg: SVGElement) => {
         // TODO: unregister previous skin's event listeners
@@ -167,7 +169,7 @@ export const Shield: React.FC = () => {
         <div className={classList(css["shield-board"], css[`skin-${DEFAULT_SKIN}`])}>
             <ReactSVG
                 src={`/assets/${DEFAULT_SKIN}.svg`}
-                className={css["shield-svg"]}
+                className={classList(css["shield-svg"], focused ? css[""] : css["unfocused"])}
                 afterInjection={afterSkinInjection}
             />
             <div className={css["screen-container"]}>

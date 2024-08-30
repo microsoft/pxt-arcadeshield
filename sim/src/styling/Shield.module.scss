@@ -106,6 +106,10 @@ $skin-shield-a-border-size: 4px;
     .shield-svg {
         width: 100%;
         max-width: 100%;
+
+        &.unfocused {
+            filter: opacity(.8) grayscale(.65)
+        }
     }
     .screen-container {
         left: 12.1%;
