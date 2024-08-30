@@ -104,9 +104,6 @@ $skin-shield-a-border-size: 4px;
         //background-color: black;
     }
     .shield-svg {
-        width: 100%;
-        max-width: 100%;
-
         &.unfocused {
             filter: opacity(0.8) grayscale(0.65);
         }
