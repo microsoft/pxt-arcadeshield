@@ -79,7 +79,7 @@ namespace screenhelpers {
     }
 
     //% shim=TD_NOOP
-    function __updateScreen(img: Bitmap) {
+    function simUpdateScreen(img: Bitmap) {
         const state = getScreenState();
         if (state)
             state.showImage(img);        
@@ -87,11 +87,11 @@ namespace screenhelpers {
 
     export function updateScreen(img: Bitmap) {
         __screenhelpers.updateScreen(img)
-        __updateScreen(img)
+        simUpdateScreen(img)
     }
 
     //% shim=TD_NOOP    
-    function __setPalette(b: Buffer) {
+    function simSetPalette(b: Buffer) {
         const state = getScreenState();
         if (state)
             state.setPalette(b);
@@ -99,11 +99,11 @@ namespace screenhelpers {
 
     export function setPalette(b: Buffer) {
         __screenhelpers.setPalette(b)
-        __setPalette(b)
+        simSetPalette(b)
     }
 
     //% shim=TD_NOOP   
-    function __setScreenBrightness(n: number) {
+    function simSetScreenBrightness(n: number) {
         const state = getScreenState();
         if (state)
             state.setScreenBrightness(n);
@@ -111,7 +111,7 @@ namespace screenhelpers {
 
     export function setScreenBrightness(n: number) {
         __screenhelpers.setScreenBrightness(n)
-        __setScreenBrightness(n)
+        simSetScreenBrightness(n)
     }
 
     // getters
@@ -119,7 +119,7 @@ namespace screenhelpers {
     let __height = 0
     
     //% shim=TD_NOOP
-    function __displayHeight() {
+    function simSisplayHeight() {
         __height = 128
         const state = getScreenState();
         if (state)
@@ -128,14 +128,14 @@ namespace screenhelpers {
     
     export function displayHeight(): number {
         __height = __screenhelpers.displayHeight()
-        __displayHeight()
+        simDisplayHeight()
         return __height
     }
 
     let __width = 0
     
     //% shim=TD_NOOP
-    function __displayWidth() {
+    function simDisplayWidth() {
         __width = 160
         const state = getScreenState();
         if (state)
@@ -144,14 +144,14 @@ namespace screenhelpers {
 
     export function displayWidth(): number {
         __width = __screenhelpers.displayWidth()
-        __displayWidth()
+        simDisplayWidth()
         return __width
     }
 
     let __present = true
     
     //% shim=TD_NOOP
-    function __displayPresent() {
+    function simDisplayPresent() {
         __present = true
         const state = getScreenState();
         if (state)
@@ -161,7 +161,7 @@ namespace screenhelpers {
 
     export function displayPresent(): boolean {
         __present = __screenhelpers.displayPresent()
-        __displayPresent()
+        simDisplayPresent()
         return __present
     }
 }
