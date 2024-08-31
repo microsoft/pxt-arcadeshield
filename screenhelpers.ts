@@ -119,7 +119,7 @@ namespace screenhelpers {
     let __height = 0
     
     //% shim=TD_NOOP
-    function simSisplayHeight() {
+    function simDisplayHeight() {
         __height = 128
         const state = getScreenState();
         if (state)
