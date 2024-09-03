@@ -5,7 +5,7 @@ import { DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_SKIN } from "@/constants"
 import { useShieldService } from "@/hooks/useShieldService"
 import { useKeyboard } from "@/hooks/useKeyboard"
 import { useWindowFocus } from "@/hooks/useWindowFocus"
-import { ButtonId } from "@/types"
+import { ArcadeButtonId } from "@/external/protocol"
 import { ReactSVG } from "react-svg"
 
 type ButtonElements = {
@@ -16,9 +16,9 @@ type ButtonElements = {
 
 function hookShieldButton(
     svg: SVGElement | null,
-    buttonId: ButtonId,
-    onButtonDown: (buttonId: ButtonId) => void,
-    onButtonUp: (buttonId: ButtonId) => void
+    buttonId: ArcadeButtonId,
+    onButtonDown: (buttonId: ArcadeButtonId) => void,
+    onButtonUp: (buttonId: ArcadeButtonId) => void
 ): ButtonElements | undefined {
     if (!svg) {
         return undefined
@@ -84,7 +84,7 @@ function hookShieldButton(
     }
 }
 
-const keymap: { [key in ButtonId]: string[] } = {
+const keymap: { [key in ArcadeButtonId]: string[] } = {
     left: ["arrowleft"],
     right: ["arrowright"],
     up: ["arrowup"],
@@ -109,7 +109,7 @@ function postMessagePacket(msg: any) {
 export const Shield: React.FC = () => {
     const [canvasRef, setCanvasRef] = useState<HTMLCanvasElement | null>(null)
     const skinRef = useRef<SVGElement | null>(null)
-    const buttonElements = useRef<{ [key in ButtonId]: ButtonElements | undefined }>({
+    const buttonElements = useRef<{ [key in ArcadeButtonId]: ButtonElements | undefined }>({
         left: undefined,
         right: undefined,
         up: undefined,
@@ -128,15 +128,15 @@ export const Shield: React.FC = () => {
         }
     }, [canvasRef])
 
-    const onButtonDown = (buttonId: ButtonId): boolean => {
+    const onButtonDown = (buttonId: ArcadeButtonId): boolean => {
         return true
     }
-    const onButtonUp = (buttonId: ButtonId): boolean => {
+    const onButtonUp = (buttonId: ArcadeButtonId): boolean => {
         return true
     }
     const onKeyDown = (key: string): boolean => {
         //console.log(`key down: ${key}`)
-        for (const buttonId of Object.keys(keymap) as ButtonId[]) {
+        for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
                 const elems = buttonElements.current[buttonId]
@@ -150,7 +150,7 @@ export const Shield: React.FC = () => {
     }
     const onKeyUp = (key: string): boolean => {
         //console.log(`key up: ${key}`)
-        for (const buttonId of Object.keys(keymap) as ButtonId[]) {
+        for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
                 const elems = buttonElements.current[buttonId]
