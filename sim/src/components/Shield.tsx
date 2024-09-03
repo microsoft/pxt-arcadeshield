@@ -95,6 +95,17 @@ const keymap: { [key in ButtonId]: string[] } = {
     restart: ["backspace"],
 }
 
+function postMessagePacket(msg: any) {
+    const payload = new TextEncoder().encode(JSON.stringify(msg))
+    window.parent.postMessage(
+        {
+            type: "messagepacket",
+            channel: "arcadeshield",
+            data: payload,
+        },
+        "*"
+    )
+
 export const Shield: React.FC = () => {
     const [canvasRef, setCanvasRef] = useState<HTMLCanvasElement | null>(null)
     const skinRef = useRef<SVGElement | null>(null)
