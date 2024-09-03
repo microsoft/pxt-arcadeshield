@@ -100,9 +100,6 @@ $skin-shield-a-border-size: 4px;
 /**** SKIN: shield-b **********/
 /******************************/
 .skin-shield-b {
-    &.shield-board {
-        //background-color: black;
-    }
     .shield-svg {
         transition: filter 0.05s;
         &.unfocused {

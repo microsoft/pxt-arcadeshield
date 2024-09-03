@@ -25,7 +25,8 @@ function hideElement(el?: HTMLElement | SVGElement) {
     }
 }
 function setElementVisibility(el: HTMLElement | SVGElement, visible: boolean) {
-    visible ? showElement(el) : hideElement(el)
+    if (visible) showElement(el)
+    else hideElement(el)
 }
 
 const keymap: { [key in ArcadeButtonId]: string[] } = {
@@ -118,7 +119,7 @@ export const Shield: React.FC = () => {
         return false
     }
 
-    function hookShieldButton(svg: SVGElement | null, buttonId: ButtonId): ButtonElements | undefined {
+    function hookShieldButton(svg: SVGElement | null, buttonId: ArcadeButtonId): ButtonElements | undefined {
         if (!svg) {
             return undefined
         }
