@@ -1,6 +1,3 @@
-// CONTENT BELOW COPIED FROM <root>/screenhelpers.ts
-// Keep this in sync with that file.
-
 export interface ArcadeShieldMessage {
     type: "show-image" | "set-brightness" | "set-palette"
     runId: any
