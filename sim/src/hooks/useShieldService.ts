@@ -100,7 +100,7 @@ export function useShieldService(canvasRef: HTMLCanvasElement | null) {
 
             switch (msg.type) {
                 case "show-image":
-                    return handleShowImageMessage(msg as protocol.ShowImageMessage)
+                    return handleShowImageMessage(msg as protocol.p.ShowImageMessage)
                 case "set-brightness":
                     return
                 case "set-palette":

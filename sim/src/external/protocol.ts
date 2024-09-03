@@ -1,3 +1,6 @@
+// copied from screenhelpers.ts
+// KEEP IN SYNC
+
 export type ArcadeButtonId = "left" | "right" | "up" | "down" | "a" | "b" | "menu" | "restart"
 
 export interface ArcadeShieldMessage {
@@ -17,7 +20,7 @@ export interface SetPaletteMessage extends ArcadeShieldMessage {
     data: string
 }
 
-export interface ButtonMessage extends ArcadeShieldMessage { 
+export interface ButtonMessage extends ArcadeShieldMessage {
     type: "button-down" | "button-up"
     buttonId: ArcadeButtonId
 }

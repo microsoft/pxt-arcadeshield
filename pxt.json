@@ -23,8 +23,7 @@
         "ns.ts",
         "scene.ts",
         "screenhelpers.ts",
-        "text.ts",
-        "sim/src/external/protocol.ts"
+        "text.ts"
     ],
     "testFiles": [
         "test.ts"

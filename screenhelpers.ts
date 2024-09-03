@@ -1,12 +1,14 @@
 namespace screenhelpers {
+    type ArcadeButtonId = "left" | "right" | "up" | "down" | "a" | "b" | "menu" | "restart"
+
     interface ArcadeShieldMessage {
-        type: "show-image" | "set-brightness" | "set-palette"
+        type: "show-image" | "set-brightness" | "set-palette" | "button-down" | "button-up"
         runId: any
     }
     interface ShowImageMessage extends ArcadeShieldMessage {
         type: "show-image"
         data: string
-    }     
+    }
     interface SetBrightnessMessage extends ArcadeShieldMessage {
         type: "set-brightness"
         value: number
@@ -14,6 +16,11 @@ namespace screenhelpers {
     interface SetPaletteMessage extends ArcadeShieldMessage {
         type: "set-palette"
         data: string
+    }
+
+    interface ButtonMessage extends ArcadeShieldMessage {
+        type: "button-down" | "button-up"
+        buttonId: ArcadeButtonId
     }
 
     class ScreenState {
@@ -139,7 +146,7 @@ namespace screenhelpers {
         __width = 160
         getScreenState();
         if (_screenState)
-            __width = state.displayWidth();
+            __width = _screenState.displayWidth();
     }
 
     export function displayWidth(): number {
@@ -156,12 +163,27 @@ namespace screenhelpers {
         getScreenState();
         if (_screenState)
             __present = _screenState.displayPresent();
-        return __present
     }
 
     export function displayPresent(): boolean {
         __present = __screenhelpers.displayPresent()
         simDisplayPresent()
         return __present
+    }
+
+    function handleShieldMessage(b: Buffer) {
+        const s = b.toString()
+        const msg = <ArcadeShieldMessage>JSON.parse(s)
+        if (msg && (msg.type === "button-down" || msg.type === "button-up")) {
+
+        }
+    }
+
+    /**
+     * Register simulator to get button presses
+     */
+    //% shim=TD_NOOP
+    export function registerSim() {
+        control.simmessages.onReceived("arcadeshield", handleShieldMessage)
     }
 }
