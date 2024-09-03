@@ -97,14 +97,14 @@ namespace controller {
             }
         }
 
-        private raiseButtonUp() {
+        raiseButtonUp() {
             if (_userEventsEnabled)
                 control.raiseEvent(ControllerKeys.KEY_UP, this.id)
             else
                 control.raiseEvent(ControllerKeys.SYSTEM_KEY_UP, this.id);
         }
 
-        private raiseButtonDown() {
+        raiseButtonDown() {
             if (_userEventsEnabled)
                 control.raiseEvent(ControllerKeys.KEY_DOWN, this.id)
             else

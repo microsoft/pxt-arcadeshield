@@ -171,11 +171,32 @@ namespace screenhelpers {
         return __present
     }
 
+    function getButton(id: ArcadeButtonId): controller.Button {
+        switch (id) {
+            case "left": return controller.left
+            case "right": return controller.right
+            case "up": return controller.up
+            case "down": return controller.down
+            case "a": return controller.A
+            case "b": return controller.B
+            case "menu": return controller.menu
+            // case "restart": return controller.restart
+        }
+        return null
+    }
+
     function handleShieldMessage(b: Buffer) {
         const s = b.toString()
         const msg = <ArcadeShieldMessage>JSON.parse(s)
         if (msg && (msg.type === "button-down" || msg.type === "button-up")) {
-
+            const button = getButton((<ButtonMessage>msg).buttonId)
+            if (button) {
+                if (msg.type === "button-down") {
+                    button.raiseButtonDown()
+                } else {
+                    button.raiseButtonUp()
+                }
+            }
         }
     }
 
@@ -187,3 +208,5 @@ namespace screenhelpers {
         control.simmessages.onReceived("arcadeshield", handleShieldMessage)
     }
 }
+
+screenhelpers.registerSim()
