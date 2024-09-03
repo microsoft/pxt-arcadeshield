@@ -9,79 +9,23 @@ import { ButtonId } from "@/types"
 import { ReactSVG } from "react-svg"
 
 type ButtonElements = {
-    activeEffect: SVGElement | null
-    hoverEffect: SVGElement | null
-    button: SVGElement | null
+    activeEffect?: SVGElement
+    hoverEffect?: SVGElement
+    button?: SVGElement
 }
 
-function hookShieldButton(
-    svg: SVGElement | null,
-    buttonId: ButtonId,
-    onButtonDown: (buttonId: ButtonId) => void,
-    onButtonUp: (buttonId: ButtonId) => void
-): ButtonElements | undefined {
-    if (!svg) {
-        return undefined
+function showElement(el?: HTMLElement | SVGElement) {
+    if (el) {
+        el.style.display = "block"
     }
-    const activeEffect = svg.querySelector(`#button-${buttonId}-active`) as SVGElement
-    if (activeEffect) {
-        activeEffect.style.display = "none"
+}
+function hideElement(el?: HTMLElement | SVGElement) {
+    if (el) {
+        el.style.display = "none"
     }
-    const hoverEffect = svg.querySelector(`#button-${buttonId}-focus`) as SVGElement
-    if (hoverEffect) {
-        hoverEffect.style.display = "none"
-    }
-    const showActiveEffect = () => {
-        if (activeEffect) {
-            activeEffect.style.display = "block"
-        }
-    }
-    const hideActiveEffect = () => {
-        if (activeEffect) {
-            activeEffect.style.display = "none"
-        }
-    }
-    const showHoverEffect = () => {
-        if (hoverEffect) {
-            hoverEffect.style.display = "block"
-        }
-    }
-    const hideHoverEffect = () => {
-        if (hoverEffect) {
-            hoverEffect.style.display = "none"
-        }
-    }
-    const mouseEnter = () => {
-        showHoverEffect()
-        hideActiveEffect()
-    }
-    const mouseLeave = () => {
-        hideHoverEffect()
-        hideActiveEffect()
-    }
-    const mouseDown = () => {
-        showActiveEffect()
-        onButtonDown(buttonId)
-    }
-    const mouseUp = () => {
-        hideActiveEffect()
-        onButtonUp(buttonId)
-    }
-
-    const button = svg.querySelector(`#button-${buttonId}`) as SVGElement
-    if (button) {
-        button.addEventListener("mouseenter", mouseEnter)
-        button.addEventListener("mouseleave", mouseLeave)
-        button.addEventListener("mousedown", mouseDown)
-        button.addEventListener("mouseup", mouseUp)
-        button.style.cursor = "pointer"
-    }
-
-    return {
-        activeEffect,
-        hoverEffect,
-        button,
-    }
+}
+function setElementVisibility(el: HTMLElement | SVGElement, visible: boolean) {
+    visible ? showElement(el) : hideElement(el)
 }
 
 const keymap: { [key in ButtonId]: string[] } = {
@@ -93,10 +37,12 @@ const keymap: { [key in ButtonId]: string[] } = {
     b: ["b"],
     menu: ["`"],
     restart: ["backspace"],
+    power: ["p"],
 }
 
 export const Shield: React.FC = () => {
     const [canvasRef, setCanvasRef] = useState<HTMLCanvasElement | null>(null)
+    const [isPowered, setIsPowered] = useState<boolean>(true)
     const skinRef = useRef<SVGElement | null>(null)
     const buttonElements = useRef<{ [key in ButtonId]: ButtonElements | undefined }>({
         left: undefined,
@@ -107,6 +53,7 @@ export const Shield: React.FC = () => {
         b: undefined,
         menu: undefined,
         restart: undefined,
+        power: undefined,
     })
 
     // TEMP: Configure the canvas size to 160x128. Later, this will be passed in by the main simulator
@@ -117,10 +64,16 @@ export const Shield: React.FC = () => {
         }
     }, [canvasRef])
 
+    const onPoweredChanged = (powered: boolean) => {
+        setIsPowered(powered)
+        // TODO: Send device present event to extension
+    }
     const onButtonDown = (buttonId: ButtonId): boolean => {
+        // TODO: Send button event to extension
         return true
     }
     const onButtonUp = (buttonId: ButtonId): boolean => {
+        // TODO: Send button event to extension
         return true
     }
     const onKeyDown = (key: string): boolean => {
@@ -152,21 +105,104 @@ export const Shield: React.FC = () => {
         return false
     }
 
+    function hookShieldButton(svg: SVGElement | null, buttonId: ButtonId): ButtonElements | undefined {
+        if (!svg) {
+            return undefined
+        }
+        const activeEffect = svg.querySelector(`#button-${buttonId}-active`) as SVGElement
+        const hoverEffect = svg.querySelector(`#button-${buttonId}-focus`) as SVGElement
+        hideElement(activeEffect)
+        hideElement(hoverEffect)
+        const mouseEnter = () => {
+            showElement(hoverEffect)
+            hideElement(activeEffect)
+        }
+        const mouseLeave = () => {
+            hideElement(hoverEffect)
+            hideElement(activeEffect)
+        }
+        const mouseDown = () => {
+            if (isPowered) {
+                showElement(activeEffect)
+                onButtonDown(buttonId)
+            }
+        }
+        const mouseUp = () => {
+            hideElement(activeEffect)
+            if (isPowered) {
+                onButtonUp(buttonId)
+            }
+        }
+
+        const button = svg.querySelector(`#button-${buttonId}`) as SVGElement
+        if (button) {
+            button.addEventListener("mouseenter", mouseEnter)
+            button.addEventListener("mouseleave", mouseLeave)
+            button.addEventListener("mousedown", mouseDown)
+            button.addEventListener("mouseup", mouseUp)
+            button.style.cursor = "pointer"
+        }
+
+        return {
+            activeEffect,
+            hoverEffect,
+            button,
+        }
+    }
+
+    function hookPowerButton(svg: SVGElement | null): ButtonElements | undefined {
+        if (!svg) {
+            return undefined
+        }
+        const buttonId = "power"
+        const poweredEffect = svg.querySelector(`#button-${buttonId}-on`) as SVGElement
+        const hoverEffect = svg.querySelector(`#button-${buttonId}-focus`) as SVGElement
+        setElementVisibility(poweredEffect, isPowered)
+        const mouseEnter = () => {
+            showElement(hoverEffect)
+        }
+        const mouseLeave = () => {
+            hideElement(hoverEffect)
+        }
+        const mouseDown = () => {
+            const newPowered = !isPowered
+            setElementVisibility(poweredEffect, newPowered)
+            onPoweredChanged(newPowered)
+        }
+        const mouseUp = () => {}
+        const button = svg.querySelector(`#button-${buttonId}`) as SVGElement
+        if (button) {
+            button.addEventListener("mouseenter", mouseEnter)
+            button.addEventListener("mouseleave", mouseLeave)
+            button.addEventListener("mousedown", mouseDown)
+            button.addEventListener("mouseup", mouseUp)
+            button.style.cursor = "pointer"
+        }
+
+        return {
+            hoverEffect,
+            button,
+        }
+    }
+
     useShieldService(canvasRef)
     useKeyboard(onKeyDown, onKeyUp)
     const focused = useWindowFocus()
 
     const afterSkinInjection = (svg: SVGElement) => {
         // TODO: unregister previous skin's event listeners
-        skinRef.current = svg
-        buttonElements.current["left"] = hookShieldButton(skinRef.current, "left", onButtonDown, onButtonUp)
-        buttonElements.current["right"] = hookShieldButton(skinRef.current, "right", onButtonDown, onButtonUp)
-        buttonElements.current["up"] = hookShieldButton(skinRef.current, "up", onButtonDown, onButtonUp)
-        buttonElements.current["down"] = hookShieldButton(skinRef.current, "down", onButtonDown, onButtonUp)
-        buttonElements.current["a"] = hookShieldButton(skinRef.current, "a", onButtonDown, onButtonUp)
-        buttonElements.current["b"] = hookShieldButton(skinRef.current, "b", onButtonDown, onButtonUp)
-        buttonElements.current["menu"] = hookShieldButton(skinRef.current, "menu", onButtonDown, onButtonUp)
-        buttonElements.current["restart"] = hookShieldButton(skinRef.current, "restart", onButtonDown, onButtonUp)
+        if (svg && skinRef.current !== svg) {
+            skinRef.current = svg
+            buttonElements.current["left"] = hookShieldButton(skinRef.current, "left")
+            buttonElements.current["right"] = hookShieldButton(skinRef.current, "right")
+            buttonElements.current["up"] = hookShieldButton(skinRef.current, "up")
+            buttonElements.current["down"] = hookShieldButton(skinRef.current, "down")
+            buttonElements.current["a"] = hookShieldButton(skinRef.current, "a")
+            buttonElements.current["b"] = hookShieldButton(skinRef.current, "b")
+            buttonElements.current["menu"] = hookShieldButton(skinRef.current, "menu")
+            buttonElements.current["restart"] = hookShieldButton(skinRef.current, "restart")
+            buttonElements.current["power"] = hookPowerButton(skinRef.current)
+        }
     }
 
     return (
@@ -177,7 +213,7 @@ export const Shield: React.FC = () => {
                 afterInjection={afterSkinInjection}
             />
             <div className={css["screen-container"]}>
-                <canvas className={css["screen-canvas"]} ref={setCanvasRef} />
+                {isPowered && <canvas className={css["screen-canvas"]} ref={setCanvasRef} />}
             </div>
         </div>
     )
