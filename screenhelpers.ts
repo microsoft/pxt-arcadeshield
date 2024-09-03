@@ -37,6 +37,7 @@ namespace screenhelpers {
             return true;
         }
 
+        //% shim=TD_NOOP
         private sendMessage(msg: string) {
             control.simmessages.send("arcadeshield", Buffer.fromUTF8(msg) , false)
         }
