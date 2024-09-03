@@ -73,8 +73,8 @@ namespace screenhelpers {
 
     let _screenState: ScreenState = null;
 
-    function getScreenState(): ScreenState {
-        if (_screenState) return _screenState;
+    function getScreenState() {
+        if (_screenState) _screenState;
         _screenState = new ScreenState();
     }
 
