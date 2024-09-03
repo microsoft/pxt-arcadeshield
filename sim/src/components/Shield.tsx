@@ -129,9 +129,11 @@ export const Shield: React.FC = () => {
     }, [canvasRef])
 
     const onButtonDown = (buttonId: ArcadeButtonId): boolean => {
+        postMessagePacket({ type: "button-down", buttonId })
         return true
     }
     const onButtonUp = (buttonId: ArcadeButtonId): boolean => {
+        postMessagePacket({ type: "button-up", buttonId })
         return true
     }
     const onKeyDown = (key: string): boolean => {
