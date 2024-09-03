@@ -1,8 +1,10 @@
-// CONTENT BELOW COPIED FROM <root>/screenhelpers.ts
-// Keep this in sync with that file.
+// copied from screenhelpers.ts
+// KEEP IN SYNC
+
+export type ArcadeButtonId = "left" | "right" | "up" | "down" | "a" | "b" | "menu" | "restart" | "power"
 
 export interface ArcadeShieldMessage {
-    type: "show-image" | "set-brightness" | "set-palette"
+    type: "show-image" | "set-brightness" | "set-palette" | "button-down" | "button-up"
     runId: any
 }
 export interface ShowImageMessage extends ArcadeShieldMessage {
@@ -16,4 +18,9 @@ export interface SetBrightnessMessage extends ArcadeShieldMessage {
 export interface SetPaletteMessage extends ArcadeShieldMessage {
     type: "set-palette"
     data: string
+}
+
+export interface ButtonMessage extends ArcadeShieldMessage {
+    type: "button-down" | "button-up"
+    buttonId: ArcadeButtonId
 }

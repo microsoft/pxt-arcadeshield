@@ -1,12 +1,14 @@
 namespace screenhelpers {
+    type ArcadeButtonId = "left" | "right" | "up" | "down" | "a" | "b" | "menu" | "restart"
+
     interface ArcadeShieldMessage {
-        type: "show-image" | "set-brightness" | "set-palette"
+        type: "show-image" | "set-brightness" | "set-palette" | "button-down" | "button-up"
         runId: any
     }
     interface ShowImageMessage extends ArcadeShieldMessage {
         type: "show-image"
         data: string
-    }     
+    }
     interface SetBrightnessMessage extends ArcadeShieldMessage {
         type: "set-brightness"
         value: number
@@ -16,7 +18,11 @@ namespace screenhelpers {
         data: string
     }
 
-    //% fixedInstance
+    interface ButtonMessage extends ArcadeShieldMessage {
+        type: "button-down" | "button-up"
+        buttonId: ArcadeButtonId
+    }
+
     class ScreenState {
         runId: string;
         brightness: number;
@@ -72,17 +78,18 @@ namespace screenhelpers {
         }
     }
 
-    const _screenState: ScreenState = new ScreenState();
+    let _screenState: ScreenState = null;
 
-    function getScreenState(): ScreenState {
-        return _screenState;
+    function getScreenState() {
+        if (_screenState) _screenState;
+        _screenState = new ScreenState();
     }
 
     //% shim=TD_NOOP
     function simUpdateScreen(img: Bitmap) {
-        const state = getScreenState();
-        if (state)
-            state.showImage(img);        
+        getScreenState();
+        if (_screenState)
+            _screenState.showImage(img);        
     }
 
     export function updateScreen(img: Bitmap) {
@@ -92,9 +99,9 @@ namespace screenhelpers {
 
     //% shim=TD_NOOP    
     function simSetPalette(b: Buffer) {
-        const state = getScreenState();
-        if (state)
-            state.setPalette(b);
+        getScreenState();
+        if (_screenState)
+            _screenState.setPalette(b);
     }
 
     export function setPalette(b: Buffer) {
@@ -104,9 +111,9 @@ namespace screenhelpers {
 
     //% shim=TD_NOOP   
     function simSetScreenBrightness(n: number) {
-        const state = getScreenState();
-        if (state)
-            state.setScreenBrightness(n);
+        getScreenState();
+        if (_screenState)
+            _screenState.setScreenBrightness(n);
     }
 
     export function setScreenBrightness(n: number) {
@@ -121,9 +128,9 @@ namespace screenhelpers {
     //% shim=TD_NOOP
     function simDisplayHeight() {
         __height = 128
-        const state = getScreenState();
-        if (state)
-            __height = state.displayHeight();
+        getScreenState();
+        if (_screenState)
+            __height = _screenState.displayHeight();
     }
     
     export function displayHeight(): number {
@@ -137,9 +144,9 @@ namespace screenhelpers {
     //% shim=TD_NOOP
     function simDisplayWidth() {
         __width = 160
-        const state = getScreenState();
-        if (state)
-            __width = state.displayWidth();
+        getScreenState();
+        if (_screenState)
+            __width = _screenState.displayWidth();
     }
 
     export function displayWidth(): number {
@@ -153,10 +160,9 @@ namespace screenhelpers {
     //% shim=TD_NOOP
     function simDisplayPresent() {
         __present = true
-        const state = getScreenState();
-        if (state)
-            __present = state.displayPresent();
-        return __present
+        getScreenState();
+        if (_screenState)
+            __present = _screenState.displayPresent();
     }
 
     export function displayPresent(): boolean {
@@ -164,4 +170,43 @@ namespace screenhelpers {
         simDisplayPresent()
         return __present
     }
+
+    function getButton(id: ArcadeButtonId): controller.Button {
+        switch (id) {
+            case "left": return controller.left
+            case "right": return controller.right
+            case "up": return controller.up
+            case "down": return controller.down
+            case "a": return controller.A
+            case "b": return controller.B
+            case "menu": return controller.menu
+            // case "restart": return controller.restart
+        }
+        return null
+    }
+
+    function handleShieldMessage(b: Buffer) {
+        const s = b.toString()
+        const msg = <ArcadeShieldMessage>JSON.parse(s)
+        if (msg && (msg.type === "button-down" || msg.type === "button-up")) {
+            const button = getButton((<ButtonMessage>msg).buttonId)
+            if (button) {
+                if (msg.type === "button-down") {
+                    button.raiseButtonDown()
+                } else {
+                    button.raiseButtonUp()
+                }
+            }
+        }
+    }
+
+    /**
+     * Register simulator to get button presses
+     */
+    //% shim=TD_NOOP
+    export function registerSim() {
+        control.simmessages.onReceived("arcadeshield", handleShieldMessage)
+    }
 }
+
+screenhelpers.registerSim()

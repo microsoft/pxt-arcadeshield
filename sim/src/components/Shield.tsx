@@ -5,7 +5,7 @@ import { DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_SKIN } from "@/constants"
 import { useShieldService } from "@/hooks/useShieldService"
 import { useKeyboard } from "@/hooks/useKeyboard"
 import { useWindowFocus } from "@/hooks/useWindowFocus"
-import { ButtonId } from "@/types"
+import { ArcadeButtonId } from "@/external/protocol"
 import { ReactSVG } from "react-svg"
 
 type ButtonElements = {
@@ -28,7 +28,7 @@ function setElementVisibility(el: HTMLElement | SVGElement, visible: boolean) {
     visible ? showElement(el) : hideElement(el)
 }
 
-const keymap: { [key in ButtonId]: string[] } = {
+const keymap: { [key in ArcadeButtonId]: string[] } = {
     left: ["arrowleft"],
     right: ["arrowright"],
     up: ["arrowup"],
@@ -40,11 +40,24 @@ const keymap: { [key in ButtonId]: string[] } = {
     power: ["p"],
 }
 
+function postMessagePacket(msg: any) {
+    const payload = new TextEncoder().encode(JSON.stringify(msg))
+    // console.log(msg)
+    window.parent.postMessage(
+        {
+            type: "messagepacket",
+            channel: "arcadeshield",
+            data: payload,
+        },
+        "*"
+    )
+}
+
 export const Shield: React.FC = () => {
     const [canvasRef, setCanvasRef] = useState<HTMLCanvasElement | null>(null)
     const [isPowered, setIsPowered] = useState<boolean>(true)
     const skinRef = useRef<SVGElement | null>(null)
-    const buttonElements = useRef<{ [key in ButtonId]: ButtonElements | undefined }>({
+    const buttonElements = useRef<{ [key in ArcadeButtonId]: ButtonElements | undefined }>({
         left: undefined,
         right: undefined,
         up: undefined,
@@ -64,21 +77,21 @@ export const Shield: React.FC = () => {
         }
     }, [canvasRef])
 
+    const onButtonDown = (buttonId: ArcadeButtonId): boolean => {
+        postMessagePacket({ type: "button-down", buttonId })
+        return true
+    }
+    const onButtonUp = (buttonId: ArcadeButtonId): boolean => {
+        postMessagePacket({ type: "button-up", buttonId })
+        return true
+    }
     const onPoweredChanged = (powered: boolean) => {
         setIsPowered(powered)
         // TODO: Send device present event to extension
     }
-    const onButtonDown = (buttonId: ButtonId): boolean => {
-        // TODO: Send button event to extension
-        return true
-    }
-    const onButtonUp = (buttonId: ButtonId): boolean => {
-        // TODO: Send button event to extension
-        return true
-    }
     const onKeyDown = (key: string): boolean => {
         //console.log(`key down: ${key}`)
-        for (const buttonId of Object.keys(keymap) as ButtonId[]) {
+        for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
                 const elems = buttonElements.current[buttonId]
@@ -92,7 +105,7 @@ export const Shield: React.FC = () => {
     }
     const onKeyUp = (key: string): boolean => {
         //console.log(`key up: ${key}`)
-        for (const buttonId of Object.keys(keymap) as ButtonId[]) {
+        for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
                 const elems = buttonElements.current[buttonId]
