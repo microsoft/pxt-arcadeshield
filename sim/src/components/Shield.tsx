@@ -97,6 +97,7 @@ const keymap: { [key in ArcadeButtonId]: string[] } = {
 
 function postMessagePacket(msg: any) {
     const payload = new TextEncoder().encode(JSON.stringify(msg))
+    console.log(msg)
     window.parent.postMessage(
         {
             type: "messagepacket",
@@ -105,6 +106,7 @@ function postMessagePacket(msg: any) {
         },
         "*"
     )
+}
 
 export const Shield: React.FC = () => {
     const [canvasRef, setCanvasRef] = useState<HTMLCanvasElement | null>(null)
