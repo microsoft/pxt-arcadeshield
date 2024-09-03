@@ -16,7 +16,6 @@ namespace screenhelpers {
         data: string
     }
 
-    //% fixedInstance
     class ScreenState {
         runId: string;
         brightness: number;
@@ -37,7 +36,6 @@ namespace screenhelpers {
             return true;
         }
 
-        //% shim=TD_NOOP
         private sendMessage(msg: string) {
             control.simmessages.send("arcadeshield", Buffer.fromUTF8(msg) , false)
         }
@@ -73,17 +71,18 @@ namespace screenhelpers {
         }
     }
 
-    const _screenState: ScreenState = new ScreenState();
+    let _screenState: ScreenState = null;
 
     function getScreenState(): ScreenState {
-        return _screenState;
+        if (_screenState) return _screenState;
+        _screenState = new ScreenState();
     }
 
     //% shim=TD_NOOP
     function simUpdateScreen(img: Bitmap) {
-        const state = getScreenState();
-        if (state)
-            state.showImage(img);        
+        getScreenState();
+        if (_screenState)
+            _screenState.showImage(img);        
     }
 
     export function updateScreen(img: Bitmap) {
@@ -93,9 +92,9 @@ namespace screenhelpers {
 
     //% shim=TD_NOOP    
     function simSetPalette(b: Buffer) {
-        const state = getScreenState();
-        if (state)
-            state.setPalette(b);
+        getScreenState();
+        if (_screenState)
+            _screenState.setPalette(b);
     }
 
     export function setPalette(b: Buffer) {
@@ -105,9 +104,9 @@ namespace screenhelpers {
 
     //% shim=TD_NOOP   
     function simSetScreenBrightness(n: number) {
-        const state = getScreenState();
-        if (state)
-            state.setScreenBrightness(n);
+        getScreenState();
+        if (_screenState)
+            _screenState.setScreenBrightness(n);
     }
 
     export function setScreenBrightness(n: number) {
@@ -122,9 +121,9 @@ namespace screenhelpers {
     //% shim=TD_NOOP
     function simDisplayHeight() {
         __height = 128
-        const state = getScreenState();
-        if (state)
-            __height = state.displayHeight();
+        getScreenState();
+        if (_screenState)
+            __height = _screenState.displayHeight();
     }
     
     export function displayHeight(): number {
@@ -138,8 +137,8 @@ namespace screenhelpers {
     //% shim=TD_NOOP
     function simDisplayWidth() {
         __width = 160
-        const state = getScreenState();
-        if (state)
+        getScreenState();
+        if (_screenState)
             __width = state.displayWidth();
     }
 
@@ -154,9 +153,9 @@ namespace screenhelpers {
     //% shim=TD_NOOP
     function simDisplayPresent() {
         __present = true
-        const state = getScreenState();
-        if (state)
-            __present = state.displayPresent();
+        getScreenState();
+        if (_screenState)
+            __present = _screenState.displayPresent();
         return __present
     }
 
