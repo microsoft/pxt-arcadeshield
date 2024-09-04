@@ -42,9 +42,7 @@ namespace controller {
     declare function pressureLevelByButtonId(btnId: number, codalId: number): number;
 
     //% shim=pxt::setupButton
-    function setupButton(buttonId: number, key: number) {
-        return // missing in sim
-     }
+    declare function setupButton(buttonId: number, key: number): void;
 
     export class ButtonHandler {
         constructor(public event: number, public callback: () => void) { }
