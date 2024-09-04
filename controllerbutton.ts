@@ -38,11 +38,10 @@ namespace controller {
     let defaultRepeatDelay = 500;
     let defaultRepeatInterval = 30;
 
-    //% shim=pxt::pressureLevelByButtonId
-    declare function pressureLevelByButtonId(btnId: number, codalId: number): number;
-
     //% shim=pxt::setupButton
-    declare function setupButton(buttonId: number, key: number): void;
+    function setupButton(buttonId: number, key: number) {
+        basic.pause(0)
+    }
 
     export class ButtonHandler {
         constructor(public event: number, public callback: () => void) { }
@@ -183,13 +182,6 @@ namespace controller {
         //% blockId=keyispressed block="is $button **button** pressed"
         isPressed() {
             return this._pressed;
-        }
-
-        /**
-         * Indicates how hard the button is pressed, 0-512
-         */
-        pressureLevel() {
-            return pressureLevelByButtonId(this.id, -1);
         }
 
         setPressed(pressed: boolean) {
