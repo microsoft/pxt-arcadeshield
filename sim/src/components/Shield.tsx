@@ -34,11 +34,23 @@ const keymap: { [key in ArcadeButtonId]: string[] } = {
     right: ["arrowright"],
     up: ["arrowup"],
     down: ["arrowdown"],
-    a: ["a"],
-    b: ["b"],
+    a: ["a", "enter"],
+    b: ["b", "backspace"],
     menu: ["`"],
-    restart: ["backspace"],
     power: ["p"],
+}
+
+// SVG export doesn't output nodes in a natural tab order, so we need to explicitly set it
+// TODO: This should be configurable in the skin SVG
+const tabIndex: { [key in ArcadeButtonId]: number } = {
+    left: 4,
+    right: 5,
+    up: 6,
+    down: 7,
+    a: 2,
+    b: 3,
+    menu: 8,
+    power: 1,
 }
 
 function postMessagePacket(msg: any) {
@@ -66,7 +78,6 @@ export const Shield: React.FC = () => {
         a: undefined,
         b: undefined,
         menu: undefined,
-        restart: undefined,
         power: undefined,
     })
 
@@ -88,11 +99,13 @@ export const Shield: React.FC = () => {
     }
     const onPoweredChanged = (powered: boolean) => {
         setIsPowered(powered)
-        // TODO: Send device present event to extension
+        if (canvasRef) {
+            canvasRef.style.display = powered ? "block" : "none"
+        }
+        // TODO: Send event to extension
     }
     const onKeyDown = (key: string): boolean => {
-        if (!isPowered)
-            return false
+        if (!isPowered) return false
         for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
@@ -106,8 +119,7 @@ export const Shield: React.FC = () => {
         return false
     }
     const onKeyUp = (key: string): boolean => {
-        if (!isPowered)
-            return false
+        if (!isPowered) return false
         for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
@@ -124,16 +136,7 @@ export const Shield: React.FC = () => {
     function hookShieldButton(svg: SVGElement, buttonId: ArcadeButtonId): ButtonElements | undefined {
         const activeEffect = svg.querySelector(`#button-${buttonId}-active`) as SVGElement
         const hoverEffect = svg.querySelector(`#button-${buttonId}-focus`) as SVGElement
-        hideElement(activeEffect)
-        hideElement(hoverEffect)
-        const mouseEnter = () => {
-            showElement(hoverEffect)
-            hideElement(activeEffect)
-        }
-        const mouseLeave = () => {
-            hideElement(hoverEffect)
-            hideElement(activeEffect)
-        }
+        const button = svg.querySelector(`#button-${buttonId}-body`) as SVGElement
         const mouseDown = () => {
             if (isPowered) {
                 showElement(activeEffect)
@@ -146,14 +149,23 @@ export const Shield: React.FC = () => {
                 onButtonUp(buttonId)
             }
         }
+        const mouseLeave = () => {
+            hideElement(activeEffect)
+        }
 
-        const button = svg.querySelector(`#button-${buttonId}`) as SVGElement
         if (button) {
-            button.addEventListener("mouseenter", mouseEnter)
-            button.addEventListener("mouseleave", mouseLeave)
+            button.setAttribute("tabindex", tabIndex[buttonId].toString())
             button.addEventListener("mousedown", mouseDown)
             button.addEventListener("mouseup", mouseUp)
-            button.style.cursor = "pointer"
+            button.addEventListener("mouseleave", mouseLeave)
+            button.addEventListener("keydown", (e) => {
+                if (e.key === " ") {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    mouseDown()
+                    setTimeout(mouseUp, 100)
+                }
+            })
         }
 
         return {
@@ -167,26 +179,23 @@ export const Shield: React.FC = () => {
         const buttonId = "power"
         const poweredEffect = svg.querySelector(`#button-${buttonId}-on`) as SVGElement
         const hoverEffect = svg.querySelector(`#button-${buttonId}-focus`) as SVGElement
+        const button = svg.querySelector(`#button-${buttonId}-body`) as SVGElement
         setElementVisibility(poweredEffect, isPowered)
-        const mouseEnter = () => {
-            showElement(hoverEffect)
-        }
-        const mouseLeave = () => {
-            hideElement(hoverEffect)
-        }
         const mouseDown = () => {
             const newPowered = !isPowered
             setElementVisibility(poweredEffect, newPowered)
             onPoweredChanged(newPowered)
         }
-        const mouseUp = () => {}
-        const button = svg.querySelector(`#button-${buttonId}`) as SVGElement
         if (button) {
-            button.addEventListener("mouseenter", mouseEnter)
-            button.addEventListener("mouseleave", mouseLeave)
+            button.setAttribute("tabindex", tabIndex[buttonId].toString())
             button.addEventListener("mousedown", mouseDown)
-            button.addEventListener("mouseup", mouseUp)
-            button.style.cursor = "pointer"
+            button.addEventListener("keydown", (e) => {
+                if (e.key === " ") {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    mouseDown()
+                }
+            })
         }
 
         return {
@@ -223,7 +232,6 @@ export const Shield: React.FC = () => {
             buttonElements.current["a"] = hookShieldButton(skinRef.current, "a")
             buttonElements.current["b"] = hookShieldButton(skinRef.current, "b")
             buttonElements.current["menu"] = hookShieldButton(skinRef.current, "menu")
-            buttonElements.current["restart"] = hookShieldButton(skinRef.current, "restart")
             buttonElements.current["power"] = hookPowerButton(skinRef.current)
             hookJacdacPort(skinRef.current)
         }
@@ -237,7 +245,7 @@ export const Shield: React.FC = () => {
                 afterInjection={afterSkinInjection}
             />
             <div className={css["screen-container"]}>
-                {isPowered && <canvas className={css["screen-canvas"]} ref={setCanvasRef} />}
+                <canvas className={css["screen-canvas"]} ref={setCanvasRef} />
             </div>
         </div>
     )
