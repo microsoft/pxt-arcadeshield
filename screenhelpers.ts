@@ -1,5 +1,5 @@
 namespace screenhelpers {
-    type ArcadeButtonId = "left" | "right" | "up" | "down" | "a" | "b" | "menu" | "restart"
+    type ArcadeButtonId = "left" | "right" | "up" | "down" | "a" | "b" | "menu"
 
     interface ArcadeShieldMessage {
         type: "show-image" | "set-brightness" | "set-palette" | "button-down" | "button-up"
@@ -180,7 +180,6 @@ namespace screenhelpers {
             case "a": return controller.A
             case "b": return controller.B
             case "menu": return controller.menu
-            // case "restart": return controller.restart
         }
         return null
     }

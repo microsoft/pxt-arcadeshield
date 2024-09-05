@@ -1,7 +1,7 @@
 // copied from screenhelpers.ts
 // KEEP IN SYNC
 
-export type ArcadeButtonId = "left" | "right" | "up" | "down" | "a" | "b" | "menu" | "restart" | "power"
+export type ArcadeButtonId = "left" | "right" | "up" | "down" | "a" | "b" | "menu" | "power"
 
 export interface ArcadeShieldMessage {
     type: "show-image" | "set-brightness" | "set-palette" | "button-down" | "button-up"

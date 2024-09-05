@@ -37,7 +37,6 @@ const keymap: { [key in ArcadeButtonId]: string[] } = {
     a: ["a", "enter"],
     b: ["b", "backspace"],
     menu: ["`"],
-    restart: [],
     power: ["p"],
 }
 
@@ -51,7 +50,6 @@ const tabIndex: { [key in ArcadeButtonId]: number } = {
     a: 2,
     b: 3,
     menu: 8,
-    restart: -1,
     power: 1,
 }
 
@@ -80,7 +78,6 @@ export const Shield: React.FC = () => {
         a: undefined,
         b: undefined,
         menu: undefined,
-        restart: undefined,
         power: undefined,
     })
 
@@ -235,7 +232,6 @@ export const Shield: React.FC = () => {
             buttonElements.current["a"] = hookShieldButton(skinRef.current, "a")
             buttonElements.current["b"] = hookShieldButton(skinRef.current, "b")
             buttonElements.current["menu"] = hookShieldButton(skinRef.current, "menu")
-            buttonElements.current["restart"] = hookShieldButton(skinRef.current, "restart")
             buttonElements.current["power"] = hookPowerButton(skinRef.current)
             hookJacdacPort(skinRef.current)
         }
