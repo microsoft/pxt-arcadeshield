@@ -121,10 +121,7 @@ export const Shield: React.FC = () => {
         return false
     }
 
-    function hookShieldButton(svg: SVGElement | null, buttonId: ArcadeButtonId): ButtonElements | undefined {
-        if (!svg) {
-            return undefined
-        }
+    function hookShieldButton(svg: SVGElement, buttonId: ArcadeButtonId): ButtonElements | undefined {
         const activeEffect = svg.querySelector(`#button-${buttonId}-active`) as SVGElement
         const hoverEffect = svg.querySelector(`#button-${buttonId}-focus`) as SVGElement
         hideElement(activeEffect)
@@ -166,10 +163,7 @@ export const Shield: React.FC = () => {
         }
     }
 
-    function hookPowerButton(svg: SVGElement | null): ButtonElements | undefined {
-        if (!svg) {
-            return undefined
-        }
+    function hookPowerButton(svg: SVGElement): ButtonElements | undefined {
         const buttonId = "power"
         const poweredEffect = svg.querySelector(`#button-${buttonId}-on`) as SVGElement
         const hoverEffect = svg.querySelector(`#button-${buttonId}-focus`) as SVGElement
@@ -201,6 +195,19 @@ export const Shield: React.FC = () => {
         }
     }
 
+    function hookJacdacPort(svg: SVGElement) {
+        const port = svg.querySelector("#jacdac-port") as SVGElement
+        if (port) {
+            port.addEventListener("click", () => {
+                // NOTE: Opening the URL is blocked because of the sandbox attribute (allow-popups is not set)
+                // We could potentially send a message to the extension to open the URL:
+                //postMessagePacket({ type: "jacdac-port-click" })
+                //window.open("https://aka.ms/jacdac", "_blank", "noopener noreferrer")
+            })
+            //port.style.cursor = "pointer"
+        }
+    }
+
     useShieldService(canvasRef)
     useKeyboard(onKeyDown, onKeyUp)
     const focused = useWindowFocus()
@@ -218,6 +225,7 @@ export const Shield: React.FC = () => {
             buttonElements.current["menu"] = hookShieldButton(skinRef.current, "menu")
             buttonElements.current["restart"] = hookShieldButton(skinRef.current, "restart")
             buttonElements.current["power"] = hookPowerButton(skinRef.current)
+            hookJacdacPort(skinRef.current)
         }
     }
 
