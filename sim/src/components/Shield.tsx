@@ -34,10 +34,10 @@ const keymap: { [key in ArcadeButtonId]: string[] } = {
     right: ["arrowright"],
     up: ["arrowup"],
     down: ["arrowdown"],
-    a: ["a"],
-    b: ["b"],
+    a: ["a", "enter"],
+    b: ["b", "backspace"],
     menu: ["`"],
-    restart: ["backspace"],
+    restart: [],
     power: ["p"],
 }
 
