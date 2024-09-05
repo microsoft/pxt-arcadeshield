@@ -107,12 +107,12 @@ export function useShieldService(canvasRef: HTMLCanvasElement | null) {
             ctx.putImageData(imgData, 0, 0)
         }
 
-        function handleSetPaletteMessage(msg: protocol.SetPaletteMessage) {            
+        function handleSetPaletteMessage(msg: protocol.SetPaletteMessage) {
             const { data } = msg
             // convert image data from base 64 to buffer
             const buf = Uint8Array.from(atob(data), (c) => c.charCodeAt(0))
             // Ensure buffer size is correct
-            const expectedSize = 16 * 3   // 16 colors, 3 bytes per color
+            const expectedSize = 16 * 3 // 16 colors, 3 bytes per color
             if (buf.length !== expectedSize) {
                 console.error(`expected image buffer size ${expectedSize}, got ${buf.length}`)
                 return
