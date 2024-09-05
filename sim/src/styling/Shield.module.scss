@@ -10,6 +10,7 @@ $margin: 0px;
 
     .screen-container {
         position: absolute;
+
         .screen-canvas {
             width: 100%;
             height: 100%;
@@ -31,55 +32,66 @@ $skin-shield-a-border-size: 4px;
         background-repeat: no-repeat;
         background-size: contain;
     }
+
     .screen-container {
         left: 19.93%;
         top: 3.75%;
         width: 59.6%;
         height: 54.1%;
     }
+
     .gamepad-button {
         &:hover {
             background-color: rgba(255, 255, 255, 0.4);
         }
+
         &:focus {
             outline-style: solid;
             outline-width: $skin-shield-a-border-size;
             outline-color: rgba($skin-shield-a-focus, 0.5);
         }
+
         &:active {
             background-color: rgba(255, 255, 255, 0.6);
         }
+
         &.active {
             background-color: rgba(255, 255, 255, 0.6);
         }
     }
+
     .dpad-button {
         border-radius: 25%;
     }
+
     .button-dpad-up {
         left: 21.7%;
         top: 62.6%;
         width: 5.4%;
         height: 10.4%;
     }
+
     .button-dpad-down {
         left: 21.8%;
         top: 80%;
         width: 5.4%;
         height: 10.4%;
     }
+
     .button-dpad-left {
         left: 13.1%;
         top: 73.1%;
         width: 8.3%;
         height: 6.4%;
     }
+
     .button-dpad-right {
         left: 27.2%;
         top: 73.1%;
         width: 8.3%;
         height: 6.4%;
     }
+
     .button-a {
         left: 74.8%;
         top: 65%;
@@ -87,6 +99,7 @@ $skin-shield-a-border-size: 4px;
         height: 13.5%;
         border-radius: 100%;
     }
+
     .button-b {
         left: 64.2%;
         top: 77.65%;
@@ -99,17 +112,37 @@ $skin-shield-a-border-size: 4px;
 /******************************/
 /**** SKIN: shield-b **********/
 /******************************/
+$shield-b-buttons: up, down, left, right, a, b, menu, restart, power;
 .skin-shield-b {
     .shield-svg {
         transition: filter 0.05s;
+
         &.unfocused {
             filter: opacity(0.8) grayscale(0.65);
         }
     }
+
     .screen-container {
         left: 13.9%;
         top: 8.46%;
         width: 80.5%;
         height: 78.2%;
+    }
+
+    @each $button in $shield-b-buttons {
+        [id="button-#{$button}-body"] {
+            cursor: pointer;
+            outline: none;
+            &:hover {
+                filter: brightness(3);
+            }
+            &:focus {
+                filter: brightness(3);
+            }
+        }
+
+        [id="button-#{$button}-active"] {
+            display: none;
+        }
     }
 }
