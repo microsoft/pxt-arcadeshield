@@ -14,45 +14,6 @@ function postMessage(msg: protocol.ArcadeShieldMessage) {
 }
 
 const palette = new Uint32Array(16)
-
-// Palette from pxt.json
-/*
-palette[0x00] = 0x000000
-palette[0x01] = 0xffffff
-palette[0x02] = 0x2121ff
-palette[0x03] = 0x93c4ff
-palette[0x04] = 0x8135ff
-palette[0x05] = 0xf609ff
-palette[0x06] = 0x249ca3
-palette[0x07] = 0x78dc52
-palette[0x08] = 0x003fad
-palette[0x09] = 0xf2f2f2
-palette[0x0a] = 0xf2b233
-palette[0x0b] = 0xe45a33
-palette[0x0c] = 0xa5694f
-palette[0x0d] = 0x7c3f58
-palette[0x0e] = 0x91d2e7
-palette[0x0f] = 0x1e1e1e
-*/
-
-// Arcade palette
-palette[0x00] = 0x000000
-palette[0x01] = 0xffffff
-palette[0x02] = 0xff2121
-palette[0x03] = 0xff93c4
-palette[0x04] = 0xff8135
-palette[0x05] = 0xfff609
-palette[0x06] = 0x249ca3
-palette[0x07] = 0x78dc52
-palette[0x08] = 0x003fad
-palette[0x09] = 0x87f2ff
-palette[0x0a] = 0x8e2ec4
-palette[0x0b] = 0xa4839f
-palette[0x0c] = 0x5c406c
-palette[0x0d] = 0xe5cdc4
-palette[0x0e] = 0x91463d
-palette[0x0f] = 0x000000
-
 let currRunId: any
 let _imgData: ImageData | undefined
 
@@ -146,8 +107,22 @@ export function useShieldService(canvasRef: HTMLCanvasElement | null) {
             ctx.putImageData(imgData, 0, 0)
         }
 
-        function handleSetPaletteMessage(msg: protocol.SetPaletteMessage) {
-            console.log("received set-palette")
+        function handleSetPaletteMessage(msg: protocol.SetPaletteMessage) {            
+            const { data } = msg
+            // convert image data from base 64 to buffer
+            const buf = Uint8Array.from(atob(data), (c) => c.charCodeAt(0))
+            // Ensure buffer size is correct
+            const expectedSize = 16 * 3   // 16 colors, 3 bytes per color
+            if (buf.length !== expectedSize) {
+                console.error(`expected image buffer size ${expectedSize}, got ${buf.length}`)
+                return
+            }
+            for (let i = 0; i < 16; i++) {
+                const r = buf[i * 3 + 0]
+                const g = buf[i * 3 + 1]
+                const b = buf[i * 3 + 2]
+                palette[i] = (r << 16) | (g << 8) | b
+            }
         }
 
         function handleMessage(ev: MessageEvent) {

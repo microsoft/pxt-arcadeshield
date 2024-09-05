@@ -1,9 +1,8 @@
-name: sim build
+name: Simulator Build
 on:
     push:
         paths:
             - "sim/**"
-            - "assets/**"
         tags:
             - v**
     

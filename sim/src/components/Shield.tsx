@@ -91,7 +91,8 @@ export const Shield: React.FC = () => {
         // TODO: Send device present event to extension
     }
     const onKeyDown = (key: string): boolean => {
-        //console.log(`key down: ${key}`)
+        if (!isPowered)
+            return false
         for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
@@ -105,7 +106,8 @@ export const Shield: React.FC = () => {
         return false
     }
     const onKeyUp = (key: string): boolean => {
-        //console.log(`key up: ${key}`)
+        if (!isPowered)
+            return false
         for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
