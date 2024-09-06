@@ -90,6 +90,15 @@ export const Shield: React.FC = () => {
     }, [canvasRef])
 
     const onButtonDown = (buttonId: ArcadeButtonId): boolean => {
+        const elems = buttonElements.current[buttonId]
+        // Show the active effect when the button is pressed and the shield is powered
+        if (isPowered && elems?.activeEffect) {
+            elems.activeEffect.style.display = "block"
+        }
+        // Focus the button to allow for keyboard navigation from here
+        if (elems?.button) {
+            elems.button.focus()
+        }
         if (isPowered) {
             postMessagePacket({ type: "button-down", buttonId })
         }
@@ -102,6 +111,11 @@ export const Shield: React.FC = () => {
         return true
     }
     const onButtonUp = (buttonId: ArcadeButtonId): boolean => {
+        const elems = buttonElements.current[buttonId]
+        // Hide the active effect when the button is released, unless it's the power button
+        if (buttonId !== "power" && elems?.activeEffect) {
+            elems.activeEffect.style.display = "none"
+        }
         if (isPowered) {
             postMessagePacket({ type: "button-up", buttonId })
         }
@@ -112,21 +126,12 @@ export const Shield: React.FC = () => {
         if (canvasRef) {
             canvasRef.style.display = powered ? "block" : "none"
         }
-        // TODO: Send presence event to extension here>
+        // TODO: Send presence event to extension here(?)
     }
     const onKeyDown = (key: string): boolean => {
         for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
-                const elems = buttonElements.current[buttonId]
-                // Show the active effect when the key is pressed and the shield is powered
-                if (isPowered && elems?.activeEffect) {
-                    elems.activeEffect.style.display = "block"
-                }
-                // Focus the button to allow for keyboard navigation from here
-                if (elems?.button) {
-                    elems.button.focus()
-                }
                 return onButtonDown(buttonId)
             }
         }
@@ -136,11 +141,6 @@ export const Shield: React.FC = () => {
         for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
-                const elems = buttonElements.current[buttonId]
-                // Hide the active effect when the key is released, unless it's the power button
-                if (buttonId !== "power" && elems?.activeEffect) {
-                    elems.activeEffect.style.display = "none"
-                }
                 return onButtonUp(buttonId)
             }
         }
