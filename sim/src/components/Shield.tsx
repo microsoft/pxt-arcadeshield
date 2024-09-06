@@ -152,16 +152,10 @@ export const Shield: React.FC = () => {
         const hoverEffect = svg.querySelector(`#button-${buttonId}-focus`) as SVGElement
         const button = svg.querySelector(`#button-${buttonId}-body`) as SVGElement
         const mouseDown = () => {
-            if (isPowered) {
-                showElement(activeEffect)
-                onButtonDown(buttonId)
-            }
+            onButtonDown(buttonId)
         }
         const mouseUp = () => {
-            hideElement(activeEffect)
-            if (isPowered) {
-                onButtonUp(buttonId)
-            }
+            onButtonUp(buttonId)
         }
         const mouseLeave = () => {
             hideElement(activeEffect)
