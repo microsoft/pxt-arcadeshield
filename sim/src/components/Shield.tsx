@@ -24,7 +24,7 @@ function hideElement(el?: HTMLElement | SVGElement) {
         el.style.display = "none"
     }
 }
-function setElementVisibility(el: HTMLElement | SVGElement, visible: boolean) {
+function setElementVisibility(el: HTMLElement | SVGElement | undefined, visible: boolean) {
     if (visible) showElement(el)
     else hideElement(el)
 }
@@ -90,11 +90,21 @@ export const Shield: React.FC = () => {
     }, [canvasRef])
 
     const onButtonDown = (buttonId: ArcadeButtonId): boolean => {
-        postMessagePacket({ type: "button-down", buttonId })
+        if (isPowered) {
+            postMessagePacket({ type: "button-down", buttonId })
+        }
+        if (buttonId === "power") {
+            const newPowered = !isPowered
+            const poweredEffect = buttonElements.current["power"]?.activeEffect
+            setElementVisibility(poweredEffect, newPowered)
+            onPoweredChanged(!isPowered)
+        }
         return true
     }
     const onButtonUp = (buttonId: ArcadeButtonId): boolean => {
-        postMessagePacket({ type: "button-up", buttonId })
+        if (isPowered) {
+            postMessagePacket({ type: "button-up", buttonId })
+        }
         return true
     }
     const onPoweredChanged = (powered: boolean) => {
@@ -102,16 +112,20 @@ export const Shield: React.FC = () => {
         if (canvasRef) {
             canvasRef.style.display = powered ? "block" : "none"
         }
-        // TODO: Send event to extension
+        // TODO: Send presence event to extension here>
     }
     const onKeyDown = (key: string): boolean => {
-        if (!isPowered) return false
         for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
                 const elems = buttonElements.current[buttonId]
-                if (elems?.activeEffect) {
+                // Show the active effect when the key is pressed and the shield is powered
+                if (isPowered && elems?.activeEffect) {
                     elems.activeEffect.style.display = "block"
+                }
+                // Focus the button to allow for keyboard navigation from here
+                if (elems?.button) {
+                    elems.button.focus()
                 }
                 return onButtonDown(buttonId)
             }
@@ -119,12 +133,12 @@ export const Shield: React.FC = () => {
         return false
     }
     const onKeyUp = (key: string): boolean => {
-        if (!isPowered) return false
         for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
                 const elems = buttonElements.current[buttonId]
-                if (elems?.activeEffect) {
+                // Hide the active effect when the key is released, unless it's the power button
+                if (buttonId !== "power" && elems?.activeEffect) {
                     elems.activeEffect.style.display = "none"
                 }
                 return onButtonUp(buttonId)
@@ -138,16 +152,10 @@ export const Shield: React.FC = () => {
         const hoverEffect = svg.querySelector(`#button-${buttonId}-focus`) as SVGElement
         const button = svg.querySelector(`#button-${buttonId}-body`) as SVGElement
         const mouseDown = () => {
-            if (isPowered) {
-                showElement(activeEffect)
-                onButtonDown(buttonId)
-            }
+            onButtonDown(buttonId)
         }
         const mouseUp = () => {
-            hideElement(activeEffect)
-            if (isPowered) {
-                onButtonUp(buttonId)
-            }
+            onButtonUp(buttonId)
         }
         const mouseLeave = () => {
             hideElement(activeEffect)
@@ -182,9 +190,7 @@ export const Shield: React.FC = () => {
         const button = svg.querySelector(`#button-${buttonId}-body`) as SVGElement
         setElementVisibility(poweredEffect, isPowered)
         const mouseDown = () => {
-            const newPowered = !isPowered
-            setElementVisibility(poweredEffect, newPowered)
-            onPoweredChanged(newPowered)
+            onButtonDown(buttonId)
         }
         if (button) {
             button.setAttribute("tabindex", tabIndex[buttonId].toString())
@@ -199,6 +205,7 @@ export const Shield: React.FC = () => {
         }
 
         return {
+            activeEffect: poweredEffect,
             hoverEffect,
             button,
         }
