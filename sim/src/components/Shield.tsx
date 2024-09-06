@@ -35,7 +35,7 @@ const keymap: { [key in ArcadeButtonId]: string[] } = {
     up: ["arrowup"],
     down: ["arrowdown"],
     a: ["a", "enter"],
-    b: ["b", "backspace"],
+    b: ["b", "escape"],
     menu: ["`"],
     power: ["p"],
 }
