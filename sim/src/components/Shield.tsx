@@ -119,6 +119,7 @@ export const Shield: React.FC = () => {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
                 const elems = buttonElements.current[buttonId]
+                // Show the active effect when the key is pressed and the shield is powered
                 if (isPowered && elems?.activeEffect) {
                     elems.activeEffect.style.display = "block"
                 }
@@ -136,6 +137,7 @@ export const Shield: React.FC = () => {
             const assignments = keymap[buttonId]
             if (assignments.includes(key)) {
                 const elems = buttonElements.current[buttonId]
+                // Hide the active effect when the key is released, unless it's the power button
                 if (buttonId !== "power" && elems?.activeEffect) {
                     elems.activeEffect.style.display = "none"
                 }
