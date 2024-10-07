@@ -25,8 +25,8 @@
         "scene.ts",
         "screenhelpers.ts",
         "text.ts",
-        "docs/reference/bitmaps/bitmap/fill-rect",
-        "docs/reference/bitmaps/bitmap/draw-line"
+        "docs/reference/bitmaps/bitmap/fill-rect.md",
+        "docs/reference/bitmaps/bitmap/draw-line.md"
     ],
     "testFiles": [
         "test.ts"
