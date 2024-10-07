@@ -1,40 +1,14 @@
 //% fixedInstances decompileIndirectFixedInstances
 interface Bitmap {
     /**
-     * Fill a rectangle
+     * Fill entire image with a given color
      */
-    //% helper=imageFillRect blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
-    //% block="fill rectangle in $this=variables_get at x $x y $y width $w height $h $c=colorindexpicker"
-    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/fill-rect
+    //% shim=BitmapMethods::fill blockNamespace="bitmaps" group="Drawing"
+    //% block="fill $this=variables_get with $c=colorindexpicker"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/fill
     //% this.shadow="theScreen"
-    fillRect(x: number, y: number, w: number, h: number, c: color): void;
-
-    /**
-     * Draw a line
-     */
-    //% helper=imageDrawLine blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
-    //% block="draw line in $this=variables_get from x $x0 y $y0 to x $x1 y $y1 $c=colorindexpicker"
-    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-line
-    //% this.shadow="theScreen"
-    drawLine(x0: number, y0: number, x1: number, y1: number, c: color): void;
-
-    /**
-     * Draw an empty rectangle
-     */
-    //% helper=imageDrawRect blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
-    //% block="draw rectangle in $this=variables_get at x $x y $y width $w height $h $c=colorindexpicker"
-    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-rect
-    //% this.shadow="theScreen"
-    drawRect(x: number, y: number, w: number, h: number, c: color): void;
-
-    /**
-     * Draw given bitmap on the current bitmap
-     */
-    //% shim=BitmapMethods::drawBitmap blockNamespace="bitmaps" group="Drawing"
-    //% block="draw bitmap $from=variables_get in $this=variables_get at x $x y $y"
-    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-bitmap
-    //% this.shadow="theScreen"
-    drawBitmap(from: Bitmap, x: int32, y: int32): void;
+    //% weight=10
+    fill(c: int32): void;
 
     /**
      * Set pixel color
@@ -43,6 +17,7 @@ interface Bitmap {
     //% block="set $this=variables_get color at x $x y $y to $c=colorindexpicker"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/set-pixel
     //% this.shadow="theScreen"
+    //% weight=15
     setPixel(x: int32, y: int32, c: int32): void;
 
     /**
@@ -52,27 +27,48 @@ interface Bitmap {
     //% block="$this=variables_get color at x $x y $y"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/get-pixel
     //% this.shadow="theScreen"
+    //% weight=20
     getPixel(x: int32, y: int32): int32;
 
+    /**
+     * Draw a line
+     */
+    //% helper=imageDrawLine blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
+    //% block="draw line in $this=variables_get from x $x0 y $y0 to x $x1 y $y1 $c=colorindexpicker"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-line
+    //% this.shadow="theScreen"
+    //% weight=30
+    drawLine(x0: number, y0: number, x1: number, y1: number, c: color): void;
 
     /**
-     * Fill entire image with a given color
+     * Draw an empty rectangle
      */
-    //% shim=BitmapMethods::fill blockNamespace="bitmaps" group="Drawing"
-    //% block="fill $this=variables_get with $c=colorindexpicker"
-    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/fill
+    //% helper=imageDrawRect blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
+    //% block="draw rectangle in $this=variables_get at x $x y $y width $w height $h $c=colorindexpicker"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-rect
     //% this.shadow="theScreen"
-    fill(c: int32): void;
+    //% weight=40
+    drawRect(x: number, y: number, w: number, h: number, c: color): void;
 
     /**
-     * Return a copy of the current image
+     * Fill a rectangle
      */
-    //% shim=BitmapMethods::clone blockNamespace="bitmaps" group="Create"
-    //% weight=60
-    //% block="clone $this=variables_get"
-    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/clone
+    //% helper=imageFillRect blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
+    //% block="fill rectangle in $this=variables_get at x $x y $y width $w height $h $c=colorindexpicker"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/fill-rect
     //% this.shadow="theScreen"
-    clone(): Bitmap;
+    //% weight=50
+    fillRect(x: number, y: number, w: number, h: number, c: color): void;
+
+    /**
+     * Draw given bitmap on the current bitmap
+     */
+    //% shim=BitmapMethods::drawBitmap blockNamespace="bitmaps" group="Drawing"
+    //% block="draw bitmap $from=variables_get in $this=variables_get at x $x y $y"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-bitmap
+    //% this.shadow="theScreen"
+    //% weight=55
+    drawBitmap(from: Bitmap, x: int32, y: int32): void;
 
     /**
      * Flips (mirrors) pixels horizontally in the current image
@@ -134,12 +130,22 @@ interface Bitmap {
      */
     //% helper=imageMapRect
     mapRect(x: number, y: number, w: number, h: number, colorMap: Buffer): void;
+
+    /**
+     * Return a copy of the current image
+     */
+    //% shim=BitmapMethods::clone blockNamespace="bitmaps" group="Create"
+    //% weight=60
+    //% block="clone $this=variables_get"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/clone
+    //% this.shadow="theScreen"
+    clone(): Bitmap;
 }
 
 declare namespace bitmap {
     //% blockNamespace="bitmaps"
     //% block="create bitmap width $width height $height" group="Create"
     //% weight=50
-    //% help=bitmaps/create
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/create
     function create(width: number, height: number): Bitmap;
 }
