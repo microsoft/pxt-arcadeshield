@@ -63,7 +63,7 @@ interface Bitmap {
     /**
      * Draw given bitmap on the current bitmap
      */
-    //% shim=BitmapMethods::drawBitmap blockNamespace="bitmaps" group="Drawing"
+    //% shim=BitmapMethods::drawTransparentBitmap blockNamespace="bitmaps" group="Drawing"
     //% block="draw bitmap $from=variables_get in $this=variables_get at x $x y $y"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-bitmap
     //% this.shadow="theScreen"
