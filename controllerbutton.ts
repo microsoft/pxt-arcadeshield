@@ -119,7 +119,7 @@ namespace controller {
          * Run some code when a button is pressed, released, or held
          */
         //% weight=99 blockGap=8 help=controller/button/on-event
-        //% blockId=keyonevent block="on $button **button** $event"
+        //% blockId=keyonevent block="on $this **button** $event"
         onEvent(event: ControllerButtonEvent, handler: () => void) {
             const eventHandler = this.getOrCreateHandlerForEvent(event);
             eventHandler.callback = handler;
@@ -170,7 +170,7 @@ namespace controller {
          * Pauses until a button is pressed or released
          */
         //% weight=98 blockGap=8 help=controller/button/pause-until
-        // blockId=keypauseuntil block="pause until $button **button** is $event"
+        // blockId=keypauseuntil block="pause until $this **button** is $event"
         pauseUntil(event: ControllerButtonEvent) {
             control.waitForEvent(event, this.id)
         }
@@ -179,7 +179,7 @@ namespace controller {
          * Indicates if the button is currently pressed
          */
         //% weight=96 blockGap=8 help=controller/button/is-pressed
-        //% blockId=keyispressed block="is $button **button** pressed"
+        //% blockId=keyispressed block="is $this **button** pressed"
         isPressed() {
             return this._pressed;
         }
