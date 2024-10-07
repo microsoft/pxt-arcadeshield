@@ -4,16 +4,10 @@ interface Bitmap {
      * Fill a rectangle
      */
     //% helper=imageFillRect blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
-    //% block="fill rectangle in $this at x $x y $y width $w height $h $c=colorindexpicker"
+    //% block="fill rectangle in $this=variables_get at x $x y $y width $w height $h $c=colorindexpicker"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/fill-rect
     //% this.shadow="theScreen"
     fillRect(x: number, y: number, w: number, h: number, c: color): void;
-
-    /**
-     * Replace colors in a rectangle
-     */
-    //% helper=imageMapRect
-    mapRect(x: number, y: number, w: number, h: number, colorMap: Buffer): void;
 
     /**
      * Draw a line
@@ -29,8 +23,8 @@ interface Bitmap {
      */
     //% helper=imageDrawRect blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
     //% block="draw rectangle in $this=variables_get at x $x y $y width $w height $h $c=colorindexpicker"
-    //% help=bitmaps/bitmap/draw-rect
-    //% bmap.shadow="theScreen"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-rect
+    //% this.shadow="theScreen"
     drawRect(x: number, y: number, w: number, h: number, c: color): void;
 
     /**
@@ -38,8 +32,8 @@ interface Bitmap {
      */
     //% shim=BitmapMethods::drawBitmap blockNamespace="bitmaps" group="Drawing"
     //% block="draw bitmap $from=variables_get in $this=variables_get at x $x y $y"
-    //% help=bitmaps/bitmap/draw-bitmap
-    //% bmap.shadow="theScreen"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-bitmap
+    //% this.shadow="theScreen"
     drawBitmap(from: Bitmap, x: int32, y: int32): void;
 
     /**
@@ -47,8 +41,8 @@ interface Bitmap {
      */
     //% shim=BitmapMethods::setPixel blockNamespace="bitmaps" group="Drawing"
     //% block="set $this=variables_get color at x $x y $y to $c=colorindexpicker"
-    //% help=bitmaps/bitmap/set-pixel
-    //% bmap.shadow="theScreen"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/set-pixel
+    //% this.shadow="theScreen"
     setPixel(x: int32, y: int32, c: int32): void;
 
     /**
@@ -56,8 +50,8 @@ interface Bitmap {
      */
     //% shim=BitmapMethods::getPixel blockNamespace="bitmaps" group="Drawing"
     //% block="$this=variables_get color at x $x y $y"
-    //% help=bitmaps/bitmap/get-pixel
-    //% bmap.shadow="theScreen"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/get-pixel
+    //% this.shadow="theScreen"
     getPixel(x: int32, y: int32): int32;
 
 
@@ -66,8 +60,8 @@ interface Bitmap {
      */
     //% shim=BitmapMethods::fill blockNamespace="bitmaps" group="Drawing"
     //% block="fill $this=variables_get with $c=colorindexpicker"
-    //% help=bitmaps/bitmap/fill
-    //% bmap.shadow="theScreen"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/fill
+    //% this.shadow="theScreen"
     fill(c: int32): void;
 
     /**
@@ -76,8 +70,8 @@ interface Bitmap {
     //% shim=BitmapMethods::clone blockNamespace="bitmaps" group="Create"
     //% weight=60
     //% block="clone $this=variables_get"
-    //% help=bitmaps/bitmap/clone
-    //% bmap.shadow="theScreen"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/clone
+    //% this.shadow="theScreen"
     clone(): Bitmap;
 
     /**
@@ -85,8 +79,8 @@ interface Bitmap {
      */
     //% shim=BitmapMethods::flipX blockNamespace="bitmaps" group="Transformations"
     //% block="flip $this=variables_get horizontally"
-    //% help=bitmaps/bitmap/flip-x
-    //% bmap.shadow="theScreen"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/flip-x
+    //% this.shadow="theScreen"
     flipX(): void;
 
     /**
@@ -94,15 +88,16 @@ interface Bitmap {
      */
     //% shim=BitmapMethods::flipY blockNamespace="bitmaps" group="Transformations"
     //% block="flip $this=variables_get vertically"
-    //% help=bitmaps/bitmap/flip-y
-    //% bmap.shadow="theScreen"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/flip-y
+    //% this.shadow="theScreen"
     flipY(): void;
 
     /**
      * Every pixel in image is moved by (dx,dy)
      */
     //% shim=BitmapMethods::scroll blockNamespace="bitmaps" group="Transformations"
-    //% help=bitmaps/bitmap/scroll
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/scroll
+    //% this.shadow="theScreen"
     scroll(dx: int32, dy: int32): void;
 
     /**
@@ -111,7 +106,8 @@ interface Bitmap {
     //% shim=BitmapMethods::replace blockNamespace="bitmaps" group="Transformations"
     //% block="change color in $this=variables_get from $from=colorindexpicker to $to=colorindexpicker"
     //% help=bitmaps/bitmap/replace
-    //% bmap.shadow="theScreen"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/replace
+    //% this.shadow="theScreen"
     replace(from: int32, to: int32): void;
 
     /**
@@ -124,7 +120,7 @@ interface Bitmap {
     //% this.shadow=variables_get
     //% other.shadow=variables_get
     //% this.defl="bmap"
-    //% help=bitmaps/bitmap/equals
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/equals
     equals(other: Bitmap): boolean;
 
     //% shim=BitmapMethods::isStatic
@@ -132,6 +128,12 @@ interface Bitmap {
 
     //% shim=BitmapMethods::revision
     revision(): number;
+
+    /**
+     * Replace colors in a rectangle
+     */
+    //% helper=imageMapRect
+    mapRect(x: number, y: number, w: number, h: number, colorMap: Buffer): void;
 }
 
 declare namespace bitmap {
