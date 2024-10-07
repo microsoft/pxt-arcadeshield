@@ -4,9 +4,9 @@ interface Bitmap {
      * Fill a rectangle
      */
     //% helper=imageFillRect blockNamespace="bitmaps" inlineInputMode="inline" group="Drawing"
-    //% block="fill rectangle in $this=variables_get at x $x y $y width $w height $h $c=colorindexpicker"
+    //% block="fill rectangle in $this at x $x y $y width $w height $h $c=colorindexpicker"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/fill-rect
-    //% $this.shadow="theScreen"
+    //% this.shadow="theScreen"
     fillRect(x: number, y: number, w: number, h: number, c: color): void;
 
     /**
