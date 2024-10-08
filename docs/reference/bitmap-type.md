@@ -1,6 +1,6 @@
 # Bitmap
 
-A bitmap is some number of rows and columns of color pixels that make up rectangular picture. A _pixel_ is a single point of color inside the picture.
+A bitmap is some number of rows and columns of color pixels that make up rectangular picture. A _pixel_ is a single point of color inside the bitmap.
 
 Bitmaps are two-dimensional so they have a known height and width. When a bitmap is declared, or created, the height and width are specified either by the _layout_ of the bitmap or as parameters to it's [create](/reference/bitmaps/create) method.
 
