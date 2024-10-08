@@ -37,10 +37,6 @@ cake = bmp`
     `
 ```
 
-## See also
-
-[create](/reference/bitmaps/create)
-
 ```package
 pxt-arcadeshield=github:microsoft/pxt-arcadeshield
 ```

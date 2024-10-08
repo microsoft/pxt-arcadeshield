@@ -53,9 +53,6 @@ game.onUpdate(function () {
 })
 ```
 
-## See also #seealso
-
-[on event](/reference/controller/button/on-event)
 
 ```package
 pxt-arcadeshield=github:microsoft/pxt-arcadeshield

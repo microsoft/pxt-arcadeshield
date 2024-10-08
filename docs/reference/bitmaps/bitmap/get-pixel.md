@@ -33,10 +33,6 @@ if (randoColors.getPixel(8, 8) == 14) {
 screen.drawBitmap(randoColors, 0, 0)    
 ```
 
-## See also #seeaslo
-
-[bitmap](/types/bitmap),
-[set pixel](/reference/bitmaps/bitmap/set-pixel)
 
 ```package
 pxt-arcadeshield=github:microsoft/pxt-arcadeshield

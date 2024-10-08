@@ -6,7 +6,7 @@ Set the color of a pixel location in a bitmap.
 bitmap.create(0,0).setPixel(0,0,0)
 ```
 
-Pixels are an individual point of color in an [bitmap](/reference/bitmap). Pixels are arraged in columns (its ``x`` value) and rows (its ``y`` value). All of the pixels together make the rectangle of the bitmap. Some pixels might have no color (transparent) and other pixels might have a color value set for them.
+Pixels are an individual point of color in an bitmap. Pixels are arraged in columns (its ``x`` value) and rows (its ``y`` value). All of the pixels together make the rectangle of the bitmap. Some pixels might have no color (transparent) and other pixels might have a color value set for them.
 
 ## Parameters
 
@@ -33,11 +33,6 @@ for (let y = 0; y <= 31; y++) {
 }
 screen.drawBitmap(hatch, 0, 0)
 ```
-
-## See also #seealso
-
-[bitmap](/reference/bitmap),
-[get pixel](/reference/bitmaps/bitmap/get-pixel)
 
 ```package
 pxt-arcadeshield=github:microsoft/pxt-arcadeshield

@@ -21,11 +21,6 @@ blueRect.fillRect(8, 8, 16, 16, 5)
 screen().drawBitmap(blueRect, 0, 0)
 ```
 
-## See also #seealso
-
-[fill rect](/docs/reference/bitmaps/bitmap/fill-rect),
-[replace](/docs/reference/bitmaps/bitmap/replace)
-
 
 ```package
 pxt-arcadeshield=github:microsoft/pxt-arcadeshield

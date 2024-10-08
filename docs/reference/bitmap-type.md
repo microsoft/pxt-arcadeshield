@@ -216,9 +216,6 @@ let boxSprite = sprites.create(orangeBox)
 
 The [bitmap](/reference/bitmaps) functions let you do more complex pixel operations like filling and drawing shapes.
 
-## See also
-
-[bitmap](/reference/bitmaps)
 
 ```package
 pxt-arcadeshield=github:microsoft/pxt-arcadeshield

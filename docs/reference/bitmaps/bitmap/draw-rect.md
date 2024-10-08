@@ -28,10 +28,6 @@ blueRect.drawRect(0, 0, 32, 32, 10)
 screen.drawBitmap(blueRect, 0, 0)
 ```
 
-## See also #seealso
-
-[fill rect](/reference/bitmaps/bitmap/fill-rect),
-[draw line](/reference/bitmaps/bitmap/draw-line)
 
 ```package
 pxt-arcadeshield=github:microsoft/pxt-arcadeshield

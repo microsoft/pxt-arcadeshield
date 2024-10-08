@@ -50,11 +50,6 @@ for (let row = 0; row <= 7; row++) {
 screen().drawBitmap(chessBoard, 0, 0)
 ```
 
-## See also #seealso
-
-[fill](/reference/bitmaps/bitmap/fill),
-[draw rect](/reference/bitmaps/bitmap/draw-rect)
-
 ```package
 pxt-arcadeshield=github:microsoft/pxt-arcadeshield
 ```

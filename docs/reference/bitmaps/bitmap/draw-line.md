@@ -29,10 +29,6 @@ drawBigX.drawLine(0, 31, 31, 0, 10)
 screen.drawBitmap(drawBigX,0,0)
 ```
 
-## See also #seealso
-
-[draw rect](/reference/bitmaps/bitmap/draw-rect)
-
 ```package
 pxt-arcadeshield=github:microsoft/pxt-arcadeshield
 ```
