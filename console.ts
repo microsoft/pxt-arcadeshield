@@ -4,7 +4,7 @@ namespace scene.consoleOverlay {
     let tabSize = 8;
     const marginx = 4;
     const marginy = 2;
-    const consoleFont = bitmap.font5;
+    const consoleFont = bitmaps.font5;
     console.addListener(listener);
 
     export function isVisible() {

@@ -14,7 +14,7 @@ const theScreen: Bitmap = __screen_internal.createScreen();
 namespace __screen_internal {
 
     export function createScreen() {
-        const img = bitmap.create(
+        const img = bitmaps.create(
             screenhelpers.displayWidth(), // control.getConfigValue(DAL.CFG_DISPLAY_WIDTH, 160)
             screenhelpers.displayHeight() // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 128)
         )
