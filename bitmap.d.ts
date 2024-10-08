@@ -103,8 +103,10 @@ interface Bitmap {
     /**
      * Draw given bitmap on the current bitmap
      */
-    //% shim=BitmapMethods::drawBitmap blockNamespace="bitmaps" group="Drawing"
-    //% block="draw bitmap $from in $this at x $x y $y"
+    //% shim=BitmapMethods::drawBitmap 
+    //% blockNamespace="bitmaps" 
+    //% group="Drawing"
+    //% block="draw $from in $this at x $x y $y"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-bitmap
     //% this.shadow="theScreen"
     //% from.shadow=variables_get
@@ -119,7 +121,7 @@ interface Bitmap {
     //% blockNamespace="bitmaps"
     //% blockId=image_draw_transparent_image
     //% group="Drawing"
-    //% block="$this draw $from at x $x y $y"
+    //% block="draw $from transparent in $this at x $x y $y"
     //% this.shadow="theScreen"
     //% from.shadow=variables_get
     //% weight=74
