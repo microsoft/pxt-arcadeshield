@@ -61,6 +61,26 @@ interface Bitmap {
     fillRect(x: number, y: number, w: number, h: number, c: color): void;
 
     /**
+     * Draw an empty circle.
+     *
+     * @param cx The center x coordinate of the circle
+     * @param cy The center y coordinate of the circle
+     * @param r The radius of the circle
+     * @param c The color to draw the circle
+     */
+    //% helper=imageDrawCircle
+    //% blockId=image_draw_circle
+    //% block="draw circle in $this at cx $cx cy $cy radius $r $c"
+    //% this.shadow=theScreen
+    //% this.defl=picture
+    //% c.shadow=colorindexpicker
+    //% inlineInputMode="inline"
+    //% weight=78
+    //% blockNamespace="images"
+    //% group="Drawing"
+    drawCircle(cx: number, cy: number, r: number, c: color): void;
+
+    /**
      * Draw given bitmap on the current bitmap
      */
     //% shim=BitmapMethods::drawTransparentBitmap blockNamespace="bitmaps" group="Drawing"
