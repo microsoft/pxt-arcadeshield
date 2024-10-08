@@ -1,7 +1,7 @@
 //% fixedInstances decompileIndirectFixedInstances
 interface Bitmap {
     /**
-     * Fill entire image with a given color
+     * Fill entire bitmap with a given color
      */
     //% shim=BitmapMethods::fill blockNamespace="bitmaps" group="Drawing"
     //% block="fill $this with $c=colorindexpicker"
@@ -103,15 +103,30 @@ interface Bitmap {
     /**
      * Draw given bitmap on the current bitmap
      */
-    //% shim=BitmapMethods::drawTransparentBitmap blockNamespace="bitmaps" group="Drawing"
+    //% shim=BitmapMethods::drawBitmap blockNamespace="bitmaps" group="Drawing"
     //% block="draw bitmap $from=variables_get in $this at x $x y $y"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-bitmap
     //% this.shadow="theScreen"
     //% weight=76
     drawBitmap(from: Bitmap, x: int32, y: int32): void;
 
+
     /**
-     * Flips (mirrors) pixels horizontally in the current image
+     * Draw given bitmap with transparent background on the current bitmap
+     */
+    //% shim=ImageMethods::drawTransparentBitmap
+    //% blockNamespace="bitmaps"
+    //% blockId=image_draw_transparent_image
+    //% group="Drawing"
+    //% block="$this draw $from at x $x y $y"
+    //% this.shadow="theScreen"
+    //% this.defl="picture"
+    //% from.shadow=screen_image_picker
+    //% weight=74
+    drawTransparentBitmap(from: Bitmap, x: int32, y: int32): void;
+
+    /**
+     * Flips (mirrors) pixels horizontally in the current bitmap
      */
     //% shim=BitmapMethods::flipX blockNamespace="bitmaps" group="Transformations"
     //% block="flip $this horizontally"
@@ -121,7 +136,7 @@ interface Bitmap {
     flipX(): void;
 
     /**
-     * Flips (mirrors) pixels vertically in the current image
+     * Flips (mirrors) pixels vertically in the current bitmap
      */
     //% shim=BitmapMethods::flipY blockNamespace="bitmaps" group="Transformations"
     //% block="flip $this vertically"
@@ -131,7 +146,7 @@ interface Bitmap {
     flipY(): void;
 
     /**
-     * Every pixel in image is moved by (dx,dy)
+     * Every pixel in bitmap is moved by (dx,dy)
      */
     //% shim=BitmapMethods::scroll blockNamespace="bitmaps" group="Transformations"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/scroll
@@ -141,7 +156,7 @@ interface Bitmap {
     scroll(dx: int32, dy: int32): void;
 
     /**
-     * Replaces one color in an image with another
+     * Replaces one color in an bitmap with another
      */
     //% shim=BitmapMethods::replace blockNamespace="bitmaps" group="Transformations"
     //% block="change color in $this from $from=colorindexpicker to $to=colorindexpicker"
@@ -152,12 +167,12 @@ interface Bitmap {
     replace(from: int32, to: int32): void;
 
     /**
-     * Returns true if the provided image is the same as this image,
+     * Returns true if the provided bitmap is the same as this bitmap,
      * otherwise returns false.
      */
     //% shim=BitmapMethods::equals
     //% blockNamespace="bitmaps" group="Compare"
-    //% block="$this is equal to image $other"
+    //% block="$this is equal to bitmap $other"
     //% this.shadow=variables_get
     //% other.shadow=variables_get
     //% this.defl="bmap"
@@ -177,7 +192,7 @@ interface Bitmap {
     mapRect(x: number, y: number, w: number, h: number, colorMap: Buffer): void;
 
     /**
-     * Return a copy of the current image
+     * Return a copy of the current bitmap
      */
     //% shim=BitmapMethods::clone blockNamespace="bitmaps" group="Create"
     //% weight=50
