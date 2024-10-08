@@ -15,7 +15,7 @@ namespace bitmap {
                 Width,
                 //% block="height"
                 Height
-            }
+        }
 
         
         /**
