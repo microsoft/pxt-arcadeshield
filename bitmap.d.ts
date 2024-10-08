@@ -204,7 +204,7 @@ interface Bitmap {
     clone(): Bitmap;
 }
 
-declare namespace bitmap {
+declare namespace bitmaps {
     //% blockNamespace="bitmaps"
     //% block="create bitmap width $width height $height" group="Create"
     //% weight=60

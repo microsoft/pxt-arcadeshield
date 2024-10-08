@@ -1,4 +1,4 @@
-namespace bitmap {
+namespace bitmaps {
 
     export interface Font {
         charWidth: number;

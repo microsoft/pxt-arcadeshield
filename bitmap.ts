@@ -9,7 +9,7 @@ function screen(): Bitmap {
 }
 
 
-namespace bitmap {
+namespace bitmaps {
         export enum Dimension {
                 //% block="width"
                 Width,
