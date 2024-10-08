@@ -41,7 +41,6 @@
         "docs/reference/bitmaps/create.md",
         "docs/reference/bitmaps/screen-bitmap.md",
         "docs/reference/controller/on-button-event.md",
-        "docs/reference/controller/set-repeat-default.md",
         "docs/reference/controller/button/is-pressed.md",
         "docs/reference/controller/button/on-event.md",
         "docs/reference/bitmap.md",
