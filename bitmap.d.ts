@@ -76,7 +76,7 @@ interface Bitmap {
     //% c.shadow=colorindexpicker
     //% inlineInputMode="inline"
     //% weight=78
-    //% blockNamespace="images"
+    //% blockNamespace="bitmaps"
     //% group="Drawing"
     drawCircle(cx: number, cy: number, r: number, c: color): void;
 
