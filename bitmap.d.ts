@@ -117,7 +117,7 @@ interface Bitmap {
     //% this.shadow="theScreen"
     //% this.defl=bitmap
     //% from.shadow=variables_get
-    //% from.defl="bitmap2"
+    //% from.defl="bitmap"
     //% weight=76
     drawBitmap(from: Bitmap, x: int32, y: int32): void;
 
@@ -133,7 +133,7 @@ interface Bitmap {
     //% this.shadow="theScreen"
     //% this.defl=bitmap
     //% from.shadow=variables_get
-    //% from.defl="bitmap2"
+    //% from.defl="bitmap"
     //% weight=74
     drawTransparentBitmap(from: Bitmap, x: int32, y: int32): void;
 
