@@ -13,7 +13,7 @@ namespace bitmaps {
     //% bitmap.fieldOptions.decompileIndirectFixedInstances="true"
     //% bitmap.fieldOptions.decompileArgumentAsString="true"
     //% weight=50 
-    //% group = "Create"
+    //% group="Create"
     //% help=bitmaps/bitmap
     export function _bitmap(bitmap: Bitmap): Bitmap {
         return bitmap;
