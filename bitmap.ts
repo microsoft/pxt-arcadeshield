@@ -1,7 +1,7 @@
 /**
 * Get the screen bitmap
 */
-//% blockNamespace="bitmaps" group="Create"
+//% blockNamespace="drawing" group="Create"
 //% blockId=theScreen block="screen"
 //% help=bitmaps/screen-image
 function screen(): Bitmap {
@@ -27,7 +27,7 @@ namespace bitmaps {
          */
         //% blockId=image_get_dimension
         //% group="Create"
-        //% blockNamespace="bitmaps"
+        //% blockNamespace="drawing"
         //% block="$bitmap $dimension"
         //% bitmap.shadow=variables_get
         //% bitmap.defl=bitmap
