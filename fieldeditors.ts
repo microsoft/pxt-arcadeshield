@@ -32,7 +32,7 @@ namespace drawing {
         return index;
     }
 }
-    //% fixedInstance blockIdentity=bitmaps._bitmap
+    //% fixedInstance blockIdentity=drawing._bitmap
     const defaultBitmap: Bitmap = bmp`
     . . . . . . . . . . . . . . . .
     . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 .
