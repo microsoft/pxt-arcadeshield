@@ -32,7 +32,7 @@ namespace bitmaps {
         //% picture.shadow=variables_get
         //% picture.defl=bitmap
         export function getDimension(bitmap: Bitmap, dimension: Dimension) {
-                if (dimension === Dimension.Width) return picture.width;
-                else return picture.height;
+                if (dimension === Dimension.Width) return bitmap.width;
+                else return bitmap.height;
         }
 }
