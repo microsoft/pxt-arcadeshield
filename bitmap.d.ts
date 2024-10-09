@@ -110,6 +110,7 @@ interface Bitmap {
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-bitmap
     //% this.shadow="theScreen"
     //% from.shadow=variables_get
+    //% from.defl="bitmap"
     //% weight=76
     drawBitmap(from: Bitmap, x: int32, y: int32): void;
 
@@ -124,6 +125,7 @@ interface Bitmap {
     //% block="draw $from transparent in $this at x $x y $y"
     //% this.shadow="theScreen"
     //% from.shadow=variables_get
+    //% from.defl="bitmap"
     //% weight=74
     drawTransparentBitmap(from: Bitmap, x: int32, y: int32): void;
 
