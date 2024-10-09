@@ -15,7 +15,7 @@ bitmap.create(0,0).fill(0)
 Fill an entire bitmap with all blue pixels. Fill a small rectangle in the center of the bitmap with yellow pixels.
 
 ```blocks
-let blueRect = bitmap.create(32, 32)
+let blueRect = bitmaps.create(32, 32)
 blueRect.fill(8)
 blueRect.fillRect(8, 8, 16, 16, 5)
 screen().drawBitmap(blueRect, 0, 0)

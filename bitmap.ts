@@ -17,7 +17,7 @@ namespace bitmaps {
                 Height
         }
 
-        
+
         /**
          * Returns the width or height of a picture.
          *
@@ -28,10 +28,10 @@ namespace bitmaps {
         //% blockId=image_get_dimension
         //% group="Create"
         //% blockNamespace="bitmaps"
-        //% block="$picture $dimension"
+        //% block="$bitmap $dimension"
         //% picture.shadow=variables_get
-        //% picture.defl=picture
-        export function getDimension(picture: Bitmap, dimension: Dimension) {
+        //% picture.defl=bitmap
+        export function getDimension(bitmap: Bitmap, dimension: Dimension) {
                 if (dimension === Dimension.Width) return picture.width;
                 else return picture.height;
         }

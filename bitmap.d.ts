@@ -72,7 +72,7 @@ interface Bitmap {
     //% blockId=image_draw_circle
     //% block="draw circle in $this at cx $cx cy $cy radius $r $c"
     //% this.shadow=theScreen
-    //% this.defl=picture
+    //% this.defl=bitmap
     //% c.shadow=colorindexpicker
     //% inlineInputMode="inline"
     //% weight=78
@@ -92,7 +92,7 @@ interface Bitmap {
     //% blockId=image_fill_circle
     //% block="fill circle in $this at cx $cx cy $cy radius $r $c"
     //% this.shadow=theScreen
-    //% this.defl=picture
+    //% this.defl=bitmap
     //% c.shadow=colorindexpicker
     //% inlineInputMode="inline"
     //% weight=77
@@ -177,7 +177,8 @@ interface Bitmap {
     //% block="$this is equal to bitmap $other"
     //% this.shadow=variables_get
     //% other.shadow=variables_get
-    //% this.defl="bmap"
+    //% this.defl="bitmap"
+    //% other.defl="bitmap2"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/equals
     equals(other: Bitmap): boolean;
 
