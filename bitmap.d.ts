@@ -200,7 +200,7 @@ interface Bitmap {
      * Return a copy of the current bitmap
      */
     //% shim=BitmapMethods::clone blockNamespace="bitmaps" group="Create"
-    //% weight=50
+    //% weight=40
     //% block="clone $this"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/clone
     //% this.shadow=variables_get

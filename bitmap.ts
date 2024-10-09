@@ -31,6 +31,7 @@ namespace bitmaps {
         //% block="$bitmap $dimension"
         //% bitmap.shadow=variables_get
         //% bitmap.defl=bitmap
+        //% weight=30
         export function getDimension(bitmap: Bitmap, dimension: Dimension) {
                 if (dimension === Dimension.Width) return bitmap.width;
                 else return bitmap.height;

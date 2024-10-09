@@ -12,7 +12,8 @@ namespace bitmaps {
     //% bitmap.fieldOptions.taggedTemplate="bmp"
     //% bitmap.fieldOptions.decompileIndirectFixedInstances="true"
     //% bitmap.fieldOptions.decompileArgumentAsString="true"
-    //% weight=0 group="Create"
+    //% weight=50 
+    //% group = "Create"
     //% help=bitmaps/bitmap
     export function _bitmap(bitmap: Bitmap): Bitmap {
         return bitmap;
