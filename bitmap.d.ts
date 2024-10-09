@@ -106,11 +106,12 @@ interface Bitmap {
     //% shim=BitmapMethods::drawBitmap 
     //% blockNamespace="bitmaps" 
     //% group="Drawing"
-    //% block="in $this draw $from at x $x y $y"
+    //% block="draw $from in $this at x $x y $y"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-bitmap
     //% this.shadow="theScreen"
+    //% this.defl=bitmap
     //% from.shadow=variables_get
-    //% from.defl="bitmap"
+    //% from.defl="bitmap2"
     //% weight=76
     drawBitmap(from: Bitmap, x: int32, y: int32): void;
 
@@ -124,8 +125,9 @@ interface Bitmap {
     //% group="Drawing"
     //% block="draw $from transparent in $this at x $x y $y"
     //% this.shadow="theScreen"
+    //% this.defl=bitmap
     //% from.shadow=variables_get
-    //% from.defl="bitmap"
+    //% from.defl="bitmap2"
     //% weight=74
     drawTransparentBitmap(from: Bitmap, x: int32, y: int32): void;
 
