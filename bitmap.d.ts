@@ -203,7 +203,8 @@ interface Bitmap {
     //% weight=50
     //% block="clone $this"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/clone
-    //% this.shadow="theScreen"
+    //% this.shadow=variables_get
+    //% this.defl="bitmap"
     clone(): Bitmap;
 }
 
