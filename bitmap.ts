@@ -29,8 +29,8 @@ namespace bitmaps {
         //% group="Create"
         //% blockNamespace="bitmaps"
         //% block="$bitmap $dimension"
-        //% picture.shadow=variables_get
-        //% picture.defl=bitmap
+        //% bitmap.shadow=variables_get
+        //% bitmap.defl=bitmap
         export function getDimension(bitmap: Bitmap, dimension: Dimension) {
                 if (dimension === Dimension.Width) return bitmap.width;
                 else return bitmap.height;
