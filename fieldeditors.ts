@@ -24,7 +24,6 @@ namespace bitmaps {
     //% blockId=bitmap_picker block="$bitmap" shim=TD_ID
     //% bitmap.fieldEditor="sprite"
     //% bitmap.fieldOptions.taggedTemplate="bmp"
-    //% bitmap.fieldOptions.decompileIndirectFixedInstances="true"
     //% bitmap.fieldOptions.decompileArgumentAsString="true"
     //% weight=50 
     //% group="Create"
@@ -44,7 +43,7 @@ namespace bitmaps {
         return index;
     }
 }
-    //% fixedInstance blockIdentity=bitmaps._bitmap
+    //% blockIdentity=bitmaps._bitmap
     const defaultBitmap: Bitmap = bmp`
     . . . . . . . . . . . . . . . .
     . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 .
