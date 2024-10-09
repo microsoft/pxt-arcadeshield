@@ -11,6 +11,7 @@ namespace bitmaps {
     //% blockId=bitmapcreatenoset 
     //% block = "create bitmap width $width height $height"
     //% blockAliasFor="bitmaps.create"
+    //% blockHidden=true
     export function __create(width: number, height: number): Bitmap
     {
         return bitmaps.create(width, height);
