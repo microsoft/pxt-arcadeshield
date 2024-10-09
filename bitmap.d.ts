@@ -1,4 +1,3 @@
-//% fixedInstances decompileIndirectFixedInstances
 interface Bitmap {
     /**
      * Fill entire bitmap with a given color
