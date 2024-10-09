@@ -15,6 +15,7 @@ namespace bitmaps {
     //% weight=50 
     //% group="Create"
     //% help=bitmaps/bitmap
+    //% blockNamespace="drawing"
     export function _bitmap(bitmap: Bitmap): Bitmap {
         return bitmap;
     }
