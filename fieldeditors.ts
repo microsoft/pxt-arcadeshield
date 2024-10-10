@@ -3,6 +3,17 @@
  */
 namespace bitmaps {
 
+    //% blockNamespace="drawing"
+    //% blockId=bitmapCreate
+    //% block="create bitmap width $width height $height"
+    //% weight=60
+    //% group="Create"
+    //% blockAliasFor="bitmaps.create"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/create
+    function _create(width: number, height: number): Bitmap {
+        return bitmaps.create(width, height);
+    }
+
     /**
      * A bitmap
      * @param bitmap the bitmap
@@ -14,6 +25,7 @@ namespace bitmaps {
     //% weight=50 
     //% group="Create"
     //% help=bitmaps/bitmap
+    //% blockAliasFor="bitmaps.create"
     //% blockNamespace="drawing"
     export function _bitmap(bitmap: Bitmap): Bitmap {
         return bitmap;
@@ -28,9 +40,8 @@ namespace bitmaps {
     //% bitmap.fieldEditor="sprite"
     //% bitmap.fieldOptions.taggedTemplate="bmp"
     //% bitmap.fieldOptions.decompileArgumentAsString="true"
-    //% weight=45
+    //% weight=58
     //% group="Create"
-    //% blockAliasFor="bitmaps.create"
     //% blockSetVariable=bitmap
     //% blockNamespace="drawing"
     export function __bitmap(bitmap: Bitmap): Bitmap {
