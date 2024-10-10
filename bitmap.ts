@@ -10,30 +10,38 @@ function screen(): Bitmap {
 
 
 namespace bitmaps {
-        export enum Dimension {
-                //% block="width"
-                Width,
-                //% block="height"
-                Height
-        }
-
 
         /**
-         * Returns the width or height of a picture.
+         * Returns the width of a bitmap
          *
-         * @param picture The picture to get the width or height of
-         * @param dimension The dimension to get
+         * @param bitmap The bitmap to get the width of
          * @returns
          */
-        //% blockId=image_get_dimension
+        //% blockId=bitmap_width
         //% group="Create"
         //% blockNamespace="drawing"
-        //% block="$bitmap $dimension"
+        //% block="$bitmap width"
         //% bitmap.shadow=variables_get
         //% bitmap.defl=bitmap
         //% weight=30
-        export function getDimension(bitmap: Bitmap, dimension: Dimension) {
-                if (dimension === Dimension.Width) return bitmap.width;
-                else return bitmap.height;
+        export function width(bitmap: Bitmap) {
+                return bitmap.width;
+        }
+        
+        /**
+         * Returns the height of a bitmap
+         *
+         * @param bitmap The bitmap to get the height of
+         * @returns
+         */
+        //% blockId=bitmap_width
+        //% group="Create"
+        //% blockNamespace="drawing"
+        //% block="$bitmap height"
+        //% bitmap.shadow=variables_get
+        //% bitmap.defl=bitmap
+        //% weight=30
+        export function height(bitmap: Bitmap) {
+                return bitmap.height;
         }
 }
