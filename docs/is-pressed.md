@@ -12,43 +12,29 @@ controller.A.isPressed()
 
 ## Example #example
 
-Ramdomly move a yellow box around the screen while the ``A`` button is pressed.
+Ramdomly move a box around the screen while the ``A`` button is pressed.
 
 ### Single player
 
 ```blocks
-let yellowBox = sprites.create(bmp`
+let y = 0
+let x = 0
+let box = bmp`
 e e e e e e
 e 1 1 1 1 e
 e 1 6 6 1 e
 e 1 6 6 1 e
 e 1 1 1 1 e
 e e e e e e
-`)
-game.onUpdate(function () {
+`
+screen().fill(15)
+screen().drawBitmap(box, x, y)
+basic.forever(() => {
     if (controller.A.isPressed()) {
-        yellowBox.x = Math.randomRange(3, scene.screenWidth() - 3)
-        yellowBox.y = Math.randomRange(3, scene.screenHeight() - 3)
-    }
-})
-```
-
-### Multiplayer
-
-```blocks
-let yellowBox = sprites.create(bmp`
-e e e e e e
-e 1 1 1 1 e
-e 1 6 6 1 e
-e 1 6 6 1 e
-e 1 1 1 1 e
-e e e e e e
-`)
-game.onUpdate(function () {
-    if (controller.player2.isPressed(ControllerButton.A)) {
-
-        yellowBox.x = Math.randomRange(3, scene.screenWidth() - 3)
-        yellowBox.y = Math.randomRange(3, scene.screenHeight() - 3)
+        x = Math.randomRange(3, screen().width - 3)
+        y = Math.randomRange(3, screen().height - 3)
+        screen().fill(15)
+        screen().drawBitmap(box, x, y)
     }
 })
 ```
