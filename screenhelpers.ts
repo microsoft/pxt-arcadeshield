@@ -32,7 +32,7 @@ namespace screenhelpers {
         }
 
         displayHeight(): number {
-            return 128;
+            return 120;
         }
 
         displayWidth(): number {
@@ -127,7 +127,7 @@ namespace screenhelpers {
     
     //% shim=TD_NOOP
     function simDisplayHeight() {
-        __height = 128
+        __height = 120
         getScreenState();
         if (_screenState)
             __height = _screenState.displayHeight();

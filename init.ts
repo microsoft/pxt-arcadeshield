@@ -16,7 +16,7 @@ namespace __screen_internal {
     export function createScreen() {
         const img = bitmaps.create(
             screenhelpers.displayWidth(), // control.getConfigValue(DAL.CFG_DISPLAY_WIDTH, 160)
-            screenhelpers.displayHeight() // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 128)
+            screenhelpers.displayHeight() // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 120)
         )
         control.__screen.setupUpdate(() => screenhelpers.updateScreen(img))
         return img as Bitmap;

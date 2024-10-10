@@ -81,7 +81,8 @@ export const Shield: React.FC = () => {
         power: undefined,
     })
 
-    // TEMP: Configure the canvas size to 160x128. Later, this will be passed in by the main simulator
+    // TEMP: Configure the canvas size to 160x120. 
+    // Later, this will be passed in by the main simulator
     useEffect(() => {
         if (canvasRef) {
             canvasRef.width = DEFAULT_WIDTH
