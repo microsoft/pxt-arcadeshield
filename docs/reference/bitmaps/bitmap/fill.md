@@ -3,7 +3,7 @@
 Set all the pixels of a bitmap to one color.
 
 ```sig
-bitmap.create(0,0).fill(0)
+bitmaps.create(0,0).fill(0)
 ```
 
 ## Parameters
@@ -12,12 +12,14 @@ bitmap.create(0,0).fill(0)
 
 ## Example #example
 
-Fill an entire bitmap with all blue pixels. Fill a small rectangle in the center of the bitmap with yellow pixels.
+Fill the screen bitmap with blue pixels.
+Fill a smaller bitmap with yellow pixels. 
+
 
 ```blocks
+screen().fill(8)
 let blueRect = bitmaps.create(32, 32)
-blueRect.fill(8)
-blueRect.fillRect(8, 8, 16, 16, 5)
+blueRect.fill(5)
 screen().drawBitmap(blueRect, 0, 0)
 ```
 
