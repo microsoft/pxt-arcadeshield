@@ -3,7 +3,7 @@
 Set all the pixels within a rectangular area of a bitmap to one color.
 
 ```sig
-bitmap.create(0,0).fillRect(0,0,0,0,0)
+bitmaps.create(0,0).fillRect(0,0,0,0,0)
 ```
 
 You can fill all of pixels in a rectangular area at once with a color. The fill rectangle can be either the entire bitmap or some smaller part of it.
@@ -20,11 +20,10 @@ You can fill all of pixels in a rectangular area at once with a color. The fill 
 
 ### Center square #ex1
 
-Fill an entire bitmap with all blue pixels. Fill a small rectangle in the center of the bitmap with yellow pixels.
+Fill a bitmap with all blue pixels. Fill a small rectangle in the center of the bitmap with yellow pixels.
 
 ```blocks
-let blueRect: Bitmap = null
-blueRect = bitmap.create(32, 32)
+let blueRect = bitmaps.create(32, 32)
 blueRect.fill(3)
 blueRect.fillRect(8, 8, 16, 16, 14)
 screen().drawBitmap(blueRect, 0, 0)
@@ -35,8 +34,7 @@ screen().drawBitmap(blueRect, 0, 0)
 Make a chessboard by filling in dark squares over top of a white background.
 
 ```blocks
-let chessBoard: Bitmap = null
-chessBoard = bitmap.create(64, 64)
+let chessBoard = bitmaps.create(64, 64)
 chessBoard.fill(1)
 for (let row = 0; row <= 7; row++) {
     for (let col = 0; col <= 3; col++) {
