@@ -7,13 +7,7 @@ a Bitmap abstraction with numerous drawing primitives
 Bitmaps also can be created using the built-in
 image editor in MakeCode.
 
-> **This extension is still in beta and is subject to changes.**
-
-## Simulator support
-
-The extension provides a simulator for the display,
-with keyboard controls mapping to the inputs of
-the display shield (A and B buttons, and the D-pad).
+> **NOTE: This extension will only work in https://makecode.microbit.org/beta**. The extension is still under development and is subject to changes. Please file issues at https://github.com/microsoft/pxt-arcadeshield/issues 
 
 ## Arcade Shields for the micro:bit V2
 
@@ -69,6 +63,17 @@ No assembly required. Large screen and 3d-printed enclosure with LiPo battery in
 </tr>
 
 </table>
+
+
+## Simulator support
+
+As shown below, the extension provides a simulator for the display,
+with keyboard controls mapping to the inputs of
+the display shield (A and B buttons, and the D-pad).  Blocks
+for the shield are under the toolbox categories `Controller` and
+`Drawing` and are described further below.
+
+![MakeCode with Arcade Shield Simulator](./assets/shieldSim.png)
 
 ## Blocks
 
