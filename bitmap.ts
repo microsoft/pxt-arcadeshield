@@ -3,7 +3,7 @@
 */
 //% blockNamespace="drawing" group="Create"
 //% blockId=theScreen block="screen"
-//% help=bitmaps/screen-image
+//% help=github:pxt-arcadeshield/docs/screen-image
 function screen(): Bitmap {
         return theScreen;
 }
