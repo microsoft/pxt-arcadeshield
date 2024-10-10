@@ -35,6 +35,7 @@ cake = bmp`
     . . . e e e e e e e e . . . . . 
     . . . . . . . . . . . . . . . . 
     `
+screen().drawTransparentBitmap(cake, 0, 0)
 ```
 
 ```package

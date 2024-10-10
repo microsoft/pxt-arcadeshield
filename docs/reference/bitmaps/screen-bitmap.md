@@ -17,8 +17,7 @@ Place a cake bitmap on the screen with a background color. When the **A** button
 ```blocks
 let screenCap: Bitmap = null
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    screenCap = bitmap.screenBitmap()
-    screenCap.flipY()
+    screen().flipY()
     pause(100)
 })
 let cake = bmp`
@@ -55,7 +54,7 @@ let cake = bmp`
     . . . . . . . . . . . . . . . . . . . b b b b d d d d b 3 b a .
     . . . . . . . . . . . . . . . . . . . . . . . b b b a a a a . .
 `
-screen().drawBItmap(cake,0,0)
+screen().drawBitmap(cake,0,0)
 ```
 
 

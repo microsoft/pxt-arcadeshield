@@ -5,7 +5,6 @@ Create bitmaps, fill, draw, and set pixels.
 ```cards
 bitmaps.create(0, 0)
 bitmaps.create(0, 0).clone()
-bitmap.screenBitmap()
 bitmaps.create(0, 0).drawLine(0, 0, 0, 0, 0)
 bitmaps.create(0, 0).drawRect(0, 0, 0, 0, 0)
 bitmaps.create(0, 0).setPixel(0, 0, 0)
