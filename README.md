@@ -69,7 +69,8 @@ No assembly required. Large screen and 3d-printed enclosure with LiPo battery in
 
 As shown below, the extension provides a simulator for the display,
 with keyboard controls mapping to the inputs of
-the display shield (A and B buttons, and the D-pad).  Blocks
+the display shield (A and B buttons, and the four directions of the
+D-pad, see arrow buttons).  Blocks
 for the shield are under the toolbox categories `Controller` and
 `Drawing` and are described further below.
 
@@ -77,12 +78,27 @@ for the shield are under the toolbox categories `Controller` and
 
 ## Blocks
 
+The examples below are illustrative. All blocks have their own
+detailed help pages, available from the MakeCode editor. 
+More APIs are available via TypeScript.
+
 ### Controller
+
+The controller API has event handlers for the A,B and four directions
+on the D-pad, as well as the menu button. There also are functions
+for polling the buttons. Some example code:
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-
+    screen().fill(3)
 })
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    screen().fill(5)
+})
+```
+
+Display present/absent
+```blocks
 ```
 
 ### Drawing with bitmaps
