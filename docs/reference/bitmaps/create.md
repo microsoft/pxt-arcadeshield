@@ -31,7 +31,7 @@ for (let i = 0; i < 32; i++) {
     orangeBox.setPixel(i, 31, 13)
     orangeBox.setPixel(31, i, 13)
 }
-screen.drawBitmap(orangeBox, 0, 0)
+screen().drawBitmap(orangeBox, 0, 0)
 ```
 
 ```package

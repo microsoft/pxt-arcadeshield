@@ -24,7 +24,7 @@ Fill an entire bitmap with all blue pixels. Draw a red outline around the bitmap
 let blueRect = bitmaps.create(32, 32)
 blueRect.fill(3)
 blueRect.drawRect(0, 0, 32, 32, 10)
-screen.drawBitmap(blueRect, 0, 0)
+screen().drawBitmap(blueRect, 0, 0)
 ```
 
 

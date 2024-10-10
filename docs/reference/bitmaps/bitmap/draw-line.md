@@ -25,7 +25,7 @@ let drawBigX = bitmaps.create(32, 32)
 drawBigX.fill(1)
 drawBigX.drawLine(0, 0, 31, 31, 10)
 drawBigX.drawLine(0, 31, 31, 0, 10)
-screen.drawBitmap(drawBigX,64,44)
+screen().drawBitmap(drawBigX,64,44)
 ```
 
 ```package

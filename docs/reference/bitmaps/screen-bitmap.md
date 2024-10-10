@@ -55,7 +55,7 @@ let cake = bmp`
     . . . . . . . . . . . . . . . . . . . b b b b d d d d b 3 b a .
     . . . . . . . . . . . . . . . . . . . . . . . b b b a a a a . .
 `
-screen.drawBItmap(cake,0,0)
+screen().drawBItmap(cake,0,0)
 ```
 
 
