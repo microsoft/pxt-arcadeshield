@@ -226,7 +226,7 @@ declare namespace bitmaps {
     //% blockNamespace="drawing"
     //% blockId=bitmapCreateAssign
     //% block="create bitmap width $width height $height" group="Create"
-    //% weight=60
+    //% weight=80
     //% blockSetVariable=bitmap
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/create
     function create(width: number, height: number): Bitmap;
