@@ -3,7 +3,7 @@
 Replace all the pixels of one color with pixels of another color.
 
 ```sig
-bitmap.create(0, 0).replace(0, 0)
+bitmaps.create(0, 0).replace(0, 0)
 ```
 
 ## Parameters
@@ -23,7 +23,7 @@ for (let y = 0; y < 32; y++) {
     }
 }
 forever(() => {
-    screen.drawBitmap(colorBlock, 0, 0)
+    screen().drawBitmap(colorBlock, 0, 0)
     basic.pause(500)
     colorBlock.replace(Math.randomRange(0, 15), Math.randomRange(0, 15))
 })

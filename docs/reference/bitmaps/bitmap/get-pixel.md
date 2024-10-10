@@ -3,7 +3,7 @@
 Get the color number of a pixel at a location in an .
 
 ```sig
-bitmap.create(0, 0).getPixel(0, 0)
+bitmaps.create(0, 0).getPixel(0, 0)
 ```
 
 # Parameters
@@ -20,8 +20,7 @@ bitmap.create(0, 0).getPixel(0, 0)
 Randomly fill a bitmap with different colors. Change the color of a pixel in the middle if it's yellow.
 
 ```blocks
-let randoColors: Bitmap = null
-randoColors = bitmap.create(16, 16)
+let randoColors = bitmap.create(16, 16)
 for (let y = 0; y <= 15 - 1; y++) {
     for (let x = 0; x <= 15 - 1; x++) {
         randoColors.setPixel(x, y, Math.randomRange(0, 15))
@@ -30,7 +29,7 @@ for (let y = 0; y <= 15 - 1; y++) {
 if (randoColors.getPixel(8, 8) == 14) {
     randoColors.setPixel(8, 8, 1)
 }
-screen.drawBitmap(randoColors, 0, 0)    
+screen().drawBitmap(randoColors, 0, 0)    
 ```
 
 

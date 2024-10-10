@@ -3,7 +3,7 @@
 Compare this bitmap to another bitmap to see if they are the same.
 
 ```sig
-bitmap.create(0, 0).equals(null)
+bitmaps.create(0, 0).equals(null)
 ```
 
 Each pixel in the bitmap is compared with another bitmap. If all the pixels in both bitmaps are identical, then the bitmaps are considered "equal".
@@ -58,7 +58,9 @@ let secondBitmap = bmp`
     . . . c c c c c e e e e e . . . 
     `
 if (secondBitmap.equals(firstBitmap)) {
-    console.log("The bitmaps are equal.")
+    basic.showIcon(IconNames.Happy)
+} else {
+    basic.showIcon(IconNames.Sad)
 }
 ```
 

@@ -3,7 +3,7 @@
 Scroll the pixels in a bitmap up, down, right, or left.
 
 ```sig
-bitmap.create(0, 0).scroll(0, 0)
+bitmaps.create(0, 0).scroll(0, 0)
 ```
 
 Bitmaps are scrolled by a number of pixel rows or columns (the scroll distance). A bitmap can even be scrolled by both rows and columns at the same time. The scroll direction depends on the sign (-) of the scroll distance value. Scrolling up will use a negative scroll value. Scrolling to the left also uses a negative scroll value. Scrolling down or to the right use positive scroll values.
@@ -43,7 +43,7 @@ e e e e e e e e e e e e e e e e
 f f f f f f f f f f f f f f f f 
 `
 forever(() => {
-    screen.drawBitmap(colorBands, 0, 0)
+    screen().drawBitmap(colorBands, 0, 0)
     basic.pause(500)
     if (scrollCount > 0) {
         colorBands.scroll(0, -1)
@@ -57,12 +57,11 @@ forever(() => {
 Scroll a green square diagonally down and to the right.
 
 ```blocks
-let greenSquare: Bitmap = null
-greenSquare = bitmap.create(32, 32)
+let greenSquare = bitmap.create(32, 32)
 greenSquare.fill(6)
 forever(() => {
-    screen.fill(0)
-    screen.drawBitmap(greenSquare, 0, 0)
+    screen().fill(0)
+    screen().drawBitmap(greenSquare, 0, 0)
     basic.pause(500)
     greenSquare.scroll(1, 1)
 })

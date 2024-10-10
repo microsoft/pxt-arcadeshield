@@ -3,7 +3,7 @@
 Copy a bitmap to make another just like it.
 
 ```sig
-bitmap.create(0, 0).clone()
+bitmaps.create(0, 0).clone()
 ```
 
 A new bitmap is created that is a copy of the original. The bitmap layout and pixel colors are the same.
@@ -32,8 +32,8 @@ a a a a a a a .
 . a a . . a a .
 `
 let stickPerson2 = stickPerson1.clone()
-screen.drawBitmap(stickPerson1, 0, 0)
-screen.drawBitmap(stickPerson2, 0, 32)
+screen().drawBitmap(stickPerson1, 0, 0)
+screen().drawBitmap(stickPerson2, 0, 32)
 ```
 
 ```package

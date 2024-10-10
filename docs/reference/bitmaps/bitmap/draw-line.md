@@ -3,7 +3,7 @@
 Draw a line from one point in a bitmap to another point.
 
 ```sig
-bitmap.create(0,0).drawLine(0,0,0,0,0)
+bitmaps.create(0,0).drawLine(0,0,0,0,0)
 ```
 
 The pixels are located at points in the bitmap. The point is a _coordinate_ which is two values that are a horizontal position and a vertical position. A line is drawn by setting the color of the pixels directly between two coordinates. The line has a width of one pixel.
@@ -21,12 +21,11 @@ The pixels are located at points in the bitmap. The point is a _coordinate_ whic
 Draw a big `X` in bitmap by making two diagonal lines.
 
 ```blocks
-let drawBigX: Bitmap = null
-drawBigX = bitmap.create(32, 32)
+let drawBigX = bitmaps.create(32, 32)
 drawBigX.fill(1)
 drawBigX.drawLine(0, 0, 31, 31, 10)
 drawBigX.drawLine(0, 31, 31, 0, 10)
-screen.drawBitmap(drawBigX,0,0)
+screen.drawBitmap(drawBigX,64,44)
 ```
 
 ```package
