@@ -11,7 +11,6 @@ namespace bitmaps {
     //% blockId=bitmapcreatenoset 
     //% block = "create bitmap width $width height $height"
     //% blockAliasFor="bitmaps.create"
-    //% blockHidden=true
     export function __create(width: number, height: number): Bitmap
     {
         return bitmaps.create(width, height);
@@ -30,6 +29,23 @@ namespace bitmaps {
     //% help=bitmaps/bitmap
     //% blockNamespace="drawing"
     export function _bitmap(bitmap: Bitmap): Bitmap {
+        return bitmap;
+    }
+
+
+    /**
+     * A bitmap
+     * @param bitmap the bitmap
+     */
+    //% blockId=bitmap_assign block="$bitmap" shim=TD_ID
+    //% bitmap.fieldEditor="sprite"
+    //% bitmap.fieldOptions.taggedTemplate="bmp"
+    //% bitmap.fieldOptions.decompileArgumentAsString="true"
+    //% weight=45
+    //% group="Create"
+    //% blockAliasFor="bitmaps.create"
+    //% blockSetVariable=bitmap
+    export function __bitmap(bitmap: Bitmap): Bitmap {
         return bitmap;
     }
 
