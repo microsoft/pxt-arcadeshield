@@ -42,7 +42,7 @@ d d d d d d d d d d d d d d d d
 e e e e e e e e e e e e e e e e 
 f f f f f f f f f f f f f f f f 
 `
-forever(() => {
+basic.forever(() => {
     screen().drawBitmap(colorBands, 0, 0)
     basic.pause(500)
     if (scrollCount > 0) {
@@ -59,7 +59,7 @@ Scroll a green square diagonally down and to the right.
 ```blocks
 let greenSquare = bitmaps.create(32, 32)
 greenSquare.fill(6)
-forever(() => {
+basic.forever(() => {
     screen().fill(0)
     screen().drawBitmap(greenSquare, 0, 0)
     basic.pause(500)

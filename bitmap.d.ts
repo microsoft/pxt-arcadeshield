@@ -130,6 +130,7 @@ interface Bitmap {
     //% blockId=bitmapDrawTransparentBitmap
     //% group="Drawing"
     //% block="draw $from transparent in $this at x $x y $y"
+    //% help=github:pxt-arcadeshield/docs/reference/bitmaps/bitmap/draw-bitmap-transparent
     //% this.shadow="theScreen"
     //% this.defl=bitmap
     //% from.shadow=variables_get

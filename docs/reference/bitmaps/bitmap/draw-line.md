@@ -22,7 +22,7 @@ Draw a big `X` in bitmap by making two diagonal lines.
 
 ```blocks
 let drawBigX = bitmaps.create(32, 32)
-drawBigX.fill(1)
+drawBigX.fill(5)
 drawBigX.drawLine(0, 0, 31, 31, 10)
 drawBigX.drawLine(0, 31, 31, 0, 10)
 screen().drawBitmap(drawBigX,64,44)

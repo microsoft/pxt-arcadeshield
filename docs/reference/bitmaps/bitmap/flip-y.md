@@ -29,7 +29,7 @@ a a a . a a a
 . . a . a . .
 . . a a a . .
 `
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 10; i++) {
     screen().drawBitmap(upArrow, 0, 0)
     basic.pause(500)
     upArrow.flipY()

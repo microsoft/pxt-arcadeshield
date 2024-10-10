@@ -22,7 +22,7 @@ for (let y = 0; y < 32; y++) {
         colorBlock.setPixel(x, y, Math.randomRange(0, 15))
     }
 }
-forever(() => {
+basic.forever(() => {
     screen().drawBitmap(colorBlock, 0, 0)
     basic.pause(500)
     colorBlock.replace(Math.randomRange(0, 15), Math.randomRange(0, 15))

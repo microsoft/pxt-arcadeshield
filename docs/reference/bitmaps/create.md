@@ -25,13 +25,14 @@ Create a 32 x 32 bitmap and draw an orange border around it.
 
 ```blocks
 let orangeBox = bitmaps.create(32, 32)
-for (let i = 0; i < 32; i++) {
-    orangeBox.setPixel(0, i, 13)
-    orangeBox.setPixel(i, 0, 13)
-    orangeBox.setPixel(i, 31, 13)
-    orangeBox.setPixel(31, i, 13)
+for (let i = 0; i <= 31; i++) {
+    orangeBox.setPixel(0, i, 4)
+    orangeBox.setPixel(i, 0, 4)
+    orangeBox.setPixel(i, 31, 4)
+    orangeBox.setPixel(31, i, 4)
 }
-screen().drawBitmap(orangeBox, 0, 0)
+screen().fill(8)
+screen().drawTransparentBitmap(orangeBox, 0, 0)
 ```
 
 ```package
