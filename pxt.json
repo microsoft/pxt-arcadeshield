@@ -43,8 +43,7 @@
         "docs/on-button-event.md",
         "docs/is-pressed.md",
         "docs/on-event.md",
-        "docs/bitmap-type.md",
-        "docs/bitmaps.md"
+        "docs/bitmap-type.md"
     ],
     "testFiles": [
         "test.ts"
