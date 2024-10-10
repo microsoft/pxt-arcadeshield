@@ -7,7 +7,7 @@ namespace controller {
 
 }
 
-//% weight=4 icon="\uf03e" color="#003060"
+//% weight=4 icon="\uf03e" color="#005070"
 namespace drawing {
 
 }
