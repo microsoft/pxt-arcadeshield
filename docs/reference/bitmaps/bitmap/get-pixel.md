@@ -20,7 +20,7 @@ bitmaps.create(0, 0).getPixel(0, 0)
 Randomly fill a bitmap with different colors. Change the color of a pixel in the middle if it's yellow.
 
 ```blocks
-let randoColors = bitmap.create(16, 16)
+let randoColors = bitmaps.create(16, 16)
 for (let y = 0; y <= 15 - 1; y++) {
     for (let x = 0; x <= 15 - 1; x++) {
         randoColors.setPixel(x, y, Math.randomRange(0, 15))

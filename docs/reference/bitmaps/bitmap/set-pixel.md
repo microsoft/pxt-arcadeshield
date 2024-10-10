@@ -19,7 +19,7 @@ Pixels are an individual point of color in an bitmap. Pixels are arraged in colu
 Make a "hatch" pattern in a bitmap by setting the color of every other pixel in each row.
 
 ```blocks
-let hatch = bitmap.create(32, 32)
+let hatch = bitmaps.create(32, 32)
 for (let y = 0; y <= 31; y++) {
     for (let x = 0; x <= 15; x++) {
     	if (y % 2 > 0)

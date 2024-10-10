@@ -3,18 +3,18 @@
 Create bitmaps, fill, draw, and set pixels.
 
 ```cards
-bitmap.create(0, 0)
-bitmap.create(0, 0).clone()
+bitmaps.create(0, 0)
+bitmaps.create(0, 0).clone()
 bitmap.screenBitmap()
-bitmap.create(0, 0).drawLine(0, 0, 0, 0, 0)
-bitmap.create(0, 0).drawRect(0, 0, 0, 0, 0)
-bitmap.create(0, 0).setPixel(0, 0, 0)
-bitmap.create(0, 0).getPixel(0, 0)
-bitmap.create(0, 0).fill(0)
-bitmap.create(0, 0).fillRect(0, 0, 0, 0, 0)
-bitmap.create(0, 0).flipX()
-bitmap.create(0, 0).flipY()
-bitmap.create(0, 0).replace(0, 0)
+bitmaps.create(0, 0).drawLine(0, 0, 0, 0, 0)
+bitmaps.create(0, 0).drawRect(0, 0, 0, 0, 0)
+bitmaps.create(0, 0).setPixel(0, 0, 0)
+bitmaps.create(0, 0).getPixel(0, 0)
+bitmaps.create(0, 0).fill(0)
+bitmaps.create(0, 0).fillRect(0, 0, 0, 0, 0)
+bitmaps.create(0, 0).flipX()
+bitmaps.create(0, 0).flipY()
+bitmaps.create(0, 0).replace(0, 0)
 ```
 
 ## See also #seealso

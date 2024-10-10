@@ -20,7 +20,7 @@ You can also use [create](/reference/bitmaps/create) and make another zero size 
 
 ```blocks
 let emptyBitmap1 = bmp``
-let emptyBitmap2 = bitmap.create(0, 0)
+let emptyBitmap2 = bitmaps.create(0, 0)
 ```
 
 A zero size bitmap isn't really useful so MakeCode actually makes it have some size if you declare it without any.
@@ -192,7 +192,7 @@ let greenBall = bmp`
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `
-let yellowSquare = bitmap.create(16, 16)
+let yellowSquare = bitmaps.create(16, 16)
 yellowSquare.fill(14)
 
 let yellowSprite = sprites.create(yellowSquare)
@@ -204,7 +204,7 @@ let greenSprite = sprites.create(greenBall)
 You can create your bitmaps while your program is running too (dynamically). To make a bitmap this way, you set the color of a pixel at its location with code. Pixels are addressed by their row (``x`` value) and column (``y`` value) inside the bitmap. You could create and empty bitmap and make some or all of the bitmap by setting pixel colors in your code. Let's make a 32 x 32 box by creating an empty bitmap and then draw an orange border around it.
 
 ```blocks
-let orangeBox = bitmap.create(32, 32)
+let orangeBox = bitmaps.create(32, 32)
 for (let i = 0; i < 32; i++) {
     orangeBox.setPixel(0, i, 13)
     orangeBox.setPixel(i, 0, 13)

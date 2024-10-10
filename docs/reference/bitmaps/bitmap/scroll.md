@@ -57,7 +57,7 @@ forever(() => {
 Scroll a green square diagonally down and to the right.
 
 ```blocks
-let greenSquare = bitmap.create(32, 32)
+let greenSquare = bitmaps.create(32, 32)
 greenSquare.fill(6)
 forever(() => {
     screen().fill(0)
