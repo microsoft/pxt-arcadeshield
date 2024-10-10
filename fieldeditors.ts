@@ -4,7 +4,7 @@
 namespace bitmaps {
 
     //% blockNamespace="drawing"
-    //% blockId=bitmapCreate shim=TD_ID
+    //% blockId=bitmapCreate
     //% block="create bitmap width $width height $height"
     //% weight=78
     //% group="Create"
