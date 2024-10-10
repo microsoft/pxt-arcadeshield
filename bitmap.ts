@@ -34,7 +34,7 @@ namespace bitmaps {
          * @param bitmap The bitmap to get the height of
          * @returns
          */
-        //% blockId=bitmap_width
+        //% blockId=bitmap_height
         //% group="Create"
         //% blockNamespace="drawing"
         //% block="$bitmap height"
