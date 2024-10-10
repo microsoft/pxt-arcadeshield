@@ -31,8 +31,8 @@ screen().fill(15)
 screen().drawBitmap(box, x, y)
 basic.forever(() => {
     if (controller.A.isPressed()) {
-        x = Math.randomRange(3, screen().width - 3)
-        y = Math.randomRange(3, screen().height - 3)
+        x = Math.randomRange(3, bitmaps.width(screen()) - 3)
+        y = Math.randomRange(3, bitmaps.height(screen()) - 3)
         screen().fill(15)
         screen().drawBitmap(box, x, y)
     }
