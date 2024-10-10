@@ -70,6 +70,20 @@ No assembly required. Large screen and 3d-printed enclosure with LiPo battery in
 
 </table>
 
+## Blocks
+
+### Controller
+
+```blocks
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+
+})
+```
+
+### Drawing with bitmaps
+
+## TypeScript APIs
+
 # Supported targets
 
 - for PXT/microbit
@@ -95,3 +109,5 @@ trademarks or logos is subject to and must follow
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
+
+<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script

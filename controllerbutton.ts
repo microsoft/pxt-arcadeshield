@@ -119,7 +119,7 @@ namespace controller {
          * Run some code when a button is pressed, released, or held
          */
         //% weight=99 blockGap=8 
-        //% help=github:pxt-arcadeshield/docs/on-event
+        //% help=github:pxt-arcadeshield/docs/on-button-event
         //% blockId=keyonevent block="on $this **button** $event"
         onEvent(event: ControllerButtonEvent, handler: () => void) {
             const eventHandler = this.getOrCreateHandlerForEvent(event);

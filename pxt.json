@@ -42,7 +42,6 @@
         "docs/screen-bitmap.md",
         "docs/on-button-event.md",
         "docs/is-pressed.md",
-        "docs/on-event.md",
         "docs/bitmap-type.md"
     ],
     "testFiles": [
