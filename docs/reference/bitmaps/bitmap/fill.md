@@ -12,15 +12,15 @@ bitmaps.create(0,0).fill(0)
 
 ## Example #example
 
-Fill the screen bitmap with blue pixels.
-Fill a smaller bitmap with yellow pixels. 
+Fill the screen bitmap with blue pixels (which makes the entire screen blue). Then fill a smaller bitmap with yellow pixels, and draw that
+bitmap on the screen.
 
 
 ```blocks
 screen().fill(8)
-let blueRect = bitmaps.create(32, 32)
-blueRect.fill(5)
-screen().drawBitmap(blueRect, 0, 0)
+let yellowRect = bitmaps.create(32, 32)
+yellowRect.fill(5)
+screen().drawBitmap(yellowRect, 0, 0)
 ```
 
 
