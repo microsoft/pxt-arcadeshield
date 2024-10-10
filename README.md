@@ -90,10 +90,10 @@ for polling the buttons. Some example code:
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    screen().fill(3)
+    screen().fill(Math.randomRange(1,14))
 })
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    screen().fill(5)
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    screen().fill(15)
 })
 ```
 

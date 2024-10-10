@@ -2,7 +2,7 @@ namespace screenhelpers {
     type ArcadeButtonId = "left" | "right" | "up" | "down" | "a" | "b" | "menu"
 
     interface ArcadeShieldMessage {
-        type: "show-image" | "set-brightness" | "set-palette" | "button-down" | "button-up"
+        type: "show-image" | "set-brightness" | "set-palette" | "button-down" | "button-up" | "display-on" | "display-off"
         runId: any
     }
     interface ShowImageMessage extends ArcadeShieldMessage {
@@ -23,12 +23,18 @@ namespace screenhelpers {
         buttonId: ArcadeButtonId
     }
 
+    interface DisplayMessage extends ArcadeShieldMessage {
+        type: "display-on" | "display-off"
+    }
+
     class ScreenState {
         runId: string;
         brightness: number;
+        displayOn: boolean;
 
         constructor() {
             this.runId = Math.random() + "";
+            this.displayOn = true;
         }
 
         displayHeight(): number {
@@ -40,7 +46,7 @@ namespace screenhelpers {
         }
 
         displayPresent(): boolean {
-            return true;
+            return this.displayOn;
         }
 
         private sendMessage(msg: string) {
@@ -187,14 +193,23 @@ namespace screenhelpers {
     function handleShieldMessage(b: Buffer) {
         const s = b.toString()
         const msg = <ArcadeShieldMessage>JSON.parse(s)
-        if (msg && (msg.type === "button-down" || msg.type === "button-up")) {
-            const button = getButton((<ButtonMessage>msg).buttonId)
-            if (button) {
-                if (msg.type === "button-down") {
-                    button.raiseButtonDown()
-                } else {
-                    button.raiseButtonUp()
+        if (msg) {
+            if (msg.type === "button-down" || msg.type === "button-up") {
+                const button = getButton((<ButtonMessage>msg).buttonId)
+                if (button) {
+                    if (msg.type === "button-down") {
+                        button.raiseButtonDown()
+                    } else {
+                        button.raiseButtonUp()
+                    }
                 }
+            } else if (msg.type === "display-on") {
+                // TODO: change handler?
+                getScreenState()
+                _screenState.displayOn = true
+            } else if (msg.type === "display-off") {
+                getScreenState()
+                _screenState.displayOn = false
             }
         }
     }

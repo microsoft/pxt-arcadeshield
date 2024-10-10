@@ -33,7 +33,24 @@ enum ControllerButton {
     Down = 4
 }
 
+enum ControllerDisplayEvent {
+    // block="off"
+    Off = 0,
+    // block="on"
+    On = 1,
+}
+
 namespace controller {
+    /**
+     * Run some code when display is turned on or off
+     */
+    //% weight=30
+    //% help=github:pxt-arcadeshield/docs/on-display-event
+    //% blockId=displayevent block="on display $event"
+    export function onDisplayEvent(event: ControllerDisplayEvent, handler: () => void) {
+        handler()   // TODO should we make this the "power" button? semantics?
+    }
+    
     let _userEventsEnabled = true;
     let defaultRepeatDelay = 500;
     let defaultRepeatInterval = 30;

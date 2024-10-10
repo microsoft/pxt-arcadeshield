@@ -4,7 +4,7 @@
 export type ArcadeButtonId = "left" | "right" | "up" | "down" | "a" | "b" | "menu" | "power"
 
 export interface ArcadeShieldMessage {
-    type: "show-image" | "set-brightness" | "set-palette" | "button-down" | "button-up"
+    type: "show-image" | "set-brightness" | "set-palette" | "button-down" | "button-up" | "display-on" | "display-off"
     runId: any
 }
 export interface ShowImageMessage extends ArcadeShieldMessage {
@@ -23,4 +23,8 @@ export interface SetPaletteMessage extends ArcadeShieldMessage {
 export interface ButtonMessage extends ArcadeShieldMessage {
     type: "button-down" | "button-up"
     buttonId: ArcadeButtonId
+}
+
+export interface DisplayMessage extends ArcadeShieldMessage {
+    type: "display-on" | "display-off"
 }
