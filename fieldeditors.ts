@@ -10,7 +10,7 @@ namespace bitmaps {
     //% group="Create"
     //% blockAliasFor="bitmaps.create"
     //% help=github:pxt-arcadeshield/docs/reference/bitmaps/create
-    function _create(width: number, height: number): Bitmap {
+    export function _create(width: number, height: number): Bitmap {
         return bitmaps.create(width, height);
     }
 
