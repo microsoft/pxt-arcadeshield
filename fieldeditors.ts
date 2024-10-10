@@ -2,19 +2,6 @@
  * Bitmap manipulation blocks
  */
 namespace bitmaps {
-    /**
-     * Creates a new bitmap
-     * @param width the width of the bitmap
-     * @param height the height of the bitmap
-     */
-    //% group="Create"
-    //% blockId=bitmapcreatenoset 
-    //% block = "create bitmap width $width height $height"
-    //% blockAliasFor="bitmaps.create"
-    export function __create(width: number, height: number): Bitmap
-    {
-        return bitmaps.create(width, height);
-    }
 
     /**
      * A bitmap
@@ -45,6 +32,7 @@ namespace bitmaps {
     //% group="Create"
     //% blockAliasFor="bitmaps.create"
     //% blockSetVariable=bitmap
+    //% blockNamespace="drawing"
     export function __bitmap(bitmap: Bitmap): Bitmap {
         return bitmap;
     }
