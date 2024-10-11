@@ -92,7 +92,11 @@ namespace shieldhelpers {
     //% shim=TD_NOOP
     function startSim() {
         control.simmessages.onReceived("arcadeshield", handleShieldMessage)
-         // TODO: send a message to the simulator to get it started
+        const msg: ArcadeShieldMessage = {
+            type: "initialize",
+            runId: this.runId,
+        }
+        this.sendMessage(JSON.stringify(msg))
     }
 
     function getScreenState() {
