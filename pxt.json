@@ -23,7 +23,7 @@
         "init.ts",
         "ns.ts",
         "scene.ts",
-        "screenhelpers.ts",
+        "shieldhelpers.ts",
         "text.ts",
         "docs/clone.md",
         "docs/draw-line.md",
