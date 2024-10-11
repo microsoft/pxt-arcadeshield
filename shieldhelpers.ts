@@ -57,6 +57,7 @@ namespace shieldhelpers {
         }
 
         initSim() {
+            console.log("initSim")
             const msg: ArcadeShieldMessage = {
                 type: "initialize",
                 runId: undefined
@@ -229,10 +230,12 @@ namespace shieldhelpers {
             } else if (msg.type === "display-on") {
                 getScreenState()
                 _screenState.displayOn = true
+                console.log("got display-on")
                 control.raiseEvent(ControllerShieldEvent.Present,0)
             } else if (msg.type === "display-off") {
                 getScreenState()
                 _screenState.displayOn = false
+                console.log("got display-off")
                 control.raiseEvent(ControllerShieldEvent.Absent,0)
             }
         }

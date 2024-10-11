@@ -61,7 +61,8 @@ export function useShieldService(canvasRef: HTMLCanvasElement | null) {
 
             switch (msg.type) {
                 case "initialize":
-                    postMessage({ type:"display-on", runId: undefined})
+                    console.log("got initialization")
+                    postMessage({ type:"display-on", runId: currRunId})
                     break;
                 case "show-image":
                     return handleShowImageMessage(msg as protocol.ShowImageMessage)
