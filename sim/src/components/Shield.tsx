@@ -127,7 +127,7 @@ export const Shield: React.FC = () => {
         if (canvasRef) {
             canvasRef.style.display = powered ? "block" : "none"
         }
-        postMessagePacket({ type: isPowered ? "display-on" : "display-off" })
+        postMessagePacket({ type: powered ? "display-on" : "display-off" })
     }
     const onKeyDown = (key: string): boolean => {
         for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
