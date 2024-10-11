@@ -56,6 +56,14 @@ namespace shieldhelpers {
             control.simmessages.send("arcadeshield", Buffer.fromUTF8(msg) , false)
         }
 
+        initSim() {
+            const msg: ArcadeShieldMessage = {
+                type: "initialize",
+                runId: undefined
+            }
+            this.sendMessage(JSON.stringify(msg))
+        }
+
         setScreenBrightness(b: number) {
             // NOTE: May need to cache locally for querying
             const msg: SetBrightnessMessage = {
@@ -92,11 +100,7 @@ namespace shieldhelpers {
     //% shim=TD_NOOP
     function startSim() {
         control.simmessages.onReceived("arcadeshield", handleShieldMessage)
-        const msg: ArcadeShieldMessage = {
-            type: "initialize",
-            runId: this.runId,
-        }
-        this.sendMessage(JSON.stringify(msg))
+        _screenState.initSim()
     }
 
     function getScreenState() {
