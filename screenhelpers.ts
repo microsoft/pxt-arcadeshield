@@ -2,8 +2,11 @@ namespace screenhelpers {
     type ArcadeButtonId = "left" | "right" | "up" | "down" | "a" | "b" | "menu"
 
     interface ArcadeShieldMessage {
-        type: "show-image" | "set-brightness" | "set-palette" | "button-down" | "button-up" | "display-on" | "display-off"
+        type: "initialize" | "show-image" | "set-brightness" | "set-palette" | "button-down" | "button-up" | "display-on" | "display-off"
         runId: any
+    }
+    interface InitializeMessage extends ArcadeShieldMessage {
+        type: "initialize"
     }
     interface ShowImageMessage extends ArcadeShieldMessage {
         type: "show-image"
@@ -34,7 +37,7 @@ namespace screenhelpers {
 
         constructor() {
             this.runId = Math.random() + "";
-            this.displayOn = true;
+            this.displayOn = undefined
         }
 
         displayHeight(): number {
@@ -86,9 +89,17 @@ namespace screenhelpers {
 
     let _screenState: ScreenState = null;
 
+    //% shim=TD_NOOP
+    function startSim() {
+        control.simmessages.onReceived("arcadeshield", handleShieldMessage)
+         // TODO: send a message to the simulator to get it started
+    }
+
     function getScreenState() {
-        if (_screenState) _screenState;
-        _screenState = new ScreenState();
+        if (!_screenState) {
+            _screenState = new ScreenState()
+            startSim()       
+        }
     }
 
     //% shim=TD_NOOP
@@ -171,7 +182,11 @@ namespace screenhelpers {
             __present = _screenState.displayPresent();
     }
 
-    export function displayPresent(): boolean {
+    //% blockId=shieldPresent block="shield present?"
+    //% blockNamespace="Controller"
+    //% weight=0
+    //% help=github:pxt-arcadeshield/docs/shield-resent
+    export function shieldPresent(): boolean {
         __present = __screenhelpers.displayPresent()
         simDisplayPresent()
         return __present
@@ -204,12 +219,18 @@ namespace screenhelpers {
                     }
                 }
             } else if (msg.type === "display-on") {
-                // TODO: change handler?
                 getScreenState()
+                const current = _screenState.displayOn
+                // TODO: based on change, raise event
                 _screenState.displayOn = true
+                if (current === undefined || !current)
+                    control.raiseEvent(ControllerShieldEvent.Present,0)
             } else if (msg.type === "display-off") {
                 getScreenState()
+                const current = _screenState.displayOn
                 _screenState.displayOn = false
+                if (current === undefined || current)
+                    control.raiseEvent(ControllerShieldEvent.Absent,0)
             }
         }
     }
@@ -219,7 +240,7 @@ namespace screenhelpers {
      */
     //% shim=TD_NOOP
     export function registerSim() {
-        control.simmessages.onReceived("arcadeshield", handleShieldMessage)
+        getScreenState()
     }
 }
 

@@ -33,22 +33,22 @@ enum ControllerButton {
     Down = 4
 }
 
-enum ControllerDisplayEvent {
-    // block="off"
-    Off = 0,
-    // block="on"
-    On = 1,
+enum ControllerShieldEvent {
+    // block="absent"
+    Absent = 3042,
+    // block="present"
+    Present = 3043,
 }
 
 namespace controller {
     /**
-     * Run some code when display is turned on or off
+     * Run some code when shield is absent/present
      */
     //% weight=30
-    //% help=github:pxt-arcadeshield/docs/on-display-event
-    //% blockId=displayevent block="on display $event"
-    export function onDisplayEvent(event: ControllerDisplayEvent, handler: () => void) {
-        handler()   // TODO should we make this the "power" button? semantics?
+    //% help=github:pxt-arcadeshield/docs/on-shield-event
+    //% blockId=shieldEvent block="on shield $event"
+    export function onShieldEvent(event: ControllerShieldEvent, handler: () => void) {
+        context.onEvent(event, 0, handler);
     }
     
     let _userEventsEnabled = true;
