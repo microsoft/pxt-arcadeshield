@@ -220,17 +220,12 @@ namespace shieldhelpers {
                 }
             } else if (msg.type === "display-on") {
                 getScreenState()
-                const current = _screenState.displayOn
-                // TODO: based on change, raise event
                 _screenState.displayOn = true
-                if (current === undefined || !current)
-                    control.raiseEvent(ControllerShieldEvent.Present,0)
+                control.raiseEvent(ControllerShieldEvent.Present,0)
             } else if (msg.type === "display-off") {
                 getScreenState()
-                const current = _screenState.displayOn
                 _screenState.displayOn = false
-                if (current === undefined || current)
-                    control.raiseEvent(ControllerShieldEvent.Absent,0)
+                control.raiseEvent(ControllerShieldEvent.Absent,0)
             }
         }
     }

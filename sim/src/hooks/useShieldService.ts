@@ -153,6 +153,7 @@ export function useShieldService(canvasRef: HTMLCanvasElement | null) {
         }
 
         window.addEventListener("message", handleMessage)
+        postMessage({ type:"display-on", runId: undefined})
         return () => window.removeEventListener("message", handleMessage)
     }, [canvasRef])
 }
