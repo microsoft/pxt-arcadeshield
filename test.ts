@@ -1,6 +1,6 @@
 // tests go here; this will not be compiled when this package is used as an extension.
 
-const present = screenhelpers.displayPresent();
+const present = shieldhelpers.shieldPresent();
 
 basic.showNumber(present ? 1 : 0)
 

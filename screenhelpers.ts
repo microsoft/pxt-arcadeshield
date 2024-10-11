@@ -1,4 +1,4 @@
-namespace screenhelpers {
+namespace shieldhelpers {
     type ArcadeButtonId = "left" | "right" | "up" | "down" | "a" | "b" | "menu"
 
     interface ArcadeShieldMessage {
@@ -244,4 +244,4 @@ namespace screenhelpers {
     }
 }
 
-screenhelpers.registerSim()
+shieldhelpers.registerSim()
