@@ -60,7 +60,7 @@ namespace shieldhelpers {
             console.log("initSim")
             const msg: ArcadeShieldMessage = {
                 type: "initialize",
-                runId: undefined
+                runId: this.runId
             }
             this.sendMessage(JSON.stringify(msg))
         }
