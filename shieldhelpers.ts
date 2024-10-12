@@ -37,7 +37,7 @@ namespace shieldhelpers {
 
         constructor() {
             this.runId = Math.random() + "";
-            this.displayOn = undefined
+            this.displayOn = true
         }
 
         displayHeight(): number {
