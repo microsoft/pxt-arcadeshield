@@ -68,7 +68,6 @@ export function useShieldService(
 
             switch (msg.type) {
                 case "initialize":
-                    console.log("got initialization")
                     postMessage({ type: isPowered ? "display-on" : "display-off", runId: currRunId })
                     break
                 case "show-image":

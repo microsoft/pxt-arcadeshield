@@ -55,7 +55,6 @@ const tabIndex: { [key in ArcadeButtonId]: number } = {
 
 function postMessagePacket(msg: any) {
     const payload = new TextEncoder().encode(JSON.stringify(msg))
-    // console.log(msg)
     window.parent.postMessage(
         {
             type: "messagepacket",
