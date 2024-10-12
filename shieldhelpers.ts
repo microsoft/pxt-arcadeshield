@@ -180,11 +180,11 @@ namespace shieldhelpers {
         return __width
     }
 
-    let __present = true
+    let __present = undefined
     
     //% shim=TD_NOOP
     function simDisplayPresent() {
-        __present = true
+        __present = undefined
         getScreenState();
         if (_screenState)
             __present = _screenState.displayPresent();
