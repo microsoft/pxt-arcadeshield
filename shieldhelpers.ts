@@ -195,9 +195,10 @@ namespace shieldhelpers {
     //% weight=0
     //% help=github:pxt-arcadeshield/docs/shield-resent
     export function shieldPresent(): boolean {
-        __present = __screenhelpers.displayPresent()
-        simDisplayPresent()
+        __present = undefined
         while (__present === undefined) {
+            __present = __screenhelpers.displayPresent()
+            simDisplayPresent()
             basic.pause(0)
         }
         return __present
