@@ -225,7 +225,9 @@ export const Shield: React.FC = () => {
         }
     }
 
-    useShieldService(canvasRef)
+    useShieldService(canvasRef, {
+        isPowered,
+    })
     useKeyboard(onKeyDown, onKeyUp)
     const focused = useWindowFocus()
 
