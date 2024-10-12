@@ -37,7 +37,7 @@ namespace shieldhelpers {
 
         constructor() {
             this.runId = Math.random() + "";
-            this.displayOn = true
+            this.displayOn = undefined
         }
 
         displayHeight(): number {
@@ -197,6 +197,9 @@ namespace shieldhelpers {
     export function shieldPresent(): boolean {
         __present = __screenhelpers.displayPresent()
         simDisplayPresent()
+        while (__present === undefined) {
+            basic.pause(0)
+        }
         return __present
     }
 
