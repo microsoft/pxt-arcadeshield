@@ -33,7 +33,24 @@ enum ControllerButton {
     Down = 4
 }
 
+enum ControllerShieldEvent {
+    // block="absent"
+    Absent = 3042,
+    // block="present"
+    Present = 3043,
+}
+
 namespace controller {
+    /**
+     * Run some code when shield is absent/present
+     */
+    //% weight=30
+    //% help=github:pxt-arcadeshield/docs/on-shield-event
+    //% blockId=shieldEvent block="on shield $event"
+    export function onShieldEvent(event: ControllerShieldEvent, handler: () => void) {
+        context.onEvent(event, 0, handler);
+    }
+    
     let _userEventsEnabled = true;
     let defaultRepeatDelay = 500;
     let defaultRepeatInterval = 30;

@@ -27,7 +27,14 @@ function tmpImageBuffer(width: number, height: number): ImageData {
     return _imgData
 }
 
-export function useShieldService(canvasRef: HTMLCanvasElement | null) {
+export function useShieldService(
+    canvasRef: HTMLCanvasElement | null,
+    state: {
+        isPowered: boolean
+    }
+) {
+    const { isPowered } = state
+
     // Mount a window event listener to handle message events from parent window
     useEffect(() => {
         function handleStopMessage(msg: any) {}
@@ -60,6 +67,9 @@ export function useShieldService(canvasRef: HTMLCanvasElement | null) {
             }
 
             switch (msg.type) {
+                case "initialize":
+                    postMessage({ type: isPowered ? "display-on" : "display-off", runId: currRunId })
+                    break
                 case "show-image":
                     return handleShowImageMessage(msg as protocol.ShowImageMessage)
                 case "set-brightness":
@@ -154,5 +164,5 @@ export function useShieldService(canvasRef: HTMLCanvasElement | null) {
 
         window.addEventListener("message", handleMessage)
         return () => window.removeEventListener("message", handleMessage)
-    }, [canvasRef])
+    }, [canvasRef, isPowered])
 }

@@ -6,7 +6,7 @@
 function bmp(lits: any, ...args: any[]): Bitmap { return null; }
 
 // set palette before creating screen, which initializes the display
-screenhelpers.setPalette(hex`dededeffffffff2121ff93c4ff8135fff609249ca378dc52003fad87f2ff8e2ec4a4839f5c406ce5cdc491463d000000`)
+shieldhelpers.setPalette(hex`dededeffffffff2121ff93c4ff8135fff609249ca378dc52003fad87f2ff8e2ec4a4839f5c406ce5cdc491463d000000`)
 
 const theScreen: Bitmap = __screen_internal.createScreen();
 theScreen.fill(15)
@@ -15,10 +15,10 @@ namespace __screen_internal {
 
     export function createScreen() {
         const img = bitmaps.create(
-            screenhelpers.displayWidth(), // control.getConfigValue(DAL.CFG_DISPLAY_WIDTH, 160)
-            screenhelpers.displayHeight() // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 120)
+            shieldhelpers.displayWidth(), // control.getConfigValue(DAL.CFG_DISPLAY_WIDTH, 160)
+            shieldhelpers.displayHeight() // control.getConfigValue(DAL.CFG_DISPLAY_HEIGHT, 120)
         )
-        control.__screen.setupUpdate(() => screenhelpers.updateScreen(img))
+        control.__screen.setupUpdate(() => shieldhelpers.updateScreen(img))
         return img as Bitmap;
     }
 }

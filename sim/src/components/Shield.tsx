@@ -55,7 +55,6 @@ const tabIndex: { [key in ArcadeButtonId]: number } = {
 
 function postMessagePacket(msg: any) {
     const payload = new TextEncoder().encode(JSON.stringify(msg))
-    // console.log(msg)
     window.parent.postMessage(
         {
             type: "messagepacket",
@@ -127,7 +126,7 @@ export const Shield: React.FC = () => {
         if (canvasRef) {
             canvasRef.style.display = powered ? "block" : "none"
         }
-        // TODO: Send presence event to extension here(?)
+        postMessagePacket({ type: powered ? "display-on" : "display-off" })
     }
     const onKeyDown = (key: string): boolean => {
         for (const buttonId of Object.keys(keymap) as ArcadeButtonId[]) {
@@ -225,7 +224,9 @@ export const Shield: React.FC = () => {
         }
     }
 
-    useShieldService(canvasRef)
+    useShieldService(canvasRef, {
+        isPowered,
+    })
     useKeyboard(onKeyDown, onKeyUp)
     const focused = useWindowFocus()
 
