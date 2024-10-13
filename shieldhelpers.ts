@@ -233,10 +233,12 @@ namespace shieldhelpers {
             } else if (msg.type === "display-on") {
                 getScreenState()
                 _screenState.displayOn = true
+                basic.pause(0)
                 control.raiseEvent(ControllerShieldEvent.Present,0)
             } else if (msg.type === "display-off") {
                 getScreenState()
                 _screenState.displayOn = false
+                basic.pause(0)
                 control.raiseEvent(ControllerShieldEvent.Absent,0)
             }
         }
