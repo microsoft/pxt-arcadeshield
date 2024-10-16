@@ -22,7 +22,6 @@
         "frame.ts",
         "init.ts",
         "ns.ts",
-        "scene.ts",
         "shieldhelpers.ts",
         "text.ts",
         "docs/clone.md",
