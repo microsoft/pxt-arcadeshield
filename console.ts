@@ -44,9 +44,9 @@ namespace scene.consoleOverlay {
     }
 
     export function draw() {
-        if (!consoleStrings || scene.systemMenu.isVisible()) return;
+        if (!consoleStrings) return;
         const height = consoleFont.charHeight + marginy;
-        const top = 2 + (scene.stats ? height : 0);
+        const top = 2 + height;
         for (let i = 0; i < consoleStrings.length; ++i) {
             if (consoleStrings[i].indexOf("\t") >= 0) {
                 const t = consoleStrings[i].split("\t");

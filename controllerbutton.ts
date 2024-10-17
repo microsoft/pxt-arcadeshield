@@ -40,7 +40,13 @@ enum ControllerShieldEvent {
     Present = 3043,
 }
 
+
 namespace controller {
+    export class Controller {
+        constructor(no: number, v: any) { }
+        connected: boolean
+    }
+
     /**
      * Run some code when shield is absent/present
      */
@@ -80,13 +86,7 @@ namespace controller {
         private _pressed: boolean;
         private _pressedElasped: number;
         private _repeatCount: number;
-
-        protected get handlerState(): ButtonEventHandlerState {
-            for (const state of scene.currentScene().buttonEventHandlers) {
-                if (state.id === this.id) return state;
-            }
-            return undefined;
-        }
+        private handlerState: ButtonEventHandlerState;
 
         toString(): string {
             return `btn ${this.id} ${this._pressed ? "down" : "up"}`;
@@ -98,6 +98,7 @@ namespace controller {
             this.repeatDelay = undefined;
             this.repeatInterval = undefined;
             this._repeatCount = 0;
+            this.handlerState = undefined;
 
             if (id > 0) {
                 // this is to deal with the "anyButton" hack, which creates a button that is not visible
@@ -203,7 +204,6 @@ namespace controller {
 
         setPressed(pressed: boolean) {
             if (this._pressed != pressed) {
-                power.poke();
                 if (this._owner)
                     this._owner.connected = true;
                 this._pressed = pressed;
@@ -252,7 +252,7 @@ namespace controller {
 
         protected getOrCreateHandlerForEvent(event: ControllerButtonEvent) {
             if (!this.handlerState) {
-                scene.currentScene().buttonEventHandlers.push(new ButtonEventHandlerState(this.id));
+                this.handlerState = new ButtonEventHandlerState(this.id);
             }
 
             const handlerState = this.handlerState;
