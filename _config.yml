@@ -1,8 +1,0 @@
-makecode:
-  target: 
-  platform: 
-  home_url: 
-theme: jekyll-theme-slate
-include:
-  - assets
-  - README.md
